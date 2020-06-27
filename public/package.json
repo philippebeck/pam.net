@@ -1,0 +1,34 @@
+{
+  "name": "pam.net",
+  "description": "Pam, Php Approachable Microframework, Official Website & Documentation",
+  "keywords": [
+    "php",
+    "framework",
+    "mvc",
+    "superglobals",
+    "filters",
+    "crud",
+    "prepared queries",
+    "array",
+    "image",
+    "mail",
+    "security",
+    "string",
+    "twig",
+    "profiler"
+  ],
+  "license": "MIT",
+  "main": "index.php",
+  "homepage": "https://pam.philippebeck.net",
+  "repository": "github:philippebeck/pam.net",
+  "bugs": "https://github.com/philippebeck/pam.net/issues",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.1",
+    "animadio": "^2.4.5"
+  },
+  "author": {
+    "name": "Philippe Beck",
+    "email": "philippe@philippebeck.net",
+    "url": "https://philippebeck.net"
+  }
+}
