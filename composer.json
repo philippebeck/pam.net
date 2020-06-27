@@ -1,0 +1,59 @@
+{
+  "name": "philippebeck/pam.net",
+  "version": "0.1.0",
+  "type": "project",
+  "description": "Pam, Php Approachable Microframework, Official Website & Documentation",
+  "keywords": [
+    "php",
+    "framework",
+    "mvc",
+    "superglobals",
+    "filters",
+    "crud",
+    "prepared queries",
+    "array",
+    "image",
+    "mail",
+    "security",
+    "string",
+    "twig",
+    "profiler"
+  ],
+  "homepage": "https://pam.philippebeck.net",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Philippe Beck",
+      "email": "philippe@philippebeck.net",
+      "homepage": "https://philippebeck.net",
+      "role": "Lead Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require": {
+    "php": "7.3",
+    "philippebeck/pam": "^4.2.1",
+    "ext-gd": "*",
+    "ext-exif": "*",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "tracy/tracy": "^2.7.5"
+  },
+  "config": {
+    "platform": {
+      "php": "7.3"
+    }
+  },
+  "support": {
+    "email": "admin@philippebeck.net",
+    "issues": "https://github.com/philippebeck/pam.net/issues",
+    "wiki": "https://github.com/philippebeck/pam.net/wiki",
+    "source": "https://github.com/philippebeck/pam.net"
+  }
+}
