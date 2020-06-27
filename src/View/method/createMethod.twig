@@ -1,0 +1,50 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Create a New Method{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block main %}
+    <main class="align-center">
+        <form class="form" method="post" action={{ url('method!create') }}>
+            <fieldset>
+                <legend>
+                    <i class="fas fa-redo fa-2x"></i>
+                </legend>
+                <ul>
+                    <li>
+                        <label for="method">Name*</label>
+                        <input id="method" name="method" type="text" maxlength="20" required placeholder="Type the Method Name">
+                    </li>
+                    <li>
+                        <label for="parameters">Parameters</label>
+                        <input id="parameters" name="parameters" maxlength="10" type="text" placeholder="This Method has Parameters ?">
+                    </li>
+                    <li>
+                        <label for="return">Return</label>
+                        <input id="return" name="return" type="text" maxlength="40" placeholder="This Method has Return ?">
+                    </li>
+                    <li>
+                        <label for="static">Static</label>
+                        <input id="static" name="static" type="checkbox">
+                    </li>
+                    <li>
+                        <label for="class_id">Class*</label>
+                        <select id="class_id" name="class_id">
+                            {% for class in classes %}
+                                <option value="{{ class.id }}">{{ class.class }}</option>
+                            {% endfor %}
+                        </select>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <input type="reset" value="Reset">
+                        <input type="submit" value="Create">
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+        <a class="btn-black btn-lg" href="{{ url('admin') }}">Quit</a>
+    </main>
+{% endblock %}

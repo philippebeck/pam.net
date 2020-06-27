@@ -1,0 +1,54 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Edit a Method{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block main %}
+    <main class="align-center">
+        <form class="form" method="post" action={{ url('method!update', {'id': method.id}) }}>
+            <fieldset>
+                <legend>
+                    <i class="fas fa-redo fa-2x"></i>
+                </legend>
+                <ul>
+                    <li>
+                        <label for="method">Name*</label>
+                        <input id="method" name="method" type="text" maxlength="20" required value="{{ method.method }}">
+                    </li>
+                    <li>
+                        <label for="parameters">Parameters</label>
+                        <input id="parameters" name="parameters" maxlength="10" type="text" value="{{ method.parameters }}">
+                    </li>
+                    <li>
+                        <label for="return">Return</label>
+                        <input id="return" name="return" type="text" maxlength="40" value="{{ method.return }}">
+                    </li>
+                    <li>
+                        <label for="static">Static</label>
+                        <input id="static" name="static" type="checkbox" {% if method.static %}checked{% endif %}>
+                    </li>
+                    <li>
+                        <label for="class_id">Class*</label>
+                        <select id="class_id" name="class_id">
+                            {% for class in classes %}
+                                {% if class.id is same as(method.class_id) %}
+                                    <option value="{{ class.id }}" selected>{{ class.class }} (Registred)</option>
+                                {% else %}
+                                    <option value="{{ class.id }}">{{ class.class }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <input type="reset" value="Reset">
+                        <input type="submit" value="Update">
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+        <a class="btn-black btn-lg" href="{{ url('admin') }}">Quit</a>
+    </main>
+{% endblock %}

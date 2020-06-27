@@ -1,0 +1,54 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Edit a Class{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block main %}
+    <main class="align-center">
+        <form class="form" method="post" action={{ url('class!update', {'id': class.id}) }}>
+            <fieldset>
+                <legend>
+                    <i class="fas fa-file-code fa-2x"></i>
+                </legend>
+                <ul>
+                    <li>
+                        <label for="class">Name*</label>
+                        <input id="class" name="class" type="text" maxlength="20" required value="{{ class.class }}">
+                    </li>
+                    <li>
+                        <label for="path">Path*</label>
+                        <input id="path" name="path" maxlength="20" type="text" value="{{ class.path }}" required>
+                    </li>
+                    <li>
+                        <label for="parameters">Parameters</label>
+                        <input id="parameters" name="parameters" maxlength="30" type="text" value="{{ class.parameters }}">
+                    </li>
+                    <li>
+                        <label for="abstract">Abstract</label>
+                        <input id="abstract" name="abstract" type="checkbox" {% if class.abstract %}checked{% endif %}>
+                    </li>
+                    <li>
+                        <label for="interface">Interface</label>
+                        <input id="interface" name="interface" type="checkbox" {% if class.interface %}checked{% endif %}>
+                    </li>
+                    <li>
+                        <label for="extends">Extends</label>
+                        <input id="extends" name="extends" type="text" maxlength="20" value="{{ class.extends }}">
+                    </li>
+                    <li>
+                        <label for="implements">Implements</label>
+                        <input id="implements" name="implements" type="text" maxlength="20" value="{{ class.implements }}">
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <input type="reset" value="Reset">
+                        <input type="submit" value="Update">
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+        <a class="btn-black btn-lg" href="{{ url('admin') }}">Quit</a>
+    </main>
+{% endblock %}

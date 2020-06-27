@@ -1,0 +1,29 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Doc{% endblock %}
+
+{% block description %}Documentation of Pam{% endblock %}
+
+{% block main %}
+    <input id="menu-radio1" class="menu-radio1" type="radio" name="menu" checked>
+    <input id="menu-radio2" class="menu-radio2" type="radio" name="menu">
+    <input id="menu-radio3" class="menu-radio3" type="radio" name="menu">
+
+    <nav class="menu">
+        <label class="button-red btn-lg" for="menu-radio1" title="Read the Model Doc">
+            <i class="fas fa-database fa-lg"></i> Model
+        </label>
+        <label class="button-green btn-lg" for="menu-radio2" title="Read the View Doc">
+            <i class="fas fa-desktop fa-lg"></i> View
+        </label>
+        <label class="button-blue btn-lg" for="menu-radio3" title="Read the Controller Doc">
+            <i class="fas fa-server fa-lg"></i> Controller
+        </label>
+    </nav>
+
+    <main id="admin" class="menu-relay">
+        {{ include('doc/model.twig') }}
+        {{ include('doc/view.twig') }}
+        {{ include('doc/controller.twig') }}
+    </main>
+{% endblock %}
