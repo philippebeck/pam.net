@@ -1,0 +1,93 @@
+<article class="menu-target2">
+    <h2><i class="fas fa-desktop"></i> View</h2>
+
+    <ul>
+        {% for class in classes %}
+            {% if 'View' in class.path %}
+                <li>
+                    <a href="#{{ class.class|lower }}" >{{ class.class }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    {% for class in classes %}
+        {% if 'View' in class.path %}
+            <hr>
+            <section id="{{ class.class|lower }}">
+                <h3>{{ class.class }}</h3>
+
+                <ul>
+                    <li>Namespace : {{ class.path }}{{ class.class }}</li>
+
+                    {% if class.abstract %}
+                        <li>Abstract : {{ class.abstract|replace({'1': "yes"}) }}</li>
+                    {% endif %}
+
+                    {% if class.interface %}
+                        <li>Interface : {{ class.interface|replace({'1': "yes"}) }}</li>
+                    {% endif %}
+
+                    {% if class.extends %}
+                        <li>Extends : {{ class.extends }}</li>
+                    {% endif %}
+
+                    {% if class.implements %}
+                        <li>Implements : {{ class.implements }}</li>
+                    {% endif %}
+
+                    {% if class.parameters %}
+                        <li>Parameters : {{ class.parameters }}</li>
+                    {% endif %}
+                </ul>
+
+                {% for property in properties %}
+                    {% if property.class_id is same as(class.id) %}
+                        <section>
+                            <h4>{{ property.property }}</h4>
+
+                            <ul>
+                                <li>Value : {{ property.valor }}</li>
+
+                                {% if property.visibility %}
+                                    <li>Visibility : {{ property.visibility }}</li>
+                                {% endif %}
+
+                                {% if property.constant %}
+                                    <li>Constant : {{ property.constant|replace({'1': "yes"}) }}</li>
+                                {% endif %}
+
+                                {% if property.static %}
+                                    <li>Static : {{ property.static|replace({'1': "yes"}) }}</li>
+                                {% endif %}
+                            </ul>
+                        </section>
+                    {% endif %}
+                {% endfor %}
+
+                {% for method in methods %}
+                    {% if method.class_id is same as(class.id) %}
+                        <section>
+                            <h4>{{ method.method }}</h4>
+
+                            <ul>
+                                {% if method.parameters %}
+                                    <li>Parameters : {{ method.parameters }}</li>
+                                {% endif %}
+
+                                {% if method.return %}
+                                    <li>Return : {{ method.return }}</li>
+                                {% endif %}
+
+                                {% if method.static %}
+                                    <li>Static : {{ method.static|replace({'1': "yes"}) }}</li>
+                                {% endif %}
+                            </ul>
+                        </section>
+                    {% endif %}
+                {% endfor %}
+
+            </section>
+        {% endif %}
+    {% endfor %}
+</article>
