@@ -23,8 +23,8 @@ class DocController extends MainController
     public function defaultMethod()
     {
         $classes    = ModelFactory::getModel("Class")->listData();
-        $properties = ModelFactory::getModel("Property")->listData();
-        $methods    = ModelFactory::getModel("Method")->listData();
+        $properties = ModelFactory::getModel("Property")->listPropertiesWithClass();
+        $methods    = ModelFactory::getModel("Method")->listMethodsWithClass();
 
         return $this->render("doc/doc.twig", [
             "classes"       => $classes,

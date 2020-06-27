@@ -1,0 +1,91 @@
+<article class="menu-target2">
+    <header>
+        <h2><i class="fas fa-desktop"></i> View</h2>
+        <ul>
+            {% for class in classes %}
+                {% if 'View' in class.path %}
+                    <li>
+                        <a href="#{{ class.class|lower }}" >{{ loop.index }} - {{ class.class }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </header>
+
+    {% for class in classes %}
+        {% if 'View' in class.path %}
+            <hr>
+            <section id="{{ class.class|lower }}">
+                <h3 class="deco">
+                    {{ loop.index }} -
+                    {% if class.interface %}
+                        interface {{ class.class }}
+                    {% elseif class.abstract %}
+                        abstract class {{ class.class }}
+                    {% else %}
+                        class {{ class.class }}
+                    {% endif %}
+                </h3>
+
+                <ul class="color-purple">
+                    <li>Namespace {{ class.path }}{{ class.class }}</li>
+
+                    {% if class.extends %}
+                        <li>Extends {{ class.extends }}</li>
+                    {% endif %}
+
+                    {% if class.implements %}
+                        <li>Implements {{ class.implements }}</li>
+                    {% endif %}
+
+                    {% if class.constructor %}
+                        <li>
+                            <span class="font-italic">Constructor Parameters</span> : {{ class.constructor }}
+                        </li>
+                    {% endif %}
+                </ul>
+
+                <ul class="color-gray">
+                    {% for property in properties %}
+                        {% if property.class_id is same as(class.id) %}
+                            <li>
+                                {% if property.constant %}
+                                    const {{ property.property }} = {{ property.valor }}
+                                {% elseif property.static %}
+                                    {{ property.visibility }} static {{ property.property }} = {{ property.valor }}
+                                {% else %}
+                                    {{ property.visibility }} {{ property.property }} = {{ property.valor }}
+                                {% endif %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+                <p class="color-navy font-italic">Available Methods :</p>
+
+                <ul>
+                    {% for method in methods %}
+                        {% if method.class_id is same as(class.id) %}
+                            <li>
+                                <ul class="color-blue">
+                                    <li>
+                                        {% if method.static %}
+                                            public static <span class="font-bold">{{ method.method }}</span> ({{ method.parameters }})
+                                        {% else %}
+                                            public <span class="font-bold">{{ method.method }}</span> ({{ method.parameters }})
+                                        {% endif %}
+                                    </li>
+                                    <li>
+                                        {% if method.return %}
+                                            <span class="font-italic">Return value</span> = {{ method.return }}
+                                        {% endif %}
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+    {% endfor %}
+</article>
