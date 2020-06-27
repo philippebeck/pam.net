@@ -1,92 +1,90 @@
 <article class="menu-target1">
-    <h2><i class="fas fa-database"></i> Model</h2>
-
-    <ul>
-    {% for class in classes %}
-        {% if 'Model' in class.path %}
-            <li>
-                <a href="#{{ class.class|lower }}" >{{ class.class }}</a>
-            </li>
-        {% endif %}
-    {% endfor %}
-    </ul>
+    <header>
+        <h2><i class="fas fa-database"></i> Model</h2>
+        <ul>
+            {% for class in classes %}
+                {% if 'Model' in class.path %}
+                    <li>
+                        <a href="#{{ class.class|lower }}" >{{ loop.index }} - {{ class.class }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </header>
 
     {% for class in classes %}
         {% if 'Model' in class.path %}
             <hr>
             <section id="{{ class.class|lower }}">
-                <h3>{{ class.class }}</h3>
-
-                <ul>
-                    <li>Namespace : {{ class.path }}{{ class.class }}</li>
-
-                    {% if class.abstract %}
-                        <li>Abstract : {{ class.abstract|replace({'1': "yes"}) }}</li>
-                    {% endif %}
-
+                <h3 class="deco">
+                    {{ loop.index }} -
                     {% if class.interface %}
-                        <li>Interface : {{ class.interface|replace({'1': "yes"}) }}</li>
+                        interface {{ class.class }}
+                    {% elseif class.abstract %}
+                        abstract class {{ class.class }}
+                    {% else %}
+                        class {{ class.class }}
                     {% endif %}
+                </h3>
+
+                <ul class="color-purple">
+                    <li>Namespace {{ class.path }}{{ class.class }}</li>
 
                     {% if class.extends %}
-                        <li>Extends : {{ class.extends }}</li>
+                        <li>Extends {{ class.extends }}</li>
                     {% endif %}
 
                     {% if class.implements %}
-                        <li>Implements : {{ class.implements }}</li>
+                        <li>Implements {{ class.implements }}</li>
                     {% endif %}
 
-                    {% if class.parameters %}
-                        <li>Parameters : {{ class.parameters }}</li>
+                    {% if class.constructor %}
+                        <li>
+                            <span class="font-italic">Constructor Parameters</span> : {{ class.constructor }}
+                        </li>
                     {% endif %}
                 </ul>
 
-                {% for property in properties %}
-                    {% if property.class_id is same as(class.id) %}
-                        <section>
-                            <h4>{{ property.property }}</h4>
-
-                            <ul>
-                                <li>Value : {{ property.valor }}</li>
-
-                                {% if property.visibility %}
-                                    <li>Visibility : {{ property.visibility }}</li>
-                                {% endif %}
-
+                <ul class="color-gray">
+                    {% for property in properties %}
+                        {% if property.class_id is same as(class.id) %}
+                            <li>
                                 {% if property.constant %}
-                                    <li>Constant : {{ property.constant|replace({'1': "yes"}) }}</li>
+                                    const {{ property.property }} = {{ property.valor }}
+                                {% elseif property.static %}
+                                    {{ property.visibility }} static {{ property.property }} = {{ property.valor }}
+                                {% else %}
+                                    {{ property.visibility }} {{ property.property }} = {{ property.valor }}
                                 {% endif %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
 
-                                {% if property.static %}
-                                    <li>Static : {{ property.static|replace({'1': "yes"}) }}</li>
-                                {% endif %}
-                            </ul>
-                        </section>
-                    {% endif %}
-                {% endfor %}
+                <p class="color-navy font-italic">Available Methods :</p>
 
-                {% for method in methods %}
-                    {% if method.class_id is same as(class.id) %}
-                        <section>
-                            <h4>{{ method.method }}</h4>
-
-                            <ul>
-                                {% if method.parameters %}
-                                    <li>Parameters : {{ method.parameters }}</li>
-                                {% endif %}
-
-                                {% if method.return %}
-                                    <li>Return : {{ method.return }}</li>
-                                {% endif %}
-
-                                {% if method.static %}
-                                    <li>Static : {{ method.static|replace({'1': "yes"}) }}</li>
-                                {% endif %}
-                            </ul>
-                        </section>
-                    {% endif %}
-                {% endfor %}
-
+                <ul>
+                    {% for method in methods %}
+                        {% if method.class_id is same as(class.id) %}
+                            <li>
+                                <ul class="color-blue">
+                                    <li>
+                                        {% if method.static %}
+                                            public static <span class="font-bold">{{ method.method }}</span> ({{ method.parameters }})
+                                        {% else %}
+                                            public <span class="font-bold">{{ method.method }}</span> ({{ method.parameters }})
+                                        {% endif %}
+                                    </li>
+                                    <li>
+                                        {% if method.return %}
+                                            <span class="font-italic">Return value</span> = {{ method.return }}
+                                        {% endif %}
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
             </section>
         {% endif %}
     {% endfor %}
