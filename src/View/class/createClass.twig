@@ -1,0 +1,54 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Create a New Class{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block main %}
+    <main class="align-center">
+        <form class="form" method="post" action={{ url('class!create') }}>
+            <fieldset>
+                <legend>
+                    <i class="fas fa-file-code fa-2x"></i>
+                </legend>
+                <ul>
+                    <li>
+                        <label for="class">Name*</label>
+                        <input id="class" name="class" type="text" maxlength="20" required placeholder="Type the Class Name">
+                    </li>
+                    <li>
+                        <label for="path">Path*</label>
+                        <input id="path" name="path" maxlength="20" type="text" placeholder="Type the Class Path" required>
+                    </li>
+                    <li>
+                        <label for="parameters">Parameters</label>
+                        <input id="parameters" name="parameters" maxlength="30" type="text" placeholder="This Class has Parameters ?">
+                    </li>
+                    <li>
+                        <label for="abstract">Abstract</label>
+                        <input id="abstract" name="abstract" type="checkbox">
+                    </li>
+                    <li>
+                        <label for="interface">Interface</label>
+                        <input id="interface" name="interface" type="checkbox">
+                    </li>
+                    <li>
+                        <label for="extends">Extends</label>
+                        <input id="extends" name="extends" type="text" maxlength="20" placeholder="This Class Extends ?">
+                    </li>
+                    <li>
+                        <label for="implements">Implements</label>
+                        <input id="implements" name="implements" type="text" maxlength="20" placeholder="This Class Implements ?">
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <input type="reset" value="Reset">
+                        <input type="submit" value="Create">
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+        <a class="btn-black btn-lg" href="{{ url('admin') }}">Quit</a>
+    </main>
+{% endblock %}
