@@ -22,7 +22,8 @@ CREATE TABLE `Class`
     `abstract`      TINYINT(1)      UNSIGNED    NOT NULL,
     `interface`     TINYINT(1)      UNSIGNED    NOT NULL,
     `extends`       VARCHAR(20),
-    `implements`    VARCHAR(20)
+    `implements`    VARCHAR(20),
+    `definition`    VARCHAR(255)
 
 )
     ENGINE=INNODB DEFAULT CHARSET=utf8;
@@ -53,35 +54,35 @@ CREATE TABLE `Method`
 ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 INSERT INTO `Class`
-(`class`,               `path`,                 `constructor`,              `abstract`, `interface`,    `extends`,               `implements`)
+(`class`,               `path`,                 `constructor`,              `abstract`, `interface`,    `extends`,               `implements`,      `definition`)
 VALUES
-('DbInterface',         'Model',                '',                         0,          1,              '',                     ''),
-('ModelInterface',      'Model',                '',                         0,          1,              '',                     ''),
-('PdoDb',               'Model',                'PDO $pdo',                 0,          0,              '',                     'DbInterface'),
-('MainModel',           'Model',                'DbInterface $database',    1,          0,              '',                     'ModelInterface'),
-('PdoFactory',          'Model\\Factory',       '',                         0,          0,              '',                     ''),
-('ModelFactory',        'Model\\Factory',       '',                         0,          0,              '',                     ''),
-('MainExtension',       'View',                 '',                         0,          0,              'AbstractExtension',    ''),
-('GlobalsExtension',    'View',                 '',                         0,          0,              'AbstractExtension',    ''),
-('ServiceExtension',    'View',                 '',                         0,          0,              'AbstractExtension',    ''),
-('FrontController',     'Controller',           '',                         0,          0,              '',                     ''),
-('GlobalsController',   'Controller',           '',                         1,          0,              '',                     ''),
-('MainController',      'Controller',           '',                         1,          0,              'GlobalsController',    ''),
-('ServiceController',   'Controller',           '',                         0,          0,              '',                     ''),
-('CookieManager',       'Controller\\Globals',  '',                         0,          0,              '',                     ''),
-('EnvManager',          'Controller\\Globals',  '',                         0,          0,              '',                     ''),
-('FilesManager',        'Controller\\Globals',  '',                         0,          0,              '',                     ''),
-('GetManager',          'Controller\\Globals',  '',                         0,          0,              '',                     ''),
-('PostManager',         'Controller\\Globals',  '',                         0,          0,              '',                     ''),
-('RequestManager',      'Controller\\Globals',  '',                         0,          0,              '',                     ''),
-('ServerManager',       'Controller\\Globals',  '',                         0,          0,              '',                     ''),
-('SessionManager',      'Controller\\Globals',  '',                         0,          0,              '',                     ''),
-('ArrayManager',        'Controller\\Service',  '',                         0,          0,              '',                     ''),
-('CurlManager',         'Controller\\Service',  '',                         0,          0,              '',                     ''),
-('ImageManager',        'Controller\\Service',  '',                         0,          0,              '',                     ''),
-('MailManager',         'Controller\\Service',  '',                         0,          0,              '',                     ''),
-('SecurityManager',     'Controller\\Service',  '',                         0,          0,              'GlobalsController',    ''),
-('StringManager',       'Controller\\Service',  '',                         0,          0,              '',                     '');
+('DbInterface',         'Model',                '',                         0,          1,              '',                     '',                 'The DbInterface interface defines all the signatures of public methods for the class managing database query procedures, currently PdoDb, but this interface allows you to implement other types of database query procedures'),
+('ModelInterface',      'Model',                '',                         0,          1,              '',                     '',                 'The ModelInterface interface defines all the signatures of public methods for the abstract class which must be inherited from all the models of projects using Pam, currently MainModel, but this interface allows you to implement other inheritance models'),
+('PdoDb',               'Model',                'PDO $pdo',                 0,          0,              '',                     'DbInterface',      'The PdoDb class defines all public methods for handling database query procedures ; if you want to customize a request : call the PdoDb method you need by providing the request, and arguments if necessary'),
+('MainModel',           'Model',                'DbInterface $database',    1,          0,              '',                     'ModelInterface',   'The MainModel abstract class defines all the common public methods for querying the database, therefore the listing of a table & its CRUD (Create - Read - Update - Delete) ; this class must be inherited by each model of the projects'),
+('PdoFactory',          'Model\\Factory',       '',                         0,          0,              '',                     '',                 'The PdoFactory class defines access to the database for SQL with PDO using the factory design pattern which creates objects without having to specify the exact class of the object which will be created'),
+('ModelFactory',        'Model\\Factory',       '',                         0,          0,              '',                     '',                 'The ModelFactory class defines access to the current model & his own database access by calling PdoFactory & using the factory design pattern which creates objects without having to specify the exact class of the object which will be created'),
+('MainExtension',       'View',                 '',                         0,          0,              'AbstractExtension',    '',                 ''),
+('GlobalsExtension',    'View',                 '',                         0,          0,              'AbstractExtension',    '',                 ''),
+('ServiceExtension',    'View',                 '',                         0,          0,              'AbstractExtension',    '',                 ''),
+('FrontController',     'Controller',           '',                         0,          0,              '',                     '',                 ''),
+('GlobalsController',   'Controller',           '',                         1,          0,              '',                     '',                 ''),
+('MainController',      'Controller',           '',                         1,          0,              'GlobalsController',    '',                 ''),
+('ServiceController',   'Controller',           '',                         0,          0,              '',                     '',                 ''),
+('CookieManager',       'Controller\\Globals',  '',                         0,          0,              '',                     '',                 ''),
+('EnvManager',          'Controller\\Globals',  '',                         0,          0,              '',                     '',                 ''),
+('FilesManager',        'Controller\\Globals',  '',                         0,          0,              '',                     '',                 ''),
+('GetManager',          'Controller\\Globals',  '',                         0,          0,              '',                     '',                 ''),
+('PostManager',         'Controller\\Globals',  '',                         0,          0,              '',                     '',                 ''),
+('RequestManager',      'Controller\\Globals',  '',                         0,          0,              '',                     '',                 ''),
+('ServerManager',       'Controller\\Globals',  '',                         0,          0,              '',                     '',                 ''),
+('SessionManager',      'Controller\\Globals',  '',                         0,          0,              '',                     '',                 ''),
+('ArrayManager',        'Controller\\Service',  '',                         0,          0,              '',                     '',                 ''),
+('CurlManager',         'Controller\\Service',  '',                         0,          0,              '',                     '',                 ''),
+('ImageManager',        'Controller\\Service',  '',                         0,          0,              '',                     '',                 ''),
+('MailManager',         'Controller\\Service',  '',                         0,          0,              '',                     '',                 ''),
+('SecurityManager',     'Controller\\Service',  '',                         0,          0,              'GlobalsController',    '',                 ''),
+('StringManager',       'Controller\\Service',  '',                         0,          0,              '',                     '',                 '');
 
 INSERT INTO `Property`
 (`property`,            `visibility`,   `valor`,                                `constant`, `static`,   `class_id`)
