@@ -22,8 +22,69 @@
     </nav>
 
     <main id="admin" class="menu-relay">
-        {{ include('doc/model.twig') }}
-        {{ include('doc/view.twig') }}
-        {{ include('doc/controller.twig') }}
+
+        <article class="menu-target1">
+            <header>
+                <h2><i class="fas fa-database"></i> Model</h2>
+                <ul>
+                    {% for class in classes %}
+                        {% if 'Model' in class.path %}
+                            <li>
+                                <a href="#{{ class.class|lower }}" >{{ loop.index }} - {{ class.class }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </header>
+
+            {% for class in classes %}
+                {% if 'Model' in class.path %}
+                    {{ include('doc/mvc.twig') }}
+                {% endif %}
+            {% endfor %}
+        </article>
+
+        <article class="menu-target2">
+            <header>
+                <h2><i class="fas fa-desktop"></i> View</h2>
+                <ul>
+                    {% for class in classes %}
+                        {% if 'View' in class.path %}
+                            <li>
+                                <a href="#{{ class.class|lower }}" >{{ loop.index }} - {{ class.class }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </header>
+
+            {% for class in classes %}
+                {% if 'View' in class.path %}
+                    {{ include('doc/mvc.twig') }}
+                {% endif %}
+            {% endfor %}
+        </article>
+
+        <article class="menu-target3">
+            <header>
+                <h2><i class="fas fa-server"></i> Controller</h2>
+                <ul>
+                    {% for class in classes %}
+                        {% if 'Controller' in class.path %}
+                            <li>
+                                <a href="#{{ class.class|lower }}" >{{ loop.index }} - {{ class.class }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </header>
+
+            {% for class in classes %}
+                {% if 'Controller' in class.path %}
+                    {{ include('doc/mvc.twig') }}
+                {% endif %}
+            {% endfor %}
+        </article>
+
     </main>
 {% endblock %}
