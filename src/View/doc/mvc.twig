@@ -31,7 +31,7 @@
 
         <li>
             <a class="btn-purple" href="https://github.com/philippebeck/pam/blob/master/core/{{ class.path|replace({'\\': "/"}) }}/{{ class.class }}.php">
-                <i class="fas fa-code fa-lg"></i> Code Source Here
+                <i class="fas fa-code fa-lg"></i> Code Source
             </a>
         </li>
     </ul>
@@ -78,9 +78,9 @@
                             <ul class="color-blue font-monospace">
                                 <li>
                                     {% if method.static %}
-                                        public static <span class="font-bold">{{ method.method }}</span> ({{ method.parameters }})
+                                        public static function <span class="font-bold">{{ method.method }}</span> ({{ method.parameters }})
                                     {% else %}
-                                        public <span class="font-bold">{{ method.method }}</span> ({{ method.parameters }})
+                                        public function <span class="font-bold">{{ method.method }}</span> ({{ method.parameters }})
                                     {% endif %}
                                 </li>
                                 <li>
