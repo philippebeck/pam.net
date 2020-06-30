@@ -1,0 +1,99 @@
+<section id="{{ class.class|lower }}">
+    <h3 class="deco">
+        {{ loop.index }} -
+        {% if class.interface %}
+            interface {{ class.class }}
+        {% elseif class.abstract %}
+            abstract class {{ class.class }}
+        {% else %}
+            class {{ class.class }}
+        {% endif %}
+    </h3>
+
+    <p class="bord-rounded bg-gray color-white pad-sm">{{ class.definition }}</p>
+
+    <ul class="color-purple font-monospace">
+        <li>Namespace Pam\{{ class.path }}</li>
+
+        {% if class.extends %}
+            <li>Extends {{ class.extends }}</li>
+        {% endif %}
+
+        {% if class.implements %}
+            <li>Implements {{ class.implements }}</li>
+        {% endif %}
+
+        {% if class.constructor %}
+            <li>
+                <span class="font-italic">Constructor Parameters</span> : {{ class.constructor }}
+            </li>
+        {% endif %}
+
+        <li>
+            <a class="btn-purple" href="https://github.com/philippebeck/pam/blob/master/core/{{ class.path|replace({'\\': "/"}) }}/{{ class.class }}.php">
+                <i class="fas fa-code fa-lg"></i> Code Source
+            </a>
+        </li>
+    </ul>
+
+    <ul class="color-gray font-monospace">
+        {% for property in properties %}
+            {% if property.class_id is same as(class.id) %}
+                <li>
+                    {% if property.constant %}
+                        const {{ property.property }} = {{ property.valor }}
+                    {% elseif property.static %}
+                        {{ property.visibility }} static {{ property.property }} = {{ property.valor }}
+                    {% else %}
+                        {{ property.visibility }} {{ property.property }} = {{ property.valor }}
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <section>
+        <h4 class="font-bold deco-dot">
+            Usage <i class="far fa-hand-point-down"></i>
+        </h4>
+
+        <header>
+            <p>Use Pam\{{ class.path }}\{{ class.class }}</p>
+            {% for property in properties %}
+                {% if property.class_id is same as(class.id) and property.visibility is same as('protected') %}
+                    <p>Use the protected property {{ property.property}} to access the value of type {{ property.valor }} !</p>
+                {% endif %}
+            {% endfor %}
+        </header>
+
+        <section>
+            <h5>
+                <i class="fas fa-recycle"></i> Available Methods
+            </h5>
+
+            <ul>
+                {% for method in methods %}
+                    {% if method.class_id is same as(class.id) %}
+                        <li>
+                            <ul class="color-blue font-monospace">
+                                <li>
+                                    {% if method.static %}
+                                        public static function <span class="font-bold">{{ method.method }}</span> ({{ method.parameters }})
+                                    {% else %}
+                                        public function <span class="font-bold">{{ method.method }}</span> ({{ method.parameters }})
+                                    {% endif %}
+                                </li>
+                                <li>
+                                    {% if method.return %}
+                                        <span class="font-italic">Return value</span> = {{ method.return }}
+                                    {% endif %}
+                                </li>
+                            </ul>
+                            <i class="fas fa-minus"></i>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </section>
+    </section>
+</section>
