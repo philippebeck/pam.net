@@ -5,22 +5,22 @@
 {% block description %}Homepage of Pam{% endblock %}
 
 {% block main %}
-    <main>
-        <section class="mar-bot-lg">
-            <h2>Welcome !</h2>
+    <main class="mar-bot-lg">
+        <img class="height-sm" src="img/pam.png" alt="Pam Logo">
 
-            <p>The Php Approachable Microframework is a Programing Tool wrote in PHP who help you to build Websites.</p>
+        <h2>PHP Approachable Microframework</h2>
 
-            <p>This project is Open-source, so you can get all the source code on GitHub...</p>
+        <p>Pam is a Programing Tool wrote in PHP who help you to build Websites.</p>
 
-            <p>Installation process, common Usage & full Documentation are available here !</p>
+        <p>This project is Open-source, so you can get all the source code on GitHub...</p>
 
-            <a class="btn-red" href="{{ url('start') }}">
-                <i class="fas fa-play fa-lg"></i> Getting Start
-            </a>
-            <a class="btn-blue" href="{{ url('doc') }}">
-                <i class="fas fa-book fa-lg"></i> Documentation
-            </a>
-        </section>
+        <p>Installation process, common Usage & full Documentation are available here !</p>
+
+        <a class="btn-red" href="{{ url('start') }}">
+            <i class="fas fa-play fa-lg"></i> Getting Start
+        </a>
+        <a class="btn-blue" href="{{ url('doc') }}">
+            <i class="fas fa-book fa-lg"></i> Documentation
+        </a>
     </main>
 {% endblock %}
