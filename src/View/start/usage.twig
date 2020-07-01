@@ -1,45 +1,219 @@
 <article class="menu-target2">
-    <h2>Usage</h2>
 
-    <header>Pam is very easy to use & very light to implement !</header>
+    <header class="anima-growX">
+        <h2>
+            <i class="far fa-keyboard fa-lg color-black"></i> Usage
+        </h2>
+        <p>Pam is very easy to use & very light to implement !</p>
+    </header>
+
+    <i class="fas fa-chevron-down fa-2x mar-top-lg" aria-hidden="true"></i>
 
     <section>
-        <h3>Parameters</h3>
+        <h3 class="anima-grow">
+            <i class="fas fa-cogs fa-lg color-purple"></i> Parameters
+        </h3>
 
-        <p></p>
-        <code></code>
-        <a></a>
+        <p>You need to create a parameters file who contains Global Constants for Database, Mail & Recaptcha like this :</p>
+        <code>define("KEY", "value");</code>
+
+        <p>You can watch an example of a parameters file on GitHub :</p>
+        <a class="button-gh"
+           href="https://github.com/philippebeck/pam.net/tree/master/config/parameters-example.php"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="See the Code">
+            parameters.php
+        </a>
     </section>
 
-    <section>
-        <h3>Index</h3>
+    <i class="fas fa-sort fa-2x mar-top-lg" aria-hidden="true"></i>
 
-        <p></p>
-        <code></code>
-        <a></a>
+    <section>
+        <h3 class="anima-grow">
+            <i class="fab fa-firefox-browser fa-lg color-orange"></i> Index
+        </h3>
+
+        <ul>
+            <li>
+                <p>For the index file, you have to add a require_once for the parameters :</p>
+                <code>require_once '../config/parameters.php';</code>
+            </li>
+            <li>
+                <p>Then, create the FrontController object :</p>
+                <code>$frontController = new Pam\Controller\FrontController();</code>
+            </li>
+            <li>
+                <p>And call the run method on it :</p>
+                <code>$frontController->run();</code>
+            </li>
+        </ul>
+
+        <p>Don't forget to add autoload & sessions (if you need) to the file beginning...</p>
+        <p>You can watch an example of an index file on GitHub :</p>
+        <a class="button-gh"
+           href="https://github.com/philippebeck/pam.net/tree/master/public/index.php"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="See the Code">
+            index.php
+        </a>
     </section>
 
-    <section>
-        <h3>Model</h3>
+    <i class="fas fa-sort fa-2x mar-top-lg" aria-hidden="true"></i>
 
-        <p></p>
-        <code></code>
-        <a></a>
+    <section>
+        <h3 class="anima-grow">
+            <i class="fas fa-database fa-lg color-red"></i> Model
+        </h3>
+
+        <header class="bord-rounded bg-gray color-white">
+            <p>For the Model naming, you need to use the same name than each table...</p>
+            <p>For example, if you have a table named Pizza, you should have a Model named PizzaModel.php</p>
+        </header>
+
+        <ul>
+            <li>
+                <p>To use the Pam CRUD model, simply add this use to each of your models :</p>
+                <code>use Pam\Model\MainModel;</code>
+            </li>
+            <li>
+                <p>Then you can extends the class to the MainModel :</p>
+                <code>extends MainModel</code>
+            </li>
+        </ul>
+
+        <p>You can watch an example of a very simple Model file on GitHub :</p>
+        <a class="button-gh"
+           href="https://github.com/philippebeck/pam.net/tree/master/src/Model/UserModel.php"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="See the Code">
+            UserModel.php
+        </a>
+
+        <p>Now you can access to all CRUD methods of the MainModel</p>
+
+        <i class="fas fa-minus fa-2x" aria-hidden="true"></i>
+
+        <ul>
+            <li>
+                <p>If you need a specific query, just create a method to add it :</p>
+                <code>$query = "SELECT * FROM Table..."</code>
+            </li>
+            <li>
+                <p>Then you should return the query with one of the methods to the PdoDb.php file like this :</p>
+                <code>return $this->database->getAllData($query);</code>
+            </li>
+        </ul>
+
+        <p>You can watch an example of a Model file with specific query on GitHub :</p>
+        <a class="button-gh"
+           href="https://github.com/philippebeck/pam.net/tree/master/src/Model/PropertyModel.php"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="See the Code">
+            PropertyModel.php
+        </a>
     </section>
 
-    <section>
-        <h3>View</h3>
+    <i class="fas fa-sort fa-2x mar-top-lg" aria-hidden="true"></i>
 
-        <p></p>
-        <code></code>
-        <a></a>
+    <section>
+        <h3 class="anima-grow">
+            <i class="fas fa-desktop fa-lg color-green"></i> View
+        </h3>
+
+        <p>For the views, Pam use Twig, the Template Engine of Symfony...</p>
+        <a class="button-green"
+           href="https://twig.symfony.com/doc/2.x"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="See the Doc">
+            Twig Doc
+        </a>
+
+        <p>Don't care about Twig configuration, you have only to create layout & views !</p>
+
+        <i class="fas fa-minus fa-2x" aria-hidden="true"></i>
+
+        <p>You can watch an example of a layout file on GitHub :</p>
+        <a class="button-gh"
+           href="https://github.com/philippebeck/pam.net/tree/master/src/View/layout/layout.twig"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="See the Code">
+            layout.twig
+        </a>
+
+        <p>And you can watch an example of a simple view file on GitHub :</p>
+        <a class="button-gh"
+           href="https://github.com/philippebeck/pam.net/tree/master/src/View/home.twig"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="See the Code">
+            home.twig
+        </a>
     </section>
 
-    <section>
-        <h3>Controller</h3>
+    <i class="fas fa-sort fa-2x mar-top-lg" aria-hidden="true"></i>
 
-        <p></p>
-        <code></code>
-        <a></a>
+    <section>
+        <h3 class="anima-grow">
+            <i class="fas fa-server fa-lg color-blue"></i> Controller
+        </h3>
+
+        <header class="bord-rounded bg-gray color-white">
+            <p>For the Controller naming, you need to use the same name than each access value inside the URL of the website...</p>
+            <p>For example, if you watch the URL of this page, the access value is "start", so we have a controller named StartController.php</p>
+        </header>
+
+        <ul>
+            <li>
+                <p>To use the Pam Controller Methods, simply add this use to each of your controllers :</p>
+                <code>use Pam\Controller\MainController;</code>
+            </li>
+            <li>
+                <p>Then you can extends the class to the MainController :</p>
+                <code>extends MainController</code>
+            </li>
+        </ul>
+
+        <p>You can watch an example of a simple Controller file on GitHub :</p>
+        <a class="button-gh"
+           href="https://github.com/philippebeck/pam.net/tree/master/src/Controller/StartController.php"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="See the Code">
+            StartController.php
+        </a>
+
+        <p>Now you can access to all methods of the MainContoller, GlobalsController & ServiceController</p>
+
+        <i class="fas fa-minus fa-2x" aria-hidden="true"></i>
+
+        <ul>
+            <li>
+                <p>To get the MainController Methods, simply use "this", then the method :</p>
+                <code>$this->redirect('home');</code>
+            </li>
+            <li>
+                <p>For the GlobalsController, same thing, but add the getter, for the SuperGlobal you need, between them :</p>
+                <code>$this->getPost()->getPostArray();</code>
+            </li>
+            <li>
+                <p>For the ServiceController, idem for Services, but you should call the $service property, with "this", then the methods :</p>
+                <code>$this->service->getSecurity()->checkIsAdmin();</code>
+            </li>
+        </ul>
+
+        <p>You can watch an example of a more complex Controller file on GitHub too :</p>
+        <a class="button-gh"
+           href="https://github.com/philippebeck/pam.net/tree/master/src/Controller/UserController.php"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="See the Code">
+            UserController.php
+        </a>
     </section>
 </article>
