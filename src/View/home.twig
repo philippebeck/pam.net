@@ -6,7 +6,21 @@
 
 {% block main %}
     <main>
-        <h2>Welcome !</h2>
+        <section class="mar-bot-lg">
+            <h2>Welcome !</h2>
 
+            <p>The Php Approachable Microframework is a Programing Tool wrote in PHP who help you to build Websites.</p>
+
+            <p>This project is Open-source, so you can get all the source code on GitHub...</p>
+
+            <p>Installation process, common Usage & full Documentation are available here !</p>
+
+            <a class="btn-red" href="{{ url('start') }}">
+                <i class="fas fa-play fa-lg"></i> Getting Start
+            </a>
+            <a class="btn-blue" href="{{ url('doc') }}">
+                <i class="fas fa-book fa-lg"></i> Documentation
+            </a>
+        </section>
     </main>
 {% endblock %}
