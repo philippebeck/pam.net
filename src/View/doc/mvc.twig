@@ -36,21 +36,22 @@
         </li>
     </ul>
 
-    <ul class="color-gray">
+    <table class="table color-gray">
         {% for property in properties %}
             {% if property.class_id is same as(class.id) %}
-                <li>
+                <tr>
                     {% if property.constant %}
-                        const {{ property.property }} = {{ property.valor }}
+                        <td>const {{ property.property }}</td>
                     {% elseif property.static %}
-                        {{ property.visibility }} static {{ property.property }} = {{ property.valor }}
+                        <td>{{ property.visibility }} static {{ property.property }}</td>
                     {% else %}
-                        {{ property.visibility }} {{ property.property }} = {{ property.valor }}
+                        <td>{{ property.visibility }} {{ property.property }}</td>
                     {% endif %}
-                </li>
+                    <td>{{ property.valor }}</td>
+                </tr>
             {% endif %}
         {% endfor %}
-    </ul>
+    </table>
 
     <section>
         <h4 class="font-bold deco-dot">
@@ -84,7 +85,7 @@
                                     {% endif %}
                                 </li>
                                 <li>
-                                    <p class="bg-silver pad-sm font-sans-serif">{{ method.function }}</p>
+                                    <p class="bg-silver color-navy pad-sm font-sans-serif">{{ method.function }}</p>
                                 </li>
                                 <li>
                                     {% if method.return %}
