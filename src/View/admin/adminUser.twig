@@ -1,5 +1,5 @@
 <section class="menu-target4">
-    <h2><i class="far fa-user" aria-hidden="true"></i>User</h2>
+    <h2><i class="far fa-user"></i>User</h2>
 
     <a class="btn-green btn-lg" href="{{ url('user!create') }}">New User</a>
 
@@ -22,11 +22,14 @@
                 </td>
                 <td>{{ user.email }}</td>
                 <td>
+                    <a class="btn-orange" href="{{ url('user!logout') }}">
+                        <i class="fas fa-sign-out-alt fa-fw fa-lg"></i>
+                    </a>
                     <a class="btn-blue" href="{{ url('user!update', {'id': user.id}) }}">
-                        <i class="fas fa-pen-square fa-fw fa-lg" aria-hidden="true"></i>
+                        <i class="fas fa-pen-square fa-fw fa-lg"></i>
                     </a>
                     <a class="btn-red" href="{{ url('user!delete', {'id': user.id}) }}">
-                        <i class="fas fa-times-circle fa-fw fa-lg" aria-hidden="true"></i>
+                        <i class="fas fa-times-circle fa-fw fa-lg"></i>
                     </a>
                 </td>
             </tr>
