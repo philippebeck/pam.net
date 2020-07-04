@@ -33,7 +33,7 @@ CREATE TABLE `Property`
     `id`            SMALLINT                UNSIGNED    PRIMARY KEY AUTO_INCREMENT,
     `property`      VARCHAR(20)             NOT NULL,
     `visibility`    VARCHAR(10),
-    `valor`         VARCHAR(40)             NOT NULL,
+    `value_type`    VARCHAR(20)             NOT NULL,
     `constant`      TINYINT(1)              UNSIGNED    NOT NULL,
     `static`        TINYINT(1)              UNSIGNED    NOT NULL,
     `class_id`      TINYINT                 UNSIGNED    NOT NULL,
@@ -86,7 +86,7 @@ VALUES
 ('StringManager',       'Controller\\Service',  '',                         0,          0,              '',                     '',                 'The StringManager defines the public methods to manage Strings');
 
 INSERT INTO `Property`
-(`property`,            `visibility`,   `valor`,                                `constant`, `static`,   `class_id`)
+(`property`,            `visibility`,   `value_type`,           `constant`, `static`,   `class_id`)
 VALUES
 ('$pdo',                'private',      'PDO',                                  0,          0,          3),
 ('$database',           'protected',    'DbInterface',                          0,          0,          4),
