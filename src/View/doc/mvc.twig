@@ -10,23 +10,21 @@
         {% endif %}
     </h3>
 
-    <p class="bord-rounded bg-gray color-white pad-sm font-sans-serif">{{ class.definition }}</p>
+    <p class="bord-rounded bord-gray bg-gray color-white pad-sm font-sans-serif">{{ class.definition }}</p>
 
-    <ul class="color-purple">
-        <li class="font-italic">Namespace Pam\{{ class.path }}</li>
+    <ul class="font-italic">
+        <li class="color-purple font-bold">Namespace Pam\{{ class.path }}</li>
 
         {% if class.extends %}
-            <li>Extends {{ class.extends }}</li>
+            <li class="font-sans-serif">Extends {{ class.extends }}</li>
         {% endif %}
 
         {% if class.implements %}
-            <li>Implements {{ class.implements }}</li>
+            <li class="font-sans-serif">Implements {{ class.implements }}</li>
         {% endif %}
 
         {% if class.constructor %}
-            <li>
-                <span class="font-italic">Constructor Parameters</span> : {{ class.constructor }}
-            </li>
+            <li class="font-sans-serif">Constructor Parameters : {{ class.constructor }}</li>
         {% endif %}
 
         <li class="mar-md">
@@ -36,39 +34,40 @@
         </li>
     </ul>
 
-    <table class="table color-gray">
-        {% for property in properties %}
+    {% for property in properties %}
+        <p>
             {% if property.class_id is same as(class.id) %}
-                <tr>
-                    {% if property.constant %}
-                        <td>const {{ property.property }}</td>
-                    {% elseif property.static %}
-                        <td>{{ property.visibility }} static {{ property.property }}</td>
-                    {% else %}
-                        <td>{{ property.visibility }} {{ property.property }}</td>
-                    {% endif %}
-                    <td>{{ property.valor }}</td>
-                </tr>
+                {% if property.constant %}
+                    const {{ property.property }} (@var {{ property.value_type }})
+                {% elseif property.static %}
+                    {{ property.visibility }} static {{ property.property }} (@var {{ property.value_type }})
+                {% else %}
+                    {{ property.visibility }} {{ property.property }} (@var {{ property.value_type }})
+                {% endif %}
             {% endif %}
-        {% endfor %}
-    </table>
+        </p>
+    {% endfor %}
+
+    <i class="fas fa-sort fa-2x" aria-hidden="true"></i>
 
     <section>
-        <h4 class="font-bold deco-dot">
+        <h4 class="font-bold deco-wavy">
             Usage <i class="far fa-hand-point-down"></i>
         </h4>
 
-        <header class="color-purple font-bold font-italic">
-            <p>Use Pam\{{ class.path }}\{{ class.class }}</p>
+        <header class="font-italic">
+            <p class="color-purple font-bold">Use Pam\{{ class.path }}\{{ class.class }}</p>
             {% for property in properties %}
                 {% if property.class_id is same as(class.id) and property.visibility is same as('protected') %}
-                    <p>Use the protected property {{ property.property}} to access the value of type {{ property.valor }} !</p>
+                    <p class="font-sans-serif">You can access the value of type {{ property.value_type }} from the protected property {{ property.property}} !</p>
                 {% endif %}
             {% endfor %}
         </header>
 
+        <i class="fas fa-chevron-down fa-2x" aria-hidden="true"></i>
+
         <section>
-            <h5>
+            <h5 class="deco-dash">
                 <i class="fas fa-recycle"></i> Available Methods
             </h5>
 
@@ -79,13 +78,13 @@
                             <ul class="color-blue">
                                 <li>
                                     {% if method.static %}
-                                        public static function <span class="font-bold deco-dash">{{ method.method }}</span> ({{ method.parameters }})
+                                        public static function <span class="font-bold deco-double">{{ method.method }}</span> (<span class="font-italic deco-dot">{{ method.parameters }}</span>)
                                     {% else %}
-                                        public function <span class="font-bold deco-dash">{{ method.method }}</span> ({{ method.parameters }})
+                                        public function <span class="font-bold deco-double">{{ method.method }}</span> (<span class="font-italic deco-dot">{{ method.parameters }}</span>)
                                     {% endif %}
                                 </li>
                                 <li>
-                                    <p class="bg-silver color-navy pad-sm font-sans-serif">{{ method.function }}</p>
+                                    <p class="bord-curve bord-silver bg-silver color-navy pad-sm font-sans-serif">{{ method.function }}</p>
                                 </li>
                                 <li>
                                     {% if method.return %}
@@ -93,7 +92,7 @@
                                     {% endif %}
                                 </li>
                             </ul>
-                            <i class="fas fa-minus fa-2x mar-md"></i>
+                            <i class="fas fa-minus fa-lg mar-md"></i>
                         </li>
                     {% endif %}
                 {% endfor %}
