@@ -34,30 +34,19 @@
         </li>
     </ul>
 
-    <table class="table color-gray">
-        <thead>
-            <tr>
-                <th>Property</th>
-                <th>Value Type</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for property in properties %}
+    {% for property in properties %}
+        <p>
             {% if property.class_id is same as(class.id) %}
-                <tr>
-                    {% if property.constant %}
-                        <td>const {{ property.property }}</td>
-                    {% elseif property.static %}
-                        <td>{{ property.visibility }} static {{ property.property }}</td>
-                    {% else %}
-                        <td>{{ property.visibility }} {{ property.property }}</td>
-                    {% endif %}
-                    <td>{{ property.value_type }}</td>
-                </tr>
+                {% if property.constant %}
+                    const {{ property.property }} (@var {{ property.value_type }})
+                {% elseif property.static %}
+                    {{ property.visibility }} static {{ property.property }} (@var {{ property.value_type }})
+                {% else %}
+                    {{ property.visibility }} {{ property.property }} (@var {{ property.value_type }})
+                {% endif %}
             {% endif %}
-        {% endfor %}
-        </tbody>
-    </table>
+        </p>
+    {% endfor %}
 
     <i class="fas fa-sort fa-2x" aria-hidden="true"></i>
 
