@@ -26,7 +26,7 @@
             <li>
                 <p>By default, I use a folder named <em>config</em> who contains 2 parameters files :
                     <strong>dev-params.php</strong> & <strong>prod-params.php</strong>...</p>
-                <p>Each parameters file must contain the Global Constants for Twig, Database, Mail & Recaptcha like this :</p>
+                <p>Each parameters file must contain the Global Constants for Access, Database, Model, View, Controller, Mail & Recaptcha like this :</p>
                 <code>define("KEY", "value");</code>
             </li>
             <li>
@@ -252,7 +252,7 @@
             </li>
             <li>
                 <p>For the ServiceController, idem than the GlobalsController, but you should call the $service property, with "this", then the method :</p>
-                <code>$this->service->getSecurity()->checkIsAdmin();</code>
+                <code>$this->service->getCurl()->getApiData();</code>
             </li>
             <li>
                 <p class="color-blue font-bold">Now you know the 3 kinds of syntax to call all of Pam's Controller methods !</p>
