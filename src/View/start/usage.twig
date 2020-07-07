@@ -105,7 +105,9 @@
 
         <header class="bord-rounded bord-gray bg-gray color-white">
             <p>For the Model naming, you need to use the same name than each table...</p>
-            <p>For example, if you have a table named Pizza, you should have a Model named PizzaModel.php</p>
+            <p>You can choose, the Model path & the Model suffix, in the parameters.</p>
+            <p>For example (without any changes to the Model constants),
+                if you have a table named Pizza, you should have a Model named PizzaModel.php</p>
         </header>
 
         <i class="fas fa-minus fa-lg mar-top-md" aria-hidden="true"></i>
@@ -165,7 +167,8 @@
 
         <header class="bord-rounded bord-gray bg-gray color-white">
             <p>For the views, Pam use Twig, the Template Engine of Symfony</p>
-            <p>The only configuration to manage is the 2 Twig constants in the parameters files</p>
+            <p>The only configuration to manage is the 2 View constants in the parameters files</p>
+            <p>One is for the View template path & the second for the View cache path...</p>
             <p>For the Twig functions, filters & tags, please refer to the
                 <a class="button-green"
                    href="https://twig.symfony.com/doc/2.x"
@@ -213,7 +216,10 @@
 
         <header class="bord-rounded bord-gray bg-gray color-white">
             <p>For the Controller naming, you need to use the same name than each access value inside the URL of the website...</p>
-            <p>For example, if you watch the URL of this page, the access value is "start", so we have a controller named StartController.php</p>
+            <p>You can choose, the Controller path, the Controller default name & the Controller suffix in the parameters.</p>
+            <p>Same thing for the Contoller Method default name & the Controller Method suffix.</p>
+            <p>For example (without any changes to the Controller constants),
+                if you watch the URL of this page, the access value is "start", so we have a controller named StartController.php</p>
         </header>
 
         <i class="fas fa-minus fa-lg mar-top-md" aria-hidden="true"></i>
@@ -247,15 +253,11 @@
                 <code>$this->redirect('home');</code>
             </li>
             <li>
-                <p>For the GlobalsController, same thing, but add the getter, for the SuperGlobal you need, between them :</p>
+                <p>For Services & SuperGlobales Methods, same thing, but add the getter, for the Class you need, between them :</p>
                 <code>$this->getPost()->getPostArray();</code>
             </li>
             <li>
-                <p>For the ServiceController, idem than the GlobalsController, but you should call the $service property, with "this", then the method :</p>
-                <code>$this->service->getCurl()->getApiData();</code>
-            </li>
-            <li>
-                <p class="color-blue font-bold">Now you know the 3 kinds of syntax to call all of Pam's Controller methods !</p>
+                <p class="color-blue font-bold">Now you know the 2 kinds of syntax to call all of Pam's Controller methods !</p>
                 <a class="button-blue"
                    href="https://github.com/philippebeck/pam.net/tree/master/src/Controller/UserController.php"
                    target="_blank"
