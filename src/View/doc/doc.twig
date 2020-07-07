@@ -8,15 +8,19 @@
     <input id="menu-radio1" class="menu-radio1" type="radio" name="menu" checked>
     <input id="menu-radio2" class="menu-radio2" type="radio" name="menu">
     <input id="menu-radio3" class="menu-radio3" type="radio" name="menu">
+    <input id="menu-radio4" class="menu-radio4" type="radio" name="menu">
 
     <nav class="menu">
-        <label class="button-red btn-lg" for="menu-radio1" title="Read the Model Doc">
+        <label class="button-red btn-lg" for="menu-radio1" title="Read the Config Doc">
+            <i class="fas fa-cogs fa-lg"></i> Config
+        </label>
+        <label class="button-red btn-lg" for="menu-radio2" title="Read the Model Doc">
             <i class="fas fa-database fa-lg"></i> Model
         </label>
-        <label class="button-green btn-lg" for="menu-radio2" title="Read the View Doc">
+        <label class="button-green btn-lg" for="menu-radio3" title="Read the View Doc">
             <i class="fas fa-desktop fa-lg"></i> View
         </label>
-        <label class="button-blue btn-lg" for="menu-radio3" title="Read the Controller Doc">
+        <label class="button-blue btn-lg" for="menu-radio4" title="Read the Controller Doc">
             <i class="fas fa-server fa-lg"></i> Controller
         </label>
     </nav>
@@ -24,6 +28,35 @@
     <main id="admin" class="menu-relay container-80md-60wd">
 
         <article class="menu-target1">
+            <h2><i class="fas fa-cogs"></i> Config</h2>
+
+            <section>
+                <h3>Parameters</h3>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Constant Name</th>
+                        <th>Constant Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for constant in constants %}
+                        <tr>
+                            <td>{{ constant.name }}</td>
+                            {% if constant.replace %}
+                                <td class="deco-through color-red">{{ constant.valor }}</td>
+                            {% else %}
+                                <td>{{ constant.valor }}</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </article>
+
+        <article class="menu-target2">
             <header>
                 <h2><i class="fas fa-database"></i> Model</h2>
                 <ul>
@@ -44,7 +77,7 @@
             {% endfor %}
         </article>
 
-        <article class="menu-target2">
+        <article class="menu-target3">
             <header>
                 <h2><i class="fas fa-desktop"></i> View</h2>
                 <ul>
@@ -65,7 +98,7 @@
             {% endfor %}
         </article>
 
-        <article class="menu-target3">
+        <article class="menu-target4">
             <header>
                 <h2><i class="fas fa-server"></i> Controller</h2>
                 <ul>
