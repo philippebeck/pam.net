@@ -27,34 +27,7 @@
 
     <main id="admin" class="menu-relay container-80md-60wd">
 
-        <article class="menu-target1">
-            <h2><i class="fas fa-cogs"></i> Config</h2>
-
-            <section>
-                <h3>Parameters</h3>
-
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Constant Name</th>
-                        <th>Constant Value</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for constant in constants %}
-                        <tr>
-                            <td>{{ constant.name }}</td>
-                            {% if constant.replace %}
-                                <td class="deco-through color-red">{{ constant.valor }}</td>
-                            {% else %}
-                                <td>{{ constant.valor }}</td>
-                            {% endif %}
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </section>
-        </article>
+        {{ include('doc/constant.twig') }}
 
         <article class="menu-target2">
             <header>
@@ -118,6 +91,5 @@
                 {% endif %}
             {% endfor %}
         </article>
-
     </main>
 {% endblock %}
