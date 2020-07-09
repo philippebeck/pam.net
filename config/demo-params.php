@@ -1,11 +1,12 @@
 <?php
 
-// FOR URL
+// FOR ACCESS
 define("ACCESS_KEY", "access");
 define("ACCESS_DELIMITER", "!");
 
 // FOR DATABASE
-define("DB_DSN", "mysql:host=localhost;dbname=database_name"); // replace "database_name"
+define("DB_HOST", "localhost"); // replace "localhost"
+define("DB_NAME", "database_name"); // replace "database_name"
 define("DB_USER", "database_username"); // replace "database_username"
 define("DB_PASS", "database_user_password"); // replace "database_user_password"
 define("DB_OPTIONS", array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));

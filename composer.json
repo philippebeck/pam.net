@@ -1,8 +1,8 @@
 {
   "name": "philippebeck/pam.net",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "type": "project",
-  "description": "Pam, Php Approachable Microframework, Official Website & Documentation",
+  "description": "Pam, Php Adaptive Microframework, Official Website & Documentation",
   "keywords": [
     "php",
     "framework",
@@ -36,7 +36,7 @@
   },
   "require": {
     "php": "7.3",
-    "philippebeck/pam": "^4.2.1",
+    "philippebeck/pam": "^4.5.0",
     "ext-gd": "*",
     "ext-exif": "*",
     "ext-curl": "*",

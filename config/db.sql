@@ -5,11 +5,21 @@ USE `beph7875_pam`;
 
 CREATE TABLE `User`
 (
-    `id`    SMALLINT      UNSIGNED  PRIMARY KEY AUTO_INCREMENT,
-    `name`  VARCHAR(50)   NOT NULL,
+    `id`    TINYINT       UNSIGNED  PRIMARY KEY AUTO_INCREMENT,
+    `name`  VARCHAR(50)   NOT NULL  UNIQUE,
     `image` VARCHAR(50)   UNIQUE,
     `email` VARCHAR(100)  NOT NULL  UNIQUE,
     `pass`  VARCHAR(100)  NOT NULL
+)
+    ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `Constant`
+(
+    `id`            TINYINT         UNSIGNED  PRIMARY KEY AUTO_INCREMENT,
+    `name`          VARCHAR(20)     NOT NULL  UNIQUE ,
+    `category`      VARCHAR(10)     NOT NULL,
+    `to_replace`    TINYINT(1)      NOT NULL,
+    `valor`         VARCHAR(100)    NOT NULL
 )
     ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -24,13 +34,12 @@ CREATE TABLE `Class`
     `extends`       VARCHAR(20),
     `implements`    VARCHAR(20),
     `definition`    VARCHAR(255)    NOT NULL
-
 )
     ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Property`
 (
-    `id`            SMALLINT                UNSIGNED    PRIMARY KEY AUTO_INCREMENT,
+    `id`            TINYINT                 UNSIGNED    PRIMARY KEY AUTO_INCREMENT,
     `property`      VARCHAR(20)             NOT NULL,
     `visibility`    VARCHAR(10),
     `value_type`    VARCHAR(20)             NOT NULL,
@@ -43,7 +52,7 @@ CREATE TABLE `Property`
 
 CREATE TABLE `Method`
 (
-    `id`            SMALLINT                UNSIGNED    PRIMARY KEY AUTO_INCREMENT,
+    `id`            TINYINT                 UNSIGNED    PRIMARY KEY AUTO_INCREMENT,
     `method`        VARCHAR(20)             NOT NULL,
     `parameters`    VARCHAR(70),
     `return`        VARCHAR(30),
@@ -53,6 +62,33 @@ CREATE TABLE `Method`
     CONSTRAINT      `method_fk_class_id`    FOREIGN KEY (`class_id`)    REFERENCES  `Class`(`id`)
 )
 ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+INSERT INTO `Constant`
+(`name`,                `category`,     `to_replace`,   `valor`)
+VALUES
+('ACCESS_KEY',          'access',       0,              'access'),
+('ACCESS_DELIMITER',    'access',       0,              '!'),
+('CTRL_PATH',           'controller',   0,              'App\\Controller\\\\'),
+('CTRL_DEFAULT',        'controller',   0,              'Home'),
+('CTRL_NAME',           'controller',   0,              'Controller'),
+('CTRL_METHOD_DEFAULT', 'controller',   0,              'default'),
+('CTRL_METHOD_NAME',    'controller',   0,              'Method'),
+('DB_HOST',             'database',     1,              'localhost'),
+('DB_NAME',             'database',     1,              'database_name'),
+('DB_USER',             'database',     1,              'database_username'),
+('DB_PASS',             'database',     1,              'database_user_password'),
+('DB_OPTIONS',          'database',     0,              'array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)'),
+('MAIL_HOST',           'mail',         1,              'mail.host.com'),
+('MAIL_PORT',           'mail',         1,              '000'),
+('MAIL_FROM',           'mail',         1,              'mail@host.com'),
+('MAIL_PASSWORD',       'mail',         1,              'mail-user-password'),
+('MAIL_TO',             'mail',         1,              'mail@host.com'),
+('MAIL_USERNAME',       'mail',         1,              'mail-username'),
+('MODEL_PATH',          'model',        0,              'App\\Model\\\\'),
+('MODEL_NAME',          'model',        0,              'Model'),
+('RECAPTCHA_TOKEN',     'recaptcha',    1,              'website-token'),
+('VIEW_PATH',           'view',         0,              '../src/View'),
+('VIEW_CACHE',          'view',         1,              'false');
 
 INSERT INTO `Class`
 (`class`,               `path`,                 `constructor`,              `abstract`, `interface`,    `extends`,               `implements`,      `definition`)
@@ -68,8 +104,8 @@ VALUES
 ('ServiceExtension',    'View',                 '',                         0,          0,              'AbstractExtension',    '',                 'The ServicesExtension class defines the functions to manage the Services accessible with Twig, like cleanString() or checkIsAdmin()'),
 ('FrontController',     'Controller',           '',                         0,          0,              '',                     '',                 'The FrontController class defines the public methods to handle all requests for the projects'),
 ('GlobalsController',   'Controller',           '',                         1,          0,              '',                     '',                 'The GlobalsController class defines the getters to access PHP SuperGlobals : $ _COOKIE, $ _ENV, $ _FILES, $ _GET, $ _POST, $ _REQUEST, $ _SERVER & $ _SESSION'),
-('MainController',      'Controller',           '',                         1,          0,              'GlobalsController',    '',                 'The MainController abstract class defines access to services, configuration of Twig template engine with its extensions & public methods to manage redirection & rendering'),
-('ServiceController',   'Controller',           '',                         0,          0,              '',                     '',                 'The ServiceController class defines the getters to access services : Array, Curl, Image, Mail, Security & String'),
+('MainController',      'Controller',           '',                         1,          0,              'ServiceController',    '',                 'The MainController abstract class defines configuration of Twig template engine with its extensions & public methods to manage redirection & rendering'),
+('ServiceController',   'Controller',           '',                         1,          0,              'GlobalsController',    '',                 'The ServiceController class defines the getters to access services : Array, Curl, Image, Mail, Security & String'),
 ('CookieManager',       'Controller\\Globals',  '',                         0,          0,              '',                     '',                 'The CookieManager class filter $_COOKIE SuperGlobal & defines the public methods to manage Cookies'),
 ('EnvManager',          'Controller\\Globals',  '',                         0,          0,              '',                     '',                 'The EnvManager class filter $_ENV SuperGlobal & defines the public methods to manage Environment'),
 ('FilesManager',        'Controller\\Globals',  '',                         0,          0,              '',                     '',                 'The FilesManager class filter $_FILES SuperGlobal & defines the public methods to manage Files'),
@@ -97,9 +133,6 @@ VALUES
 ('$session',            'private',      'array',                0,          0,          8),
 ('$user',               'private',      'array',                0,          0,          8),
 ('$alert',              'private',      'array',                0,          0,          8),
-('DEFAULT_PATH',        '',             'string',               1,          0,          10),
-('DEFAULT_CONTROLLER',  '',             'string',               1,          0,          10),
-('DEFAULT_METHOD',      '',             'string',               1,          0,          10),
 ('$controller',         'private',      'string',               0,          0,          10),
 ('$method',             'private',      'string',               0,          0,          10),
 ('$cookie',             'private',      'CookieManager',        0,          0,          11),
@@ -110,7 +143,6 @@ VALUES
 ('$request',            'private',      'RequestManager',       0,          0,          11),
 ('$server',             'private',      'ServerManager',        0,          0,          11),
 ('$session',            'private',      'SessionManager',       0,          0,          11),
-('$service',            'protected',    'ServiceController',    0,          0,          12),
 ('$twig',               'protected',    'Twig\\Environment',    0,          0,          12),
 ('$array',              'private',      'ArrayManager',         0,          0,          13),
 ('$curl',               'private',      'CurlManager',          0,          0,          13),

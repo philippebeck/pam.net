@@ -1,0 +1,49 @@
+<article class="menu-target1">
+    <h2><i class="fas fa-cogs"></i> Config</h2>
+
+    <section>
+        <h3>Parameters to Replace</h3>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Constant Name</th>
+                <th>Constant Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for constant in constants %}
+                {% if constant.to_replace %}
+                    <tr>
+                        <td>{{ constant.name }}</td>
+                        <td class="deco-through color-red">{{ constant.valor }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>Replaceable Parameters</h3>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Constant Name</th>
+                <th>Constant Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for constant in constants %}
+                {% if constant.to_replace == false %}
+                    <tr>
+                        <td>{{ constant.name }}</td>
+                        <td>{{ constant.valor }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</article>
