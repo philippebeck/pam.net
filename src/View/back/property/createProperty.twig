@@ -1,12 +1,12 @@
 {% extends 'layout/layout.twig' %}
 
-{% block title %}Edit a Property{% endblock %}
+{% block title %}Create a New Property{% endblock %}
 
 {% block description %}{% endblock %}
 
 {% block main %}
     <main class="align-center">
-        <form class="form" method="post" action={{ url('property!update', {'id': property.id}) }}>
+        <form class="form" method="post" action={{ url('property!create') }}>
             <fieldset>
                 <legend>
                     <i class="fas fa-atom fa-2x"></i>
@@ -14,33 +14,29 @@
                 <ul>
                     <li>
                         <label for="property">Name*</label>
-                        <input id="property" name="property" type="text" maxlength="20" value="{{ property.property }}" required>
+                        <input id="property" name="property" type="text" maxlength="20" required placeholder="Type the Property Name">
                     </li>
                     <li>
                         <label for="visibility">Visibility</label>
-                        <input id="visibility" name="visibility" maxlength="10" type="text" value="{{ property.visibility }}">
+                        <input id="visibility" name="visibility" maxlength="10" type="text" placeholder="Type the Property Visibility" required>
                     </li>
                     <li>
                         <label for="valor">Value*</label>
-                        <input id="valor" name="valor" type="text" maxlength="40" value="{{ property.valor }}" required>
+                        <input id="valor" name="valor" type="text" maxlength="40" placeholder="Type the Property Value Type">
                     </li>
                     <li>
                         <label for="constant">Constant</label>
-                        <input id="constant" name="constant" type="checkbox" {% if property.constant %}checked{% endif %}>
+                        <input id="constant" name="constant" type="checkbox">
                     </li>
                     <li>
                         <label for="static">Static</label>
-                        <input id="static" name="static" type="checkbox" {% if property.static %}checked{% endif %}>
+                        <input id="static" name="static" type="checkbox">
                     </li>
                     <li>
-                        <label for="class_id">Class</label>
+                        <label for="class_id">Class*</label>
                         <select id="class_id" name="class_id">
                             {% for class in classes %}
-                                {% if class.id is same as(property.class_id) %}
-                                    <option value="{{ class.id }}" selected>{{ class.class }} (Registred)</option>
-                                {% else %}
-                                    <option value="{{ class.id }}">{{ class.class }}</option>
-                                {% endif %}
+                                <option value="{{ class.id }}">{{ class.class }}</option>
                             {% endfor %}
                         </select>
                     </li>
@@ -48,7 +44,7 @@
                 <ul>
                     <li>
                         <input type="reset" value="Reset">
-                        <input type="submit" value="Update">
+                        <input type="submit" value="Create">
                     </li>
                 </ul>
             </fieldset>

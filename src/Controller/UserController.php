@@ -58,7 +58,7 @@ class UserController extends MainController
             $this->redirect("user");
         }
 
-        return $this->render("user/login.twig");
+        return $this->render("front/login.twig");
     }
 
     public function logoutMethod()
