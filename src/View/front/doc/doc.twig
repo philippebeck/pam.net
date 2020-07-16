@@ -5,6 +5,10 @@
 {% block description %}Documentation of Pam{% endblock %}
 
 {% block main %}
+    <a href="https://packagist.org/packages/philippebeck/pam.net" title="Go to Package !">
+        <img src="https://img.shields.io/packagist/v/philippebeck/pam.svg?label=Packagist" alt="Packagist Badge of Pam">
+    </a>
+
     <input id="menu-radio1" class="menu-radio1" type="radio" name="menu" checked>
     <input id="menu-radio2" class="menu-radio2" type="radio" name="menu">
     <input id="menu-radio3" class="menu-radio3" type="radio" name="menu">
@@ -30,8 +34,55 @@
     </nav>
 
     <main id="admin" class="menu-relay container-80md-60wd">
+        <article class="menu-target1">
+            <h2><i class="fas fa-cogs"></i> Config</h2>
 
-        {{ include('doc/constant.twig') }}
+            <section>
+                <h3>Parameters to Replace</h3>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Constant Name</th>
+                        <th>Constant Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for constant in constants %}
+                        {% if constant.to_replace %}
+                            <tr>
+                                <td>{{ constant.name }}</td>
+                                <td class="deco-through color-red">{{ constant.valor }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h3>Replaceable Parameters</h3>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Constant Name</th>
+                        <th>Constant Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for constant in constants %}
+                        {% if constant.to_replace == false %}
+                            <tr>
+                                <td>{{ constant.name }}</td>
+                                <td>{{ constant.valor }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </article>
 
         <article class="menu-target2">
             <header>
@@ -49,7 +100,7 @@
 
             {% for class in classes %}
                 {% if 'Model' in class.path %}
-                    {{ include('doc/mvc.twig') }}
+                    {{ include('front/doc/docMVC.twig') }}
                 {% endif %}
             {% endfor %}
         </article>
@@ -70,7 +121,7 @@
 
             {% for class in classes %}
                 {% if 'View' in class.path %}
-                    {{ include('doc/mvc.twig') }}
+                    {{ include('front/doc/docMVC.twig') }}
                 {% endif %}
             {% endfor %}
         </article>
@@ -91,7 +142,7 @@
 
             {% for class in classes %}
                 {% if 'Controller' in class.path %}
-                    {{ include('doc/mvc.twig') }}
+                    {{ include('front/doc/docMVC.twig') }}
                 {% endif %}
             {% endfor %}
         </article>
