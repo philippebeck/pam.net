@@ -31,7 +31,7 @@ class AdminController extends MainController
         $methods    = ModelFactory::getModel("Method")->listData();
         $users      = ModelFactory::getModel("User")->listData();
 
-        return $this->render("admin/admin.twig", [
+        return $this->render("back/admin.twig", [
             "classes"       => $classes,
             "properties"    => $properties,
             "methods"       => $methods,

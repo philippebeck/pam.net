@@ -33,7 +33,7 @@ class ClassController extends MainController
             $this->getSession()->createAlert("New Class successfully created !", "green");
         }
 
-        return $this->render("class/createClass.twig");
+        return $this->render("back/class/createClass.twig");
     }
 
     /**
@@ -59,7 +59,7 @@ class ClassController extends MainController
 
         $class = ModelFactory::getModel("Class")->readData($this->getGet()->getGetVar("id"));
 
-        return $this->render("class/updateClass.twig", ["class" => $class]);
+        return $this->render("back/class/updateClass.twig", ["class" => $class]);
     }
 
     public function deleteMethod()

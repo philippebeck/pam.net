@@ -35,7 +35,7 @@ class MethodController extends MainController
 
         $classes = ModelFactory::getModel("Class")->listData();
 
-        return $this->render("method/createMethod.twig", ["classes" => $classes]);
+        return $this->render("back/method/createMethod.twig", ["classes" => $classes]);
     }
 
     /**
@@ -63,7 +63,7 @@ class MethodController extends MainController
         $classes    = ModelFactory::getModel("Class")->listData();
 
 
-        return $this->render("method/updateMethod.twig", [
+        return $this->render("back/method/updateMethod.twig", [
             "method"    => $method,
             "classes"   => $classes
         ]);

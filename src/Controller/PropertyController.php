@@ -35,7 +35,7 @@ class PropertyController extends MainController
 
         $classes = ModelFactory::getModel("Class")->listData();
 
-        return $this->render("property/createProperty.twig", ["classes" => $classes]);
+        return $this->render("back/property/createProperty.twig", ["classes" => $classes]);
     }
 
     /**
@@ -62,7 +62,7 @@ class PropertyController extends MainController
         $property   = ModelFactory::getModel("Property")->readData($this->getGet()->getGetVar("id"));
         $classes    = ModelFactory::getModel("Class")->listData();
 
-        return $this->render("property/updateProperty.twig", [
+        return $this->render("back/property/updateProperty.twig", [
             "property"  => $property,
             "classes"   => $classes
         ]);
