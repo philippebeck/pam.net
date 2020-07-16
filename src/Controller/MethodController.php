@@ -14,6 +14,11 @@ use Twig\Error\SyntaxError;
  */
 class MethodController extends MainController
 {
+    public function defaultMethod()
+    {
+        $this->redirect("home");
+    }
+
     /**
      * @return string
      * @throws LoaderError
