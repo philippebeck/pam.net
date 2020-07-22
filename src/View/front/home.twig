@@ -1,15 +1,15 @@
 {% extends 'layout/layout.twig' %}
 
-{% block title %}Pam{% endblock %}
+{% block subtitle %}Welcome{% endblock %}
 
-{% block description %}Homepage of Pam{% endblock %}
+{% block summary %}Getting Start & Documentation{% endblock %}
 
 {% block main %}
-    <a href="https://packagist.org/packages/philippebeck/pam.net" title="Go to Package !">
+    <a href="https://packagist.org/packages/philippebeck/pam" title="Go to Package !">
         <img src="https://img.shields.io/packagist/v/philippebeck/pam.svg?label=Packagist" alt="Packagist Badge of Pam">
     </a>
 
-    <main>
+    <main class="container-90tn-80md-70wd">
         <figure class="anima-slipT">
             <img class="height-sm" src="img/pam.png" alt="Pam Logo">
         </figure>
@@ -23,10 +23,10 @@
         <p>Installation process, common Usage & full Documentation are available here !</p>
 
         <a class="btn-red anima-slideR" href="{{ url('start') }}">
-            <i class="fas fa-play fa-3x"></i> Getting Start
+            <i class="fas fa-play fa-2x"></i> Getting Start
         </a>
         <a class="btn-blue anima-slideL" href="{{ url('doc') }}">
-            <i class="fas fa-book fa-3x"></i> Documentation
+            <i class="fas fa-book fa-2x"></i> Documentation
         </a>
     </main>
 {% endblock %}
