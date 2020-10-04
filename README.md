@@ -2,8 +2,8 @@
 
 Pam, Php Approachable Microframework, Official Website & Documentation
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ca84db1f62b84592be52e2cf6662f553)](https://www.codacy.com/manual/philippebeck/pam.net?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=philippebeck/pam.net&amp;utm_campaign=Badge_Grade)
-[![Maintainability](https://api.codeclimate.com/v1/badges/fe2d7e6eb4b25beec519/maintainability)](https://codeclimate.com/github/philippebeck/pam.net/maintainability)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/63dfee72718748f982fd515eb56b9ecc)](https://www.codacy.com/gh/devsagency/pam.net/dashboard)
+[![Maintainability](https://api.codeclimate.com/v1/badges/6559a883b2fd7c3fc9a5/maintainability)](https://codeclimate.com/github/devsagency/pam.net/maintainability)
 
 ---
 
