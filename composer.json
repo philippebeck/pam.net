@@ -40,6 +40,7 @@
     "ext-gd": "*",
     "ext-exif": "*",
     "ext-curl": "*",
+    "ext-intl": "*",
     "ext-json": "*"
   },
   "require-dev": {
