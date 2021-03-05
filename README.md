@@ -19,7 +19,6 @@ Pam, Php Approachable Microframework, Official Website & Documentation
 
 Pam.net has continuous support !
 
-[![Project Maintained](https://img.shields.io/maintenance/yes/2020.svg?label=Maintained)](https://github.com/philippebeck/pam.net)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/philippebeck/pam.net.svg?label=Last+Commit)](https://github.com/philippebeck/pam.net/commits/master)
 
 ---
