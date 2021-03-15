@@ -1,358 +1,50 @@
 {% extends 'layout/layout.twig' %}
 
-{% block subtitle %}Getting Start{% endblock %}
+{% block title %}Getting Start{% endblock %}
 
-{% block summary %}Installation & Usage{% endblock %}
+{% block description %}Installation & Usage{% endblock %}
 
 {% block main %}
-    <a href="https://packagist.org/packages/devsagency/pam" title="Go to Package !">
-        <img src="https://img.shields.io/packagist/v/devsagency/pam.svg?label=Packagist" alt="Packagist Badge of Pam">
-    </a>
+<input id="menu-radio1" 
+    class="menu-radio1" 
+    type="radio" 
+    name="menu" 
+    checked>
+<input id="menu-radio2" 
+    class="menu-radio2" 
+    type="radio" 
+    name="menu">
 
-    <input id="menu-radio1" class="menu-radio1" type="radio" name="menu" checked>
-    <input id="menu-radio2" class="menu-radio2" type="radio" name="menu">
+<nav class="menu">
+    <label class="button-red" 
+        for="menu-radio1" 
+        title="Watch the Installation Process">
+        <i class="fas fa-download onto-color-red"></i>
+        <span class="onto-color-red">
+            Installation
+        </span>
+    </label>
+    <label class="button-blue" 
+        for="menu-radio2" 
+        title="Watch the Common Usage">
+        <i class="far fa-keyboard onto-color-blue"></i>
+        <span class="onto-color-blue">
+            Usage
+        </span>
+    </label>
+</nav>
 
-    <nav class="menu">
-        <label class="button-red" for="menu-radio1" title="Watch the Installation Process">
-            <i class="fas fa-download color-red-into"></i>
-            <span class="color-red-into">Installation</span>
-        </label>
-        <label class="button-blue" for="menu-radio2" title="Watch the Common Usage">
-            <i class="far fa-keyboard color-blue-into"></i>
-            <span class="color-blue-into">Usage</span>
-        </label>
-    </nav>
+<main class="menu-relay container-90tn">
+    <article class="menu-target1">
 
-    <main class="menu-relay container-90tn-80md-70wd">
-        <article class="menu-target1">
+        {{ include('front/include/installation.twig') }}
 
-            <header class="anima-slipB">
-                <h2>
-                    <i class="fas fa-download fa-lg color-black"></i> Installation
-                </h2>
+    </article>
 
-                <p>There is many ways to install Pam, choose one of them...</p>
-            </header>
+    <article class="menu-target2">
 
-            <i class="fas fa-chevron-down fa-2x mar-top-lg" aria-hidden="true"></i>
+        {{ include('front/include/usage.twig') }}
 
-            <section class="anima-slipR">
-                <h3>
-                    <i class="fab fa-php fa-lg color-blue"></i> Composer
-                </h3>
-
-                <p>To get Pam with Composer (recommended), type in the terminal :</p>
-                <code>$ composer require devsagency/pam</code>
-            </section>
-
-            <i class="fas fa-sort fa-2x mar-top-lg" aria-hidden="true"></i>
-
-            <section class="anima-slipL">
-                <h3>
-                    <i class="fab fa-git-alt fa-lg color-tomato"></i> Git Clone
-                </h3>
-
-                <p>To clone the project with Git, run the terminal to type :</p>
-                <code>$ git clone https://github.com/devsagency/pam.git</code>
-            </section>
-
-            <i class="fas fa-sort fa-2x mar-top-lg" aria-hidden="true"></i>
-
-            <section class="anima-slipR">
-                <h3>
-                    <i class="fab fa-github fa-lg color-gh"></i> GitHub Release
-                </h3>
-
-                <p>To download the last release, go to the GitHub release page of Pam :</p>
-                <a class="button-gh" href="https://github.com/devsagency/pam/releases" title="Clic to Go to the Pam Release Page">
-                    <i class="fab fa-github-square fa-lg"></i> Release Page
-                </a>
-            </section>
-
-            <i class="fas fa-sort fa-2x mar-top-lg" aria-hidden="true"></i>
-
-            <section class="anima-slipL">
-                <h3>
-                    <i class="fab fa-github-alt fa-lg color-gh"></i> GitHub Archive
-                </h3>
-
-                <p>You can either download the Pam master of GitHub Archive here :</p>
-                <a class="button-gh" href="https://github.com/devsagency/pam/archive/master.zip" title="Clic to Download Pam">
-                    <i class="fas fa-file-archive fa-lg"></i> Master Zip
-                </a>
-            </section>
-        </article>
-
-        <article class="menu-target2">
-
-            <header class="anima-growX">
-                <h2>
-                    <i class="far fa-keyboard fa-lg color-black"></i> Usage
-                </h2>
-                <p>Pam is very easy to use & very light to implement !</p>
-            </header>
-
-            <i class="fas fa-chevron-down fa-2x mar-top-lg" aria-hidden="true"></i>
-
-            <section>
-                <h3 class="anima-grow">
-                    <i class="fas fa-cogs fa-lg color-purple"></i> Config
-                </h3>
-
-                <header class="bord-rounded bord-gray bg-gray color-white">
-                    <p>You must create a configuration folder which will contain the parameters files</p>
-                    <p>You can name them as you want, both the folder & the parameters files</p>
-                    <p>But the index file will have to call these parameters files.</p>
-                </header>
-
-                <i class="fas fa-minus fa-lg mar-top-md" aria-hidden="true"></i>
-
-                <ul>
-                    <li>
-                        <p>By default, I use a folder named <em>config</em> who contains 2 parameters files :
-                            <strong>dev-params.php</strong> & <strong>prod-params.php</strong>...</p>
-                        <p>Each parameters file must contain the Global Constants for Access, Database, Model, View, Controller, Mail & Recaptcha like this :</p>
-                        <code>define("KEY", "value");</code>
-                    </li>
-                    <li>
-                        <p class="color-blue font-bold">Now you can configure your Project Parameters !</p>
-                        <a class="button-blue"
-                           href="https://github.com/devsagency/pam.net/tree/master/config/demo-params.php"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title="See the Code">
-                            Parameters File Example
-                        </a>
-                    </li>
-                </ul>
-            </section>
-
-            <i class="fas fa-sort fa-2x mar-top-lg" aria-hidden="true"></i>
-
-            <section>
-                <h3 class="anima-grow">
-                    <i class="fab fa-firefox-browser fa-lg color-orange"></i> Index
-                </h3>
-
-                <header class="bord-rounded bord-gray bg-gray color-white">
-                    <p>Don't forget to add autoload & sessions (if you need) to the file beginning...</p>
-                </header>
-
-                <i class="fas fa-minus fa-lg mar-top-md" aria-hidden="true"></i>
-
-                <ul>
-                    <li>
-                        <p>In the index file, you have to add the parameters with a require_once</p>
-                    </li>
-                    <li>
-                        <p>For Development :</p>
-                        <code>require_once '../config/dev-params.php';</code>
-                    </li>
-                    <li>
-                        <p>For Production :</p>
-                        <code>require_once '../config/prod-params.php';</code>
-                    </li>
-                    <li>
-                        <p class="color-blue font-bold">Now you can change the filename to switch between dev & prod...</p>
-                    </li>
-                </ul>
-
-                <i class="fas fa-minus fa-lg mar-top-md" aria-hidden="true"></i>
-
-                <ul>
-                    <li>
-                        <p>Then, create the FrontController object :</p>
-                        <code>$frontController = new Pam\Controller\FrontController();</code>
-                    </li>
-                    <li>
-                        <p>And call the run method on it :</p>
-                        <code>$frontController->run();</code>
-                    </li>
-                    <li>
-                        <p class="color-blue font-bold">Now you can reach any controller from an URL of the Project !</p>
-                        <a class="button-blue"
-                           href="https://github.com/devsagency/pam.net/tree/master/public/index.php"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title="See the Code">
-                            Index Example
-                        </a>
-                    </li>
-                </ul>
-            </section>
-
-            <i class="fas fa-sort fa-2x mar-top-lg" aria-hidden="true"></i>
-
-            <section>
-                <h3 class="anima-grow">
-                    <i class="fas fa-database fa-lg color-red"></i> Model
-                </h3>
-
-                <header class="bord-rounded bord-gray bg-gray color-white">
-                    <p>For the Model naming, you need to use the same name than each table...</p>
-                    <p>You can choose, the Model path & the Model suffix, in the parameters.</p>
-                    <p>For example (without any changes to the Model constants),
-                        if you have a table named Pizza, you should have a Model named PizzaModel.php</p>
-                </header>
-
-                <i class="fas fa-minus fa-lg mar-top-md" aria-hidden="true"></i>
-
-                <ul>
-                    <li>
-                        <p>To use the Pam CRUD model, simply add this use to each of your models :</p>
-                        <code>use Pam\Model\MainModel;</code>
-                    </li>
-                    <li>
-                        <p>Then you can extends the class to the MainModel :</p>
-                        <code>extends MainModel</code>
-                    </li>
-                    <li>
-                        <p class="color-blue font-bold">Now you can access to all CRUD methods of the MainModel !</p>
-                        <a class="button-blue"
-                           href="https://github.com/devsagency/pam.net/tree/master/src/Model/UserModel.php"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title="See the Code">
-                            Simple Model Example
-                        </a>
-                    </li>
-                </ul>
-
-                <i class="fas fa-minus fa-lg mar-top-md" aria-hidden="true"></i>
-
-                <ul>
-                    <li>
-                        <p>If you need a specific query, just create a method to add it :</p>
-                        <code>$query = "SELECT * FROM Table..."</code>
-                    </li>
-                    <li>
-                        <p>Then you should return the query with one of the methods to the PdoDb.php file like this :</p>
-                        <code>return $this->database->getAllData($query);</code>
-                    </li>
-                    <li>
-                        <p class="color-blue font-bold">Now you can use both Pam Model methods & personalized Model methods !</p>
-                        <a class="button-blue"
-                           href="https://github.com/devsagency/pam.net/tree/master/src/Model/PropertyModel.php"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title="See the Code">
-                            Model Example with Personalized Query
-                        </a>
-                    </li>
-                </ul>
-
-            </section>
-
-            <i class="fas fa-sort fa-2x mar-top-lg" aria-hidden="true"></i>
-
-            <section>
-                <h3 class="anima-grow">
-                    <i class="fas fa-desktop fa-lg color-green"></i> View
-                </h3>
-
-                <header class="bord-rounded bord-gray bg-gray color-white">
-                    <p>For the views, Pam use Twig, the Template Engine of Symfony</p>
-                    <p>The only configuration to manage is the 2 View constants in the parameters files</p>
-                    <p>One is for the View template path & the second for the View cache path...</p>
-                    <p>For the Twig functions, filters & tags, please refer to the
-                        <a class="button-green"
-                           href="https://twig.symfony.com/doc/2.x"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title="See the Doc">
-                            official documentation
-                        </a>
-                    </p>
-                </header>
-
-                <i class="fas fa-minus fa-lg mar-top-md" aria-hidden="true"></i>
-
-                <ul>
-                    <li>
-                        <p>Here you can find a Layout example :</p>
-                        <a class="button-blue"
-                           href="https://github.com/devsagency/pam.net/tree/master/src/View/layout/layout.twig"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title="See the Code">
-                            Layout View Example
-                        </a>
-                    </li>
-                    <li>
-                        <p>And here a simple view example :</p>
-                        <a class="button-blue"
-                           href="https://github.com/devsagency/pam.net/tree/master/src/View/home.twig"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title="See the Code">
-                            Simple View Example
-                        </a>
-                    </li>
-                </ul>
-
-            </section>
-
-            <i class="fas fa-sort fa-2x mar-top-lg" aria-hidden="true"></i>
-
-            <section>
-                <h3 class="anima-grow">
-                    <i class="fas fa-server fa-lg color-blue"></i> Controller
-                </h3>
-
-                <header class="bord-rounded bord-gray bg-gray color-white">
-                    <p>For the Controller naming, you need to use the same name than each access value inside the URL of the website...</p>
-                    <p>You can choose, the Controller path, the Controller default name & the Controller suffix in the parameters.</p>
-                    <p>Same thing for the Contoller Method default name & the Controller Method suffix.</p>
-                    <p>For example (without any changes to the Controller constants),
-                        if you watch the URL of this page, the access value is "start", so we have a controller named StartController.php</p>
-                </header>
-
-                <i class="fas fa-minus fa-lg mar-top-md" aria-hidden="true"></i>
-
-                <ul>
-                    <li>
-                        <p>To use the Pam Controller Methods, simply add this use to each of your controllers :</p>
-                        <code>use Pam\Controller\MainController;</code>
-                    </li>
-                    <li>
-                        <p>Then you can extends the class to the MainController :</p>
-                        <code>extends MainController</code>
-                    </li>
-                    <li>
-                        <p class="color-blue font-bold">Now you can access to all methods of the Pam Contollers !</p>
-                        <a class="button-blue"
-                           href="https://github.com/devsagency/pam.net/tree/master/src/Controller/StartController.php"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title="See the Code">
-                            Simple Controller Example
-                        </a>
-                    </li>
-                </ul>
-
-                <i class="fas fa-minus fa-lg mar-top-md" aria-hidden="true"></i>
-
-                <ul>
-                    <li>
-                        <p>To get the MainController Methods, simply use "this", then the method :</p>
-                        <code>$this->redirect('home');</code>
-                    </li>
-                    <li>
-                        <p>For Services & SuperGlobales Methods, same thing, but add the getter, for the Class you need, between them :</p>
-                        <code>$this->getPost()->getPostArray();</code>
-                    </li>
-                    <li>
-                        <p class="color-blue font-bold">Now you know the 2 kinds of syntax to call all of Pam's Controller methods !</p>
-                        <a class="button-blue"
-                           href="https://github.com/devsagency/pam.net/tree/master/src/Controller/UserController.php"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title="See the Code">
-                            Controller Example with Different Methods Called
-                        </a>
-                    </li>
-                </ul>
-            </section>
-        </article>
-    </main>
+    </article>
+</main>
 {% endblock %}
