@@ -27,7 +27,7 @@ class DocController extends MainController
         $properties = ModelFactory::getModel("Property")->listPropertiesWithClass();
         $methods    = ModelFactory::getModel("Method")->listMethodsWithClass();
 
-        return $this->render("front/doc/doc.twig", [
+        return $this->render("front/doc.twig", [
             "constants"     => $constants,
             "classes"       => $classes,
             "properties"    => $properties,

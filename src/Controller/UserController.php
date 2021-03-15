@@ -60,7 +60,7 @@ class UserController extends MainController
             $this->redirect("admin");
         }
 
-        return $this->render("back/users/createUser.twig");
+        return $this->render("back/user/createUser.twig");
     }
 
     private function setUserData()
@@ -93,9 +93,9 @@ class UserController extends MainController
             $this->setUpdateData();
         }
 
-        $user = ModelFactory::getModel("Users")->readData($this->getGet()->getGetVar("id"));
+        $user = ModelFactory::getModel("User")->readData($this->getGet()->getGetVar("id"));
 
-        return $this->render("back/users/updateUser.twig", ["user" => $user]);
+        return $this->render("back/user/updateUser.twig", ["user" => $user]);
     }
 
     private function setUpdateData()
@@ -110,7 +110,7 @@ class UserController extends MainController
             $this->setUpdatePassword();
         }
 
-        ModelFactory::getModel("Users")->updateData($this->getGet()->getGetVar("id"), $this->user);
+        ModelFactory::getModel("User")->updateData($this->getGet()->getGetVar("id"), $this->user);
         $this->getSession()->createAlert("Successful modification of the user !", "blue");
 
         $this->redirect("admin");
