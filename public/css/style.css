@@ -1,32 +1,11 @@
 :root {
-  --sans-serif-font-family: 'Text Me One', sans-serif;
-  --serif-font-family: 'Cinzel', serif;
-  --monospace-font-family: 'Share Tech Mono', monospace;
+  --sans-serif: 'Text Me One', sans-serif;
+  --serif: 'Cinzel', serif;
+  --monospace: 'Share Tech Mono', monospace;
 }
 
 body {
-  text-align: center;
-  background-color: lavender;
-}
-
-main [src*="img/user/"] {
-  width: 200px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  color: var(--navy);
-}
-
-select {
-  font-family: var(--monospace-font-family);
-}
-
-thead {
-  font-size: 90%;
+  --body-background-color: lavender;
 }
 
 .navbar {
