@@ -109,7 +109,9 @@
                     {% if constant.to_replace == false %}
                         <tr>
                             <td>{{ constant.name }}</td>
-                            <td>{{ constant.valor }}</td>
+                            <td class="color-brown">
+                                {{ constant.valor }}
+                            </td>
                         </tr>
                     {% endif %}
                 {% endfor %}
