@@ -13,12 +13,12 @@
 
     </h3>
 
-    <p class="bord-rounded bord-gray bg-gray color-white pad-sm font-sans-serif">
+    <p class="head">
         {{ class.definition }}
     </p>
 
     <ul class="font-italic">
-        <li class="color-purple font-bold">
+        <li class="color-violet font-bold">
             Namespace Pam\{{ class.path }}
         </li>
 
@@ -41,7 +41,7 @@
         {% endif %}
 
         <li class="mar-md">
-            <a class="btn-purple" 
+            <a class="btn-violet" 
                 href="https://github.com/philippebeck/pam/blob/master/core/
                 {{ class.path|replace({'\\': "/"}) }}/{{ class.class }}.php">
                 <i class="fas fa-code fa-lg"></i> 
@@ -81,7 +81,7 @@
         </h4>
 
         <header class="font-italic">
-            <p class="color-purple font-bold">
+            <p class="color-violet font-bold">
                 Use Pam\{{ class.path }}\{{ class.class }}
             </p>
 
@@ -115,7 +115,7 @@
             {% for method in methods %}
                 {% if method.class_id is same as(class.id) %}
                 <li>
-                    <ul class="color-blue">
+                    <ul class="color-in">
                         <li>
 
                             {% if method.static %}
@@ -139,7 +139,7 @@
 
                         </li>
                         <li>
-                            <p class="bord-curve bord-silver bg-silver color-navy pad-sm font-sans-serif">
+                            <p class="color-pp pad-sm font-sans-serif">
                                 {{ method.function }}
                             </p>
                         </li>
