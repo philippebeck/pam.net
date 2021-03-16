@@ -15,6 +15,8 @@
     <link rel="icon" 
         type="image/x-icon" 
         href="img/favicon.ico">
+     <link rel="preconnect" 
+        href="https://fonts.gstatic.com">
 
     <meta name="description"
         content="{% block description %}{% endblock %}">
@@ -30,7 +32,7 @@
     <meta property="og:description" 
         content="{{ block('description') }}">
     <meta property="og:image"       
-        content="{% block image %}{% endblock %}">
+        content="{% block image %}img/pam.png{% endblock %}">
 
     <meta name="twitter:card"           
         content="">
@@ -46,7 +48,7 @@
         content="@philippepjbeck">
 
     <link rel="stylesheet" 
-        href="https://fonts.googleapis.com/css?family=Text+Me+One%7cCinzel:400,700,900%7cShare+Tech+Mono&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Gotu&family=Rufina&family=Source+Code+Pro&display=swap"> 
     <link rel="stylesheet" 
         href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" 
@@ -61,12 +63,12 @@
     <header>
         {% if (hasAlert()) %}
             <p id="alert" 
-                class="bg-{{ getAlertType() }} color-white">
+                class="bg-{{ getAlertType() }} color-white align-center">
                 {{ getAlertMessage() }}
             </p>
         {% endif %}
 
-        <h1>{{ block('title') }}</h1>
+        <h1 class="color-violet">{{ block('title') }}</h1>
     </header>
 
     {% block main %}{% endblock %}
