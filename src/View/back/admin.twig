@@ -86,11 +86,11 @@
                         <td>
 
                             {% if class.interface %}
-                                interface {{ class.path }}{{ class.class }}
+                                interface {{ class.class }}
                             {% elseif class.abstract %}
-                                abstract class {{ class.path }}{{ class.class }}
+                                abstract class {{ class.class }}
                             {% else %}
-                                class {{ class.path }}{{ class.class }}
+                                class {{ class.class }}
                             {% endif %}
 
                             {% if class.parameters %}
@@ -124,13 +124,6 @@
                 {% endfor %}
 
                 </tbody>
-                <tfoot>
-                <tr>
-                    <th>Class</th>
-                    <th>Extends|Implements</th>
-                    <th>Actions</th>
-                </tr>
-                </tfoot>
             </table>
         </section>
 
@@ -183,13 +176,6 @@
                 {% endfor %}
 
                 </tbody>
-                <tfoot>
-                <tr>
-                    <th>Property</th>
-                    <th>Value</th>
-                    <th>Actions</th>
-                </tr>
-                </tfoot>
             </table>
         </section>
 
@@ -220,9 +206,9 @@
                         <td>
 
                             {% if method.static %}
-                                static {{ method.method }}
+                                static {{ method.method }}()
                             {% else %}
-                                {{ method.method }}
+                                {{ method.method }}()
                             {% endif %}
 
                         </td>
@@ -258,14 +244,6 @@
                 {% endfor %}
 
                 </tbody>
-                <tfoot>
-                <tr>
-                    <th>Method</th>
-                    <th>Parameters</th>
-                    <th>Return</th>
-                    <th>Actions</th>
-                </tr>
-                </tfoot>
             </table>
         </section>
 
@@ -294,7 +272,7 @@
                     <tr>
                         <td>
                             <figure>
-                                <img class="bord-purple" 
+                                <img class="bord-violet" 
                                     src="img/user/{{ user.image }}" 
                                     alt="Screenshot of {{ user.name }}">
                                 <figcaption>
