@@ -1,0 +1,214 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Documentation{% endblock %}
+
+{% block description %}Config, Model, View & Controller{% endblock %}
+
+{% block main %}
+<input id="menu-radio1" 
+    class="menu-radio1" 
+    type="radio" 
+    name="menu" 
+    checked>
+<input id="menu-radio2" 
+    class="menu-radio2" 
+    type="radio" 
+    name="menu">
+<input id="menu-radio3" 
+    class="menu-radio3" 
+    type="radio" 
+    name="menu">
+<input id="menu-radio4" 
+    class="menu-radio4" 
+    type="radio" 
+    name="menu">
+
+<nav class="menu">
+    <label class="button-violet" 
+        for="menu-radio1" 
+        title="Read the Config Doc">
+        <i class="fas fa-cogs onto-color-violet"></i>
+        <span class="onto-color-violet">
+            Config
+        </span>
+    </label>
+    <label class="button-red" 
+        for="menu-radio2" 
+        title="Read the Model Doc">
+        <i class="fas fa-database onto-color-red"></i>
+        <span class="onto-color-red">
+            Model
+        </span>
+    </label>
+    <label class="button-green" 
+        for="menu-radio3" 
+        title="Read the View Doc">
+        <i class="fas fa-desktop onto-color-green"></i>
+        <span class="onto-color-green">
+            View
+        </span>
+    </label>
+    <label class="button-blue" 
+        for="menu-radio4" 
+        title="Read the Controller Doc">
+        <i class="fas fa-server onto-color-blue"></i>
+        <span class="onto-color-blue">
+            Controller
+        </span>
+    </label>
+</nav>
+
+<main id="admin" 
+    class="menu-relay container-90tn">
+    <article class="menu-target1">
+        <h2>
+            <i class="fas fa-cogs"></i> 
+            Config
+        </h2>
+
+        <section>
+            <h3>Parameters to Replace</h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Constant Name</th>
+                    <th>Constant Value</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for constant in constants %}
+                    {% if constant.to_replace %}
+                        <tr>
+                            <td>{{ constant.name }}</td>
+                            <td class="deco-through color-red">
+                                {{ constant.valor }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>Replaceable Parameters</h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Constant Name</th>
+                    <th>Constant Value</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for constant in constants %}
+                    {% if constant.to_replace == false %}
+                        <tr>
+                            <td>{{ constant.name }}</td>
+                            <td class="color-brown">
+                                {{ constant.valor }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </section>
+    </article>
+
+    <article class="menu-target2">
+        <header>
+            <h2>
+                <i class="fas fa-database"></i> 
+                Model
+            </h2>
+            <ul>
+
+                {% for class in classes %}
+                    {% if 'Model' in class.path %}
+                        <li>
+                            <a href="#{{ class.class|lower }}">
+                                {{ loop.index }} - 
+                                {{ class.class }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+            </ul>
+        </header>
+
+        {% for class in classes %}
+            {% if 'Model' in class.path %}
+                {{ include('front/include/docMVC.twig') }}
+            {% endif %}
+        {% endfor %}
+
+    </article>
+
+    <article class="menu-target3">
+        <header>
+            <h2>
+                <i class="fas fa-desktop"></i> 
+                View
+            </h2>
+            <ul>
+
+                {% for class in classes %}
+                    {% if 'View' in class.path %}
+                        <li>
+                            <a href="#{{ class.class|lower }}">
+                                {{ loop.index }} - 
+                                {{ class.class }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+            </ul>
+        </header>
+
+        {% for class in classes %}
+            {% if 'View' in class.path %}
+                {{ include('front/include/docMVC.twig') }}
+            {% endif %}
+        {% endfor %}
+
+    </article>
+
+    <article class="menu-target4">
+        <header>
+            <h2>
+                <i class="fas fa-server"></i> 
+                Controller
+            </h2>
+            <ul>
+
+                {% for class in classes %}
+                    {% if 'Controller' in class.path %}
+                        <li>
+                            <a href="#{{ class.class|lower }}">
+                                {{ loop.index }} - 
+                                {{ class.class }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+            </ul>
+        </header>
+
+        {% for class in classes %}
+            {% if 'Controller' in class.path %}
+                {{ include('front/include/docMVC.twig') }}
+            {% endif %}
+        {% endfor %}
+
+    </article>
+</main>
+{% endblock %}

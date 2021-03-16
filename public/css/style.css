@@ -1,34 +1,20 @@
 :root {
-  --sans-serif-font-family: 'Text Me One', sans-serif;
-  --serif-font-family: 'Cinzel', serif;
-  --monospace-font-family: 'Share Tech Mono', monospace;
+  --sans-serif: 'Gotu', sans-serif;
+  --serif: 'Rufina', serif;
+  --monospace: 'Source Code Pro', monospace;
 }
 
 body {
-  text-align: center;
-  background-color: lavender;
-}
-
-main [src*="img/user/"] {
-  width: 200px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  color: var(--navy);
-}
-
-select {
-  font-family: var(--monospace-font-family);
-}
-
-thead {
-  font-size: 90%;
+  --body-background-color: lavender;
 }
 
 .navbar {
   --navbar-background-color: var(--blue-dark);
+}
+
+.table {
+  --table-row-odd-hover-background-color: var(--red-light);
+  --table-row-even-hover-background-color: var(--brown-light);
+  --table-row-odd-hover-color: var(--black);
+  --table-row-even-hover-color: var(--black);
 }

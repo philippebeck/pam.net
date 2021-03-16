@@ -54,19 +54,19 @@ class UserController extends MainController
 
             $this->user["pass"] = password_hash($this->getPost()->getPostVar("pass"), PASSWORD_DEFAULT);
 
-            ModelFactory::getModel("Users")->createData($this->user);
+            ModelFactory::getModel("User")->createData($this->user);
             $this->getSession()->createAlert("New user successfully created !", "green");
 
             $this->redirect("admin");
         }
 
-        return $this->render("back/users/createUser.twig");
+        return $this->render("back/user/createUser.twig");
     }
 
     private function setUserData()
     {
-        $this->user["name"]     = $this->getPost()->getPostVar("name");
-        $this->user["email"]    = $this->getPost()->getPostVar("email");
+        $this->user["name"]     = (string) trim($this->getPost()->getPostVar("name"));
+        $this->user["email"]    = (string) trim($this->getPost()->getPostVar("email"));
     }
 
     private function setUserImage()
@@ -93,9 +93,9 @@ class UserController extends MainController
             $this->setUpdateData();
         }
 
-        $user = ModelFactory::getModel("Users")->readData($this->getGet()->getGetVar("id"));
+        $user = ModelFactory::getModel("User")->readData($this->getGet()->getGetVar("id"));
 
-        return $this->render("back/users/updateUser.twig", ["user" => $user]);
+        return $this->render("back/user/updateUser.twig", ["user" => $user]);
     }
 
     private function setUpdateData()
@@ -110,7 +110,7 @@ class UserController extends MainController
             $this->setUpdatePassword();
         }
 
-        ModelFactory::getModel("Users")->updateData($this->getGet()->getGetVar("id"), $this->user);
+        ModelFactory::getModel("User")->updateData($this->getGet()->getGetVar("id"), $this->user);
         $this->getSession()->createAlert("Successful modification of the user !", "blue");
 
         $this->redirect("admin");
@@ -118,7 +118,7 @@ class UserController extends MainController
 
     private function setUpdatePassword()
     {
-        $user = ModelFactory::getModel("Users")->readData($this->getGet()->getGetVar("id"));
+        $user = ModelFactory::getModel("User")->readData($this->getGet()->getGetVar("id"));
 
         if (!password_verify($this->getPost()->getPostVar("old-pass"), $user["pass"])) {
             $this->getSession()->createAlert("Old Password does not match !", "red");
@@ -141,7 +141,7 @@ class UserController extends MainController
             $this->redirect("home");
         }
 
-        ModelFactory::getModel("Users")->deleteData($this->getGet()->getGetVar("id"));
+        ModelFactory::getModel("User")->deleteData($this->getGet()->getGetVar("id"));
         $this->getSession()->createAlert("User actually deleted !", "red");
 
         $this->redirect("admin");

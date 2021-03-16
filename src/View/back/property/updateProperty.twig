@@ -1,58 +1,118 @@
 {% extends 'layout/layout.twig' %}
 
-{% block subtitle %}Edit a Property{% endblock %}
+{% block title %}Edit a Property{% endblock %}
 
-{% block summary %}{% endblock %}
+{% block description %}{% endblock %}
 
 {% block main %}
-    <main class="align-center">
-        <form class="form" method="post" action={{ url('property!update', {'id': property.id}) }}>
-            <fieldset>
-                <legend>
-                    <i class="fas fa-atom fa-2x"></i>
-                </legend>
-                <ul>
-                    <li>
-                        <label for="property">Name*</label>
-                        <input id="property" name="property" type="text" maxlength="20" value="{{ property.property }}" required>
-                    </li>
-                    <li>
-                        <label for="visibility">Visibility</label>
-                        <input id="visibility" name="visibility" maxlength="10" type="text" value="{{ property.visibility }}">
-                    </li>
-                    <li>
-                        <label for="valor">Value*</label>
-                        <input id="valor" name="valor" type="text" maxlength="40" value="{{ property.value_type }}" required>
-                    </li>
-                    <li>
-                        <label for="constant">Constant</label>
-                        <input id="constant" name="constant" type="checkbox" {% if property.constant %}checked{% endif %}>
-                    </li>
-                    <li>
-                        <label for="static">Static</label>
-                        <input id="static" name="static" type="checkbox" {% if property.static %}checked{% endif %}>
-                    </li>
-                    <li>
-                        <label for="class_id">Class</label>
-                        <select id="class_id" name="class_id">
-                            {% for class in classes %}
-                                {% if class.id is same as(property.class_id) %}
-                                    <option value="{{ class.id }}" selected>{{ class.class }} (Registred)</option>
-                                {% else %}
-                                    <option value="{{ class.id }}">{{ class.class }}</option>
-                                {% endif %}
-                            {% endfor %}
-                        </select>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <input type="reset" value="Reset">
-                        <input type="submit" value="Update">
-                    </li>
-                </ul>
-            </fieldset>
-        </form>
-        <a class="btn-black btn-lg" href="{{ url('admin') }}">Quit</a>
-    </main>
+<main>
+    <form class="form" method="post" action={{ url('property!update', {'id': property.id}) }}>
+        <fieldset>
+            <legend>
+                <i class="fas fa-atom fa-2x"></i>
+            </legend>
+            <ul>
+                <li>
+                    <label for="property">
+                        Name
+                    </label>
+                    <input id="property" 
+                        name="property" 
+                        type="text" 
+                        maxlength="20" 
+                        value="{{ property.property }}" 
+                        required>
+                </li>
+                <li>
+                    <label for="visibility">
+                        Visibility
+                    </label>
+                    <input name="visibility"
+                        type="hidden"
+                        value="public">
+                    <input id="visibility" 
+                        name="visibility" 
+                        maxlength="10" 
+                        type="text" 
+                        value="{{ property.visibility }}">
+                </li>
+                <li>
+                    <label for="value_type">
+                        Value Type
+                    </label>
+                    <input id="value_type" 
+                        name="value_type" 
+                        type="text" 
+                        maxlength="40" 
+                        value="{{ property.value_type }}" 
+                        required>
+                </li>
+                <li>
+                    <label for="constant">
+                        Constant
+                    </label>
+                    <input name="constant"
+                        type="hidden"
+                        value="0">
+                    <input id="constant" 
+                        name="constant" 
+                        type="checkbox" 
+                        value="1"
+                        {% if property.constant %}checked{% endif %}>
+                </li>
+                <li>
+                    <label for="static">
+                        Static
+                    </label>
+                    <input name="static"
+                        type="hidden"
+                        value="0">
+                    <input id="static" 
+                        name="static" 
+                        type="checkbox" 
+                        value="1"
+                        {% if property.static %}checked{% endif %}>
+                </li>
+                <li>
+                    <label for="class_id">
+                        Class
+                    </label>
+                    <select id="class_id" 
+                        name="class_id"
+                        required>
+
+                        {% for class in classes %}
+
+                            {% if class.id is same as(property.class_id) %}
+                                <option value="{{ class.id }}" 
+                                    selected>
+                                    {{ class.class }} (Registred)
+                                </option>
+
+                            {% else %}
+                                <option value="{{ class.id }}">
+                                    {{ class.class }}
+                                </option>
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </select>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <input type="reset" 
+                        value="Reset">
+                    <input type="submit" 
+                        value="Update">
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+    <a class="btn-black btn-lg" 
+        href="{{ url('admin') }}">
+        Quit
+    </a>
+</main>
 {% endblock %}

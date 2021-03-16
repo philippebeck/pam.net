@@ -14,6 +14,11 @@ use Twig\Error\SyntaxError;
  */
 class ClassController extends MainController
 {
+    /**
+     * @var array
+     */
+    private $class = [];
+
     public function defaultMethod()
     {
         $this->redirect("home");
@@ -32,13 +37,31 @@ class ClassController extends MainController
         }
 
         if (!empty($this->getPost()->getPostArray())) {
-            $class = $this->getPost()->getPostArray();
+            $this->setClassData();
 
-            ModelFactory::getModel("Class")->createData($class);
+            ModelFactory::getModel("Class")->createData($this->class);
             $this->getSession()->createAlert("New Class successfully created !", "green");
+
+            $this->redirect("admin");
         }
 
         return $this->render("back/class/createClass.twig");
+    }
+
+    private function setClassData()
+    {
+        $this->class = $this->getPost()->getPostArray();
+
+        $this->class["class"]       = (string) trim($this->class["class"]);
+        $this->class["path"]        = (string) trim($this->class["path"]);
+        $this->class["parameters"]  = (string) trim($this->class["parameters"]);
+
+        $this->class["abstract"]    = (int) $this->class["abstract"];
+        $this->class["interface"]   = (int) $this->class["interface"];
+
+        $this->class["extends"]     = (string) trim($this->class["extends"]);
+        $this->class["implements"]  = (string) trim($this->class["implements"]);
+        $this->class["definition"]  = (string) trim($this->class["definition"]);
     }
 
     /**
@@ -54,9 +77,9 @@ class ClassController extends MainController
         }
 
         if (!empty($this->getPost()->getPostArray())) {
-            $class = $this->getPost()->getPostArray();
+            $this->setClassData();
 
-            ModelFactory::getModel("Class")->updateData($this->getGet()->getGetVar("id"), $class);
+            ModelFactory::getModel("Class")->updateData($this->getGet()->getGetVar("id"), $this->class);
             $this->getSession()->createAlert("Successful modification of the selected Class !", "blue");
 
             $this->redirect("admin");
