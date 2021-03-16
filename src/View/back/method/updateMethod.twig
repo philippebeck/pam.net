@@ -49,9 +49,13 @@
                     <label for="static">
                         Static
                     </label>
+                    <input name="static"
+                        type="hidden"
+                        value="0">
                     <input id="static" 
                         name="static" 
                         type="checkbox" 
+                        value="1"
                         {% if method.static %}checked{% endif %}>
                 </li>
                 <li>
@@ -59,7 +63,8 @@
                         Class
                     </label>
                     <select id="class_id" 
-                        name="class_id">
+                        name="class_id"
+                        required>
 
                         {% for class in classes %}
 
@@ -78,6 +83,16 @@
                         {% endfor %}
 
                     </select>
+                </li>
+                <li>
+                    <label for="function">
+                        Function
+                    </label>
+                    <textarea id="function" 
+                        name="function" 
+                        rows="7" 
+                        maxlength="255" 
+                        required>{{ method.function }}</textarea>
                 </li>
             </ul>
             <ul>

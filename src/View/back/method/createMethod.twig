@@ -22,7 +22,7 @@
                         name="method" 
                         type="text" 
                         maxlength="20" 
-                        placeholder="Type the Method Name"
+                        placeholder="Type the Name"
                         required>
                 </li>
                 <li>
@@ -33,7 +33,7 @@
                         name="parameters" 
                         maxlength="10" 
                         type="text" 
-                        placeholder="This Method has Parameters ?">
+                        placeholder="Type the Parameters ?">
                 </li>
                 <li>
                     <label for="return">
@@ -43,30 +43,49 @@
                         name="return" 
                         type="text" 
                         maxlength="40" 
-                        placeholder="This Method has Return ?">
+                        placeholder="Type the Return Value ?">
                 </li>
                 <li>
                     <label for="static">
                         Static
                     </label>
+                    <input name="static"
+                        type="hidden"
+                        value="0">
                     <input id="static" 
                         name="static" 
-                        type="checkbox">
+                        type="checkbox"
+                        value="1">
                 </li>
                 <li>
                     <label for="class_id">
                         Class
                     </label>
                     <select id="class_id" 
-                        name="class_id">
+                        name="class_id"
+                        required>
+                        <option value="">
+                            Choose the Linked Class
+                        </option>
 
                         {% for class in classes %}
-                            <option value="{{ class.id }}">
-                                {{ class.class }}
-                            </option>
+                        <option value="{{ class.id }}">
+                            {{ class.class }}
+                        </option>
                         {% endfor %}
 
                     </select>
+                </li>
+                <li>
+                    <label for="function">
+                        Function
+                    </label>
+                    <textarea id="function" 
+                        name="function" 
+                        rows="7" 
+                        maxlength="255" 
+                        placeholder="Type the Function" 
+                        required></textarea>
                 </li>
             </ul>
             <ul>
