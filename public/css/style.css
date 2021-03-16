@@ -11,3 +11,10 @@ body {
 .navbar {
   --navbar-background-color: var(--blue-dark);
 }
+
+.table {
+  --table-row-odd-hover-background-color: var(--red-light);
+  --table-row-even-hover-background-color: var(--brown-light);
+  --table-row-odd-hover-color: var(--black);
+  --table-row-even-hover-color: var(--black);
+}
