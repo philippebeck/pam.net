@@ -54,7 +54,7 @@ class UserController extends MainController
 
             $this->user["pass"] = password_hash($this->getPost()->getPostVar("pass"), PASSWORD_DEFAULT);
 
-            ModelFactory::getModel("Users")->createData($this->user);
+            ModelFactory::getModel("User")->createData($this->user);
             $this->getSession()->createAlert("New user successfully created !", "green");
 
             $this->redirect("admin");
@@ -65,8 +65,8 @@ class UserController extends MainController
 
     private function setUserData()
     {
-        $this->user["name"]     = $this->getPost()->getPostVar("name");
-        $this->user["email"]    = $this->getPost()->getPostVar("email");
+        $this->user["name"]     = (string) trim($this->getPost()->getPostVar("name"));
+        $this->user["email"]    = (string) trim($this->getPost()->getPostVar("email"));
     }
 
     private function setUserImage()
@@ -118,7 +118,7 @@ class UserController extends MainController
 
     private function setUpdatePassword()
     {
-        $user = ModelFactory::getModel("Users")->readData($this->getGet()->getGetVar("id"));
+        $user = ModelFactory::getModel("User")->readData($this->getGet()->getGetVar("id"));
 
         if (!password_verify($this->getPost()->getPostVar("old-pass"), $user["pass"])) {
             $this->getSession()->createAlert("Old Password does not match !", "red");
@@ -141,7 +141,7 @@ class UserController extends MainController
             $this->redirect("home");
         }
 
-        ModelFactory::getModel("Users")->deleteData($this->getGet()->getGetVar("id"));
+        ModelFactory::getModel("User")->deleteData($this->getGet()->getGetVar("id"));
         $this->getSession()->createAlert("User actually deleted !", "red");
 
         $this->redirect("admin");
