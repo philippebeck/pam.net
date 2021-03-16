@@ -27,6 +27,9 @@
                     <label for="visibility">
                         Visibility
                     </label>
+                    <input name="visibility"
+                        type="hidden"
+                        value="public">
                     <input id="visibility" 
                         name="visibility" 
                         maxlength="10" 
@@ -34,11 +37,11 @@
                         value="{{ property.visibility }}">
                 </li>
                 <li>
-                    <label for="valor">
-                        Value
+                    <label for="value_type">
+                        Value Type
                     </label>
-                    <input id="valor" 
-                        name="valor" 
+                    <input id="value_type" 
+                        name="value_type" 
                         type="text" 
                         maxlength="40" 
                         value="{{ property.value_type }}" 
@@ -48,18 +51,26 @@
                     <label for="constant">
                         Constant
                     </label>
+                    <input name="constant"
+                        type="hidden"
+                        value="0">
                     <input id="constant" 
                         name="constant" 
                         type="checkbox" 
+                        value="1"
                         {% if property.constant %}checked{% endif %}>
                 </li>
                 <li>
                     <label for="static">
                         Static
                     </label>
+                    <input name="static"
+                        type="hidden"
+                        value="0">
                     <input id="static" 
                         name="static" 
                         type="checkbox" 
+                        value="1"
                         {% if property.static %}checked{% endif %}>
                 </li>
                 <li>
@@ -67,7 +78,8 @@
                         Class
                     </label>
                     <select id="class_id" 
-                        name="class_id">
+                        name="class_id"
+                        required>
 
                         {% for class in classes %}
 
