@@ -50,18 +50,26 @@
                     <label for="abstract">
                         Abstract
                     </label>
+                    <input name="abstract"
+                        type="hidden"
+                        value="0">
                     <input id="abstract" 
                         name="abstract" 
                         type="checkbox" 
+                        value="1"
                         {% if class.abstract %}checked{% endif %}>
                 </li>
                 <li>
                     <label for="interface">
                         Interface
                     </label>
+                    <input name="interface"
+                        type="hidden"
+                        value="0">
                     <input id="interface" 
                         name="interface" 
                         type="checkbox" 
+                        value="1"
                         {% if class.interface %}checked{% endif %}>
                 </li>
                 <li>
@@ -93,9 +101,7 @@
                         rows="7" 
                         maxlength="255" 
                         placeholder="Type the Class Definition" 
-                        required>
-                        {{ class.definition }}
-                    </textarea>
+                        required>{{ class.definition }}</textarea>
                 </li>
             </ul>
             <ul>

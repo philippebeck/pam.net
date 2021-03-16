@@ -50,17 +50,25 @@
                     <label for="abstract">
                         Abstract
                     </label>
+                    <input name="abstract"
+                        type="hidden"
+                        value="0">
                     <input id="abstract" 
                         name="abstract" 
-                        type="checkbox">
+                        type="checkbox"
+                        value="1">
                 </li>
                 <li>
                     <label for="interface">
                         Interface
                     </label>
+                    <input name="interface"
+                        type="hidden"
+                        value="0">
                     <input id="interface" 
                         name="interface" 
-                        type="checkbox">
+                        type="checkbox"
+                        value="1">
                 </li>
                 <li>
                     <label for="extends">
@@ -91,8 +99,7 @@
                         rows="7" 
                         maxlength="255" 
                         placeholder="Type the Class Definition" 
-                        required>
-                    </textarea>
+                        required></textarea>
                 </li>
             </ul>
             <ul>
