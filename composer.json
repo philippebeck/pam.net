@@ -1,6 +1,6 @@
 {
   "name": "devsagency/pam.net",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "type": "project",
   "description": "Pam, Php Adaptive Microframework, Official Website & Documentation",
   "keywords": [
@@ -36,7 +36,7 @@
   },
   "require": {
     "php": "7.3",
-    "devsagency/pam": "^4.6.0",
+    "devsagency/pam": "^4.6.1",
     "ext-gd": "*",
     "ext-exif": "*",
     "ext-curl": "*",
@@ -44,7 +44,7 @@
     "ext-json": "*"
   },
   "require-dev": {
-    "tracy/tracy": "^2.7.5"
+    "tracy/tracy": "^2.8.3"
   },
   "config": {
     "platform": {
