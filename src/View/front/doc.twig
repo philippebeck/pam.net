@@ -70,18 +70,13 @@
             <h3>Parameters to Replace</h3>
 
             <table class="table">
-                <thead>
-                <tr>
-                    <th>Constant Name</th>
-                    <th>Constant Value</th>
-                </tr>
-                </thead>
-                <tbody>
 
                 {% for constant in constants %}
                     {% if constant.to_replace %}
                         <tr>
                             <td>{{ constant.name }}</td>
+                        </tr>
+                        <tr>
                             <td class="deco-through color-red">
                                 {{ constant.valor }}
                             </td>
@@ -89,7 +84,6 @@
                     {% endif %}
                 {% endfor %}
 
-                </tbody>
             </table>
         </section>
 
@@ -97,18 +91,13 @@
             <h3>Replaceable Parameters</h3>
 
             <table class="table">
-                <thead>
-                <tr>
-                    <th>Constant Name</th>
-                    <th>Constant Value</th>
-                </tr>
-                </thead>
-                <tbody>
 
                 {% for constant in constants %}
                     {% if constant.to_replace == false %}
                         <tr>
                             <td>{{ constant.name }}</td>
+                        </tr>
+                        <tr>
                             <td class="color-brown">
                                 {{ constant.valor }}
                             </td>
@@ -116,7 +105,6 @@
                     {% endif %}
                 {% endfor %}
 
-                </tbody>
             </table>
         </section>
     </article>
