@@ -41,7 +41,7 @@ CREATE TABLE `Method` (
     `return`        VARCHAR(30),
     `static`        TINYINT(1)      UNSIGNED    NOT NULL,
     `class_id`      TINYINT         UNSIGNED    NOT NULL,
-    `function`      VARCHAR(255)    NOT NULL    UNIQUE,
+    `function`      VARCHAR(255)    NOT NULL,
     CONSTRAINT      `method_fk_class_id`    FOREIGN KEY (`class_id`)    REFERENCES  `Class`(`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -58,7 +58,7 @@ INSERT INTO `Constant`
 ('DB_NAME',             'database',     1,  'database_name'),
 ('DB_USER',             'database',     1,  'database_username'),
 ('DB_PASS',             'database',     1,  'database_user_password'),
-('DB_OPTIONS',          'database',     0,  'array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)'),
+('DB_OPTIONS',          'database',     0,  'array( PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION )'),
 ('MAIL_HOST',           'mail',         1,  'mail.host.com'),
 ('MAIL_PORT',           'mail',         1,  '000'),
 ('MAIL_FROM',           'mail',         1,  'mail@host.com'),
