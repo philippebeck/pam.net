@@ -46,21 +46,21 @@ class AuthController extends MainController
 
         $this->getSession()->createAlert("Check the reCAPTCHA !", "red");
 
-        $this->redirect("users");
+        $this->redirect("user");
     }
 
     private function checkLogin()
     {
-        $user = ModelFactory::getModel("Users")->readData($this->user["email"], "email");
+        $user = ModelFactory::getModel("User")->readData($this->user["email"], "email");
 
         if (!password_verify($this->user["pass"], $user["pass"])) {
             $this->getSession()->createAlert("Failed authentication !", "black");
 
-            $this->redirect("users");
+            $this->redirect("user");
         }
 
         $this->getSession()->createSession($user);
-        $this->getSession()->createAlert("Successful authentication, welcome " . $user["name"] . " !", "purple");
+        $this->getSession()->createAlert("Successful authentication, welcome " . $user["name"] . " !", "violet");
 
         $this->redirect("admin");
     }
