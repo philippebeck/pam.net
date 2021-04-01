@@ -8,7 +8,7 @@ CREATE TABLE `Constant` (
     `name`          VARCHAR(20)     NOT NULL  UNIQUE ,
     `category`      VARCHAR(10)     NOT NULL,
     `to_replace`    TINYINT(1)      NOT NULL,
-    `valor`         VARCHAR(100)    NOT NULL
+    `valor`         VARCHAR(120)    NOT NULL
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Class` (
