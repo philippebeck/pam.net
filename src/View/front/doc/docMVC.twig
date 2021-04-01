@@ -18,7 +18,7 @@
     </p>
 
     <ul class="font-italic">
-        <li class="color-violet font-bold">
+        <li class="color-secondary font-bold">
             Namespace Pam\{{ class.path }}
         </li>
 
@@ -41,7 +41,7 @@
         {% endif %}
 
         <li class="mar-md">
-            <a class="btn-violet" 
+            <a class="btn-secondary" 
                 href="https://github.com/philippebeck/pam/blob/master/core/{{ class.path|replace({'\\': "/"}) }}/{{ class.class }}.php">
                 <i class="fas fa-code fa-lg"></i> 
                 Code Source
@@ -80,7 +80,7 @@
         </h4>
 
         <header class="font-italic">
-            <p class="color-violet font-bold">
+            <p class="color-secondary font-bold">
                 Use Pam\{{ class.path }}\{{ class.class }}
             </p>
 
@@ -88,7 +88,7 @@
 
                 {% if property.class_id is same as(class.id) 
                     and property.visibility is same as('protected') %}
-                    <p class="font-sans-serif color-brown">
+                    <p class="font-sans-serif">
                         You can access the value of type 
                         {{ property.value_type }} 
                         from the protected property 
@@ -115,7 +115,7 @@
                 {% if method.class_id is same as(class.id) %}
                 <li>
                     <ul>
-                        <li class="color-tw">
+                        <li class="color-secondary">
 
                             {% if method.static %}
                                 public static function 
@@ -137,12 +137,12 @@
                             {% endif %}
 
                         </li>
-                        <li class="color-pp">
+                        <li class="color-primary">
                             <p class="pad-sm font-sans-serif">
                                 {{ method.function }}
                             </p>
                         </li>
-                        <li class="color-in">
+                        <li>
 
                             {% if method.return %}
                                 <span class="font-italic">
