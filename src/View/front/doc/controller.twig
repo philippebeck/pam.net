@@ -1,0 +1,48 @@
+<article id="controller-home"
+    class="menu-target4">
+    <h2>
+        <i class="fas fa-server"></i> 
+        Controller
+    </h2>
+
+    <nav class="sidebar">
+        <a href="#controller-home" 
+            title="Controller Home">
+            <i class="fas fa-chevron-circle-up fa-fw"></i>
+        </a>
+
+        {% for class in classes %}
+            {% if 'Controller' in class.path %}
+
+            <a href="#{{ class.class|lower }}"
+                title="{{ class.class }}">
+                {{ loop.index }}
+            </a>
+
+            {% endif %}
+        {% endfor %}
+    </nav>
+
+    <ul>
+
+        {% for class in classes %}
+            {% if 'Controller' in class.path %}
+                <li>
+                    <a class="color-secondary" 
+                        href="#{{ class.class|lower }}">
+                        {{ loop.index }} - 
+                        {{ class.class }}
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+    </ul>
+
+    {% for class in classes %}
+        {% if 'Controller' in class.path %}
+            {{ include('front/doc/docMVC.twig') }}
+        {% endif %}
+    {% endfor %}
+
+</article>

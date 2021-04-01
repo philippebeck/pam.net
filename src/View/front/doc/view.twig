@@ -1,0 +1,48 @@
+<article id="view-home"
+    class="menu-target3">
+    <h2>
+        <i class="fas fa-desktop"></i> 
+        View
+    </h2>
+
+    <nav class="sidebar">
+        <a href="#view-home" 
+            title="view Home">
+            <i class="fas fa-chevron-circle-up fa-fw"></i>
+        </a>
+
+        {% for class in classes %}
+            {% if 'View' in class.path %}
+
+            <a href="#{{ class.class|lower }}"
+                title="{{ class.class }}">
+                {{ loop.index }}
+            </a>
+
+            {% endif %}
+        {% endfor %}
+    </nav>
+
+    <ul>
+
+        {% for class in classes %}
+            {% if 'View' in class.path %}
+                <li>
+                    <a  class="color-secondary" 
+                        href="#{{ class.class|lower }}">
+                        {{ loop.index }} - 
+                        {{ class.class }}
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+    </ul>
+
+    {% for class in classes %}
+        {% if 'View' in class.path %}
+            {{ include('front/doc/docMVC.twig') }}
+        {% endif %}
+    {% endfor %}
+
+</article>
