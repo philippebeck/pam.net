@@ -1,0 +1,64 @@
+<article id="config-home"
+    class="menu-target1">
+    <h2>
+        <i class="fas fa-cogs"></i> 
+        Config
+    </h2>
+
+    <nav class="sidebar">
+        <a href="#config-home" 
+            title="Configuration Home">
+            <i class="fas fa-chevron-circle-up fa-fw"></i>
+        </a>
+        <a href="#config-replace" 
+            title="Parameters to Replace">
+            <i class="fas fa-sync-alt fa-fw"></i>
+        </a>
+        <a href="#config-replaceable" 
+            title="Replaceable Parameters">
+            <i class="fas fa-recycle fa-fw"></i>
+        </a>
+    </nav>
+
+    <section id="config-replace">
+        <h3>Parameters to Replace</h3>
+
+        <table class="table">
+
+            {% for constant in constants %}
+                {% if constant.to_replace %}
+                    <tr>
+                        <td>{{ constant.name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="deco-through color-red">
+                            {{ constant.valor }}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+
+        </table>
+    </section>
+
+    <section id="config-replaceable">
+        <h3>Replaceable Parameters</h3>
+
+        <table class="table">
+
+            {% for constant in constants %}
+                {% if constant.to_replace == false %}
+                    <tr>
+                        <td>{{ constant.name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="color-brown">
+                            {{ constant.valor }}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+
+        </table>
+    </section>
+</article>
