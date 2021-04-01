@@ -1,0 +1,52 @@
+<section class="menu-target3">
+    <h2>
+        <i class="fas fa-atom"></i> 
+        Property
+    </h2>
+
+    <a class="btn-green btn-lg" 
+        href="{{ url('property!create') }}">
+        New Property
+    </a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Property</th>
+            <th>Value Type</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for property in properties %}
+            <tr>
+                <td>
+
+                    {% if property.constant %}
+                        const {{ property.property }}
+                    {% elseif property.static %}
+                        {{ property.visibility }} static {{ property.property }}
+                    {% else %}
+                        {{ property.visibility }} {{ property.property }}
+                    {% endif %}
+
+                </td>
+                <td>{{ property.value_type }}</td>
+                <td>
+                    <a class="btn-blue" 
+                        href="{{ url('property!update', {'id': property.id}) }}">
+                        <i class="fas fa-pen-square fa-fw fa-lg"></i>
+                    </a>
+                    <br>
+                    <a class="btn-red" 
+                        href="{{ url('property!delete', {'id': property.id}) }}">
+                        <i class="fas fa-times-circle fa-fw fa-lg"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</section>

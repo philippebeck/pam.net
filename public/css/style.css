@@ -1,20 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Gotu&family=Rufina&family=Source+Code+Pro&display=swap");
+
 :root {
   --sans-serif: 'Gotu', sans-serif;
   --serif: 'Rufina', serif;
   --monospace: 'Source Code Pro', monospace;
+
+  --primary: rgb(88, 89, 91);
+  --primary-dark: rgba(88, 89, 91, var(--opacity-dark));
+  --primary-light: rgba(88, 89, 91, var(--opacity-light));
+  --secondary: rgb(240, 121, 56);
+  --secondary-dark: rgba(240, 121, 56, var(--opacity-dark));
+  --secondary-light: rgba(240, 121, 56, var(--opacity-light));
+
+  --grow: scale(0.8, 0.8);
+  --shrink: scale(1.2, 1.2);
 }
 
 body {
-  --body-background-color: lavender;
+  --body-background-color: var(--primary-light);
+}
+
+h1,
+h2 {
+  --title-color: var(--primary);
+}
+
+h3,
+h4 {
+  --title-color: var(--black);
 }
 
 .navbar {
-  --navbar-background-color: var(--blue-dark);
+  --navbar-background-color: var(--primary-dark);
+  --navbar-link-hover-color: var(--secondary);
+}
+
+.head {
+  --head-border: double thick var(--secondary);
+  --head-color: var(--primary);
 }
 
 .table {
-  --table-row-odd-hover-background-color: var(--red-light);
-  --table-row-even-hover-background-color: var(--brown-light);
-  --table-row-odd-hover-color: var(--black);
-  --table-row-even-hover-color: var(--black);
+  --table-odd-hover-background-color: var(--secondary-light);
+  --table-even-hover-background-color: var(--secondary-light);
+  --table-odd-hover-color: var(--black);
+  --table-even-hover-color: var(--black);
+}
+
+.form {
+  --form-border: thick outset var(--secondary);
+  --form-box-shadow: inset 0 0 5px 5px var(--secondary-light);
+  --form-field-border: medium outset var(--secondary);
+  --form-field-placeholder-color: var(--secondary);
+}
+
+.foot {
+  --foot-list-background-color: var(--primary);
+  --foot-title-color: var(--secondary);
+  --foot-list-hover-color: var(--secondary);
+  --foot-label-hover-color: var(--orange);
 }

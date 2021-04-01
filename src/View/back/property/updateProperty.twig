@@ -6,7 +6,9 @@
 
 {% block main %}
 <main>
-    <form class="form" method="post" action={{ url('property!update', {'id': property.id}) }}>
+    <form class="form" 
+        method="post" 
+        action={{ url('property!update', {'id': property.id}) }}>
         <fieldset>
             <legend>
                 <i class="fas fa-atom fa-2x"></i>

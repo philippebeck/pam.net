@@ -24,35 +24,31 @@
     name="menu">
 
 <nav class="menu">
-    <label class="button-violet" 
-        for="menu-radio1" 
+    <label for="menu-radio1" 
         title="Read the Config Doc">
-        <i class="fas fa-cogs onto-color-violet"></i>
-        <span class="onto-color-violet">
+        <i class="fas fa-cogs"></i>
+        <span>
             Config
         </span>
     </label>
-    <label class="button-red" 
-        for="menu-radio2" 
+    <label for="menu-radio2" 
         title="Read the Model Doc">
-        <i class="fas fa-database onto-color-red"></i>
-        <span class="onto-color-red">
+        <i class="fas fa-database"></i>
+        <span>
             Model
         </span>
     </label>
-    <label class="button-green" 
-        for="menu-radio3" 
+    <label for="menu-radio3" 
         title="Read the View Doc">
-        <i class="fas fa-desktop onto-color-green"></i>
-        <span class="onto-color-green">
+        <i class="fas fa-desktop"></i>
+        <span>
             View
         </span>
     </label>
-    <label class="button-blue" 
-        for="menu-radio4" 
+    <label for="menu-radio4" 
         title="Read the Controller Doc">
-        <i class="fas fa-server onto-color-blue"></i>
-        <span class="onto-color-blue">
+        <i class="fas fa-server"></i>
+        <span>
             Controller
         </span>
     </label>
@@ -133,7 +129,7 @@
 
         {% for class in classes %}
             {% if 'Model' in class.path %}
-                {{ include('front/include/docMVC.twig') }}
+                {{ include('front/doc/docMVC.twig') }}
             {% endif %}
         {% endfor %}
 
@@ -163,7 +159,7 @@
 
         {% for class in classes %}
             {% if 'View' in class.path %}
-                {{ include('front/include/docMVC.twig') }}
+                {{ include('front/doc/docMVC.twig') }}
             {% endif %}
         {% endfor %}
 
@@ -193,7 +189,7 @@
 
         {% for class in classes %}
             {% if 'Controller' in class.path %}
-                {{ include('front/include/docMVC.twig') }}
+                {{ include('front/doc/docMVC.twig') }}
             {% endif %}
         {% endfor %}
 

@@ -6,7 +6,7 @@
 
 {% block main %}
 <main>
-    <figure class="anima-slideB-this">
+    <figure class="anima-slideB-sm-this">
         <img class="height-sm" 
             src="img/pam.png" 
             alt="Pam Logo">
@@ -16,21 +16,22 @@
         PHP Adaptive Microframework
     </h2>
 
+    <a class="button-secondary anima-slideR-tn-this" 
+        href="{{ url('start') }}">
+        <i class="fas fa-play fa-2x"></i> 
+        Getting Start
+    </a>
+    <a class="button-secondary anima-slideL-tn-this" 
+        href="{{ url('doc') }}">
+        <i class="fas fa-book fa-2x"></i> 
+        Documentation
+    </a>
+
     <header class="head">
         <p>Pam is a Programming Tool wrote in PHP who help you to build Websites.</p>
         <p>This project is Open-source, so you can get all the source code on GitHub...</p>
         <p>Installation process, common Usage & full Documentation are available here !</p>
     </header>
 
-    <a class="btn-red anima-slideR-this" 
-        href="{{ url('start') }}">
-        <i class="fas fa-play fa-2x"></i> 
-        Getting Start
-    </a>
-    <a class="btn-blue anima-slideL-this" 
-        href="{{ url('doc') }}">
-        <i class="fas fa-book fa-2x"></i> 
-        Documentation
-    </a>
 </main>
 {% endblock %}

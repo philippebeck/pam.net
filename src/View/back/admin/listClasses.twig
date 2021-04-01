@@ -1,0 +1,67 @@
+<section class="menu-target2">
+    <h2>
+        <i class="far fa-file-code"></i> 
+        Class
+    </h2>
+
+    <a class="btn-green btn-lg" 
+        href="{{ url('class!create') }}">
+        New Class
+    </a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Class</th>
+            <th>Extends | Implements</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for class in classes %}
+            <tr>
+                <td>
+
+                    {% if class.interface %}
+                        interface {{ class.class }}
+                    {% elseif class.abstract %}
+                        abstract class {{ class.class }}
+                    {% else %}
+                        class {{ class.class }}
+                    {% endif %}
+
+                    {% if class.parameters %}
+                        <hr>
+                        {{ class.parameters }}
+                    {% endif %}
+
+                </td>
+                <td>
+
+                    {% if class.extends %}
+                        extends {{ class.extends }}
+                    {% elseif class.implements %}
+                        implements {{ class.implements }}
+                    {% else %}
+                        <i class="fas fa-ban fa-lg"></i>
+                    {% endif %}
+
+                </td>
+                <td>
+                    <a class="btn-blue" 
+                        href="{{ url('class!update', {'id': class.id}) }}">
+                        <i class="fas fa-pen-square fa-fw fa-lg"></i>
+                    </a>
+                    <br>
+                    <a class="btn-red" 
+                        href="{{ url('class!delete', {'id': class.id}) }}">
+                        <i class="fas fa-times-circle fa-fw fa-lg"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</section>

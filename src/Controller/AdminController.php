@@ -26,12 +26,14 @@ class AdminController extends MainController
             $this->redirect("home");
         }
 
+        $constants  = ModelFactory::getModel("Constant")->listData();
         $classes    = ModelFactory::getModel("Class")->listData();
         $properties = ModelFactory::getModel("Property")->listData();
         $methods    = ModelFactory::getModel("Method")->listData();
         $users      = ModelFactory::getModel("User")->listData();
 
-        return $this->render("back/admin.twig", [
+        return $this->render("back/admin/admin.twig", [
+            "constants"     => $constants,
             "classes"       => $classes,
             "properties"    => $properties,
             "methods"       => $methods,

@@ -1,0 +1,77 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Edit a Constant{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block main %}
+<main>
+    <form class="form" 
+        method="post" 
+        action={{ url('constant!update', {'id': constant.id}) }}>
+        <fieldset>
+            <legend>
+                <i class="fas fa-cogs fa-2x"></i>
+            </legend>
+            <ul>
+                <li>
+                    <label for="name">
+                        Name
+                    </label>
+                    <input id="name" 
+                        name="name" 
+                        type="text" 
+                        maxlength="20" 
+                        value="{{ constant.name }}" 
+                        required>
+                </li>
+                <li>
+                    <label for="category">
+                        Category
+                    </label>
+                    <input id="category" 
+                        name="category" 
+                        maxlength="10" 
+                        type="text" 
+                        value="{{ constant.category }}">
+                </li>
+                <li>
+                    <label for="valor">
+                        Value
+                    </label>
+                    <textarea id="valor" 
+                        name="valor" 
+                        rows="4" 
+                        maxlength="120" 
+                        required>{{ constant.valor }}</textarea>
+                </li>
+                <li>
+                    <label for="to_replace">
+                        To Replace
+                    </label>
+                    <input name="to_replace"
+                        type="hidden"
+                        value="0">
+                    <input id="to_replace" 
+                        name="to_replace" 
+                        type="checkbox" 
+                        value="1"
+                        {% if constant.to_replace %}checked{% endif %}>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <input type="reset" 
+                        value="Reset">
+                    <input type="submit" 
+                        value="Update">
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+    <a class="btn-black btn-lg" 
+        href="{{ url('admin') }}">
+        Quit
+    </a>
+</main>
+{% endblock %}
