@@ -26,7 +26,9 @@ h2 {
 }
 
 h3,
-h4 {
+h4,
+h5,
+h6 {
   --title-color: var(--black);
 }
 
@@ -38,6 +40,19 @@ h4 {
 .head {
   --head-border: double thick var(--secondary);
   --head-color: var(--primary);
+}
+
+.sidebar {
+  --sidebar-top: 10%;
+  --sidebar-width: 5%;
+  --sidebar-child-color: var(--secondary);
+  --sidebar-child-hover-background-color: var(--secondary-dark);
+}
+
+.menu {
+  --menu-child-background-color: var(--secondary-dark);
+  --menu-checked-child-color: var(--secondary);
+  --menu-child-hover-color: var(--secondary);
 }
 
 .table {
