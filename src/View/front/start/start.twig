@@ -16,35 +16,26 @@
     name="menu">
 
 <nav class="menu">
-    <label class="button-red" 
-        for="menu-radio1" 
+    <label for="menu-radio1" 
         title="Watch the Installation Process">
-        <i class="fas fa-download onto-color-red"></i>
-        <span class="onto-color-red">
+        <i class="fas fa-download"></i>
+        <span>
             Installation
         </span>
     </label>
-    <label class="button-blue" 
-        for="menu-radio2" 
+    <label for="menu-radio2" 
         title="Watch the Common Usage">
-        <i class="far fa-keyboard onto-color-blue"></i>
-        <span class="onto-color-blue">
+        <i class="far fa-keyboard"></i>
+        <span>
             Usage
         </span>
     </label>
 </nav>
 
 <main class="menu-relay container-90tn">
-    <article class="menu-target1">
 
-        {{ include('front/include/installation.twig') }}
+    {{ include('front/start/installation.twig') }}
+    {{ include('front/start/usage.twig') }}
 
-    </article>
-
-    <article class="menu-target2">
-
-        {{ include('front/include/usage.twig') }}
-
-    </article>
 </main>
 {% endblock %}
