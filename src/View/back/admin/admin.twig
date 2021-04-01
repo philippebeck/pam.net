@@ -22,30 +22,41 @@
         class="menu-radio4" 
         type="radio" 
         name="menu">
+    <input id="menu-radio5" 
+        class="menu-radio5" 
+        type="radio" 
+        name="menu">
 
     <nav class="menu">
         <label for="menu-radio1" 
+            title="Show the constants">
+            <i class="fas fa-cogs"></i>
+            <span>
+                constant
+            </span>
+        </label>
+        <label for="menu-radio2" 
             title="Show the Classes">
             <i class="far fa-file-code"></i>
             <span>
                 Class
             </span>
         </label>
-        <label for="menu-radio2" 
+        <label for="menu-radio3" 
             title="Show the Properties">
             <i class="fas fa-atom"></i>
             <span>
                 Property
             </span>
         </label>
-        <label for="menu-radio3" 
+        <label for="menu-radio4" 
             title="Show the Methods">
             <i class="fas fa-redo-alt"></i>
             <span>
                 Method
             </span>
         </label>
-        <label for="menu-radio4" 
+        <label for="menu-radio5" 
             title="Show the Users">
             <i class="far fa-user"></i>
             <span>
@@ -57,6 +68,7 @@
     <main id="admin" 
         class="menu-relay">
 
+        {{ include("back/admin/listConstants.twig") }}
         {{ include("back/admin/listClasses.twig") }}
         {{ include("back/admin/listProperties.twig") }}
         {{ include("back/admin/listMethods.twig") }}
