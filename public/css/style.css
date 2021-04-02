@@ -12,7 +12,7 @@
   --secondary-dark: rgba(240, 121, 56, var(--opacity-dark));
   --secondary-light: rgba(240, 121, 56, var(--opacity-light));
 
-  --grow: scale(0.8, 0.8);
+  --grow: scale(0.7, 0.7);
   --shrink: scale(1.2, 1.2);
 }
 
@@ -43,10 +43,13 @@ h6 {
 }
 
 .sidebar {
-  --sidebar-top: 10%;
-  --sidebar-width: 5%;
   --sidebar-child-color: var(--secondary);
   --sidebar-child-hover-background-color: var(--secondary-dark);
+}
+
+.menu-target4 .sidebar {
+  --sidebar-child-margin: 2px;
+  --sidebar-child-padding: 4px;
 }
 
 .menu {
@@ -67,6 +70,8 @@ h6 {
   --form-box-shadow: inset 0 0 5px 5px var(--secondary-light);
   --form-field-border: medium outset var(--secondary);
   --form-field-placeholder-color: var(--secondary);
+  --form-field-box-shadow: unset;
+  --form-field-hover-border: medium inset var(--primary);
 }
 
 .foot {
