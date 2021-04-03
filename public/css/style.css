@@ -21,15 +21,12 @@ body {
 }
 
 h1,
-h2 {
-  --title-color: var(--primary);
-}
-
+h2,
 h3,
 h4,
 h5,
 h6 {
-  --title-color: var(--black);
+  --title-color: var(--primary);
 }
 
 .navbar {
