@@ -64,10 +64,8 @@ h6 {
 
 .form {
   --form-border: thick outset var(--secondary);
-  --form-box-shadow: inset 0 0 5px 5px var(--secondary-light);
   --form-field-border: medium outset var(--secondary);
   --form-field-placeholder-color: var(--secondary);
-  --form-field-box-shadow: unset;
   --form-field-hover-border: medium inset var(--primary);
 }
 
