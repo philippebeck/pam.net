@@ -23,12 +23,12 @@
         {% endfor %}
     </nav>
 
-    <ul>
+    <ul class="flex">
 
         {% for class in classes %}
             {% if 'View' in class.path %}
                 <li>
-                    <a  class="color-secondary" 
+                    <a  class="button-secondary" 
                         href="#{{ class.class|lower }}">
                         {{ loop.index }} - 
                         {{ class.class }}
