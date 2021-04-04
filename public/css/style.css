@@ -8,16 +8,16 @@
   --primary: rgb(88, 89, 91);
   --primary-dark: rgba(88, 89, 91, var(--opacity-dark));
   --primary-light: rgba(88, 89, 91, var(--opacity-light));
-  --secondary: rgb(240, 121, 56);
-  --secondary-dark: rgba(240, 121, 56, var(--opacity-dark));
-  --secondary-light: rgba(240, 121, 56, var(--opacity-light));
+  --secondary: rgb(252, 164, 96);
+  --secondary-dark: rgba(252, 164, 96, var(--opacity-dark));
+  --secondary-light: rgba(252, 164, 96, var(--opacity-light));
 
   --grow: scale(0.7, 0.7);
   --shrink: scale(1.2, 1.2);
 }
 
 body {
-  --body-background-color: var(--primary-light);
+  --body-background-color: var(--grey-light);
 }
 
 h4,
