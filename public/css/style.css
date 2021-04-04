@@ -20,23 +20,10 @@ body {
   --body-background-color: var(--primary-light);
 }
 
-h1,
-h2,
-h3,
 h4,
 h5,
 h6 {
   --title-color: var(--primary);
-}
-
-.navbar {
-  --navbar-background-color: var(--primary-dark);
-  --navbar-link-hover-color: var(--secondary);
-}
-
-.head {
-  --head-border: double thick var(--secondary);
-  --head-color: var(--primary);
 }
 
 .sidebar {
@@ -53,25 +40,4 @@ h6 {
   --menu-child-background-color: var(--secondary-dark);
   --menu-checked-child-color: var(--secondary);
   --menu-child-hover-color: var(--secondary);
-}
-
-.table {
-  --table-odd-hover-background-color: var(--secondary-light);
-  --table-even-hover-background-color: var(--secondary-light);
-  --table-odd-hover-color: var(--black);
-  --table-even-hover-color: var(--black);
-}
-
-.form {
-  --form-border: thick outset var(--secondary);
-  --form-field-border: medium outset var(--secondary);
-  --form-field-placeholder-color: var(--secondary);
-  --form-field-hover-border: medium inset var(--primary);
-}
-
-.foot {
-  --foot-list-background-color: var(--primary);
-  --foot-title-color: var(--secondary);
-  --foot-list-hover-color: var(--secondary);
-  --foot-label-hover-color: var(--orange);
 }
