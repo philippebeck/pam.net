@@ -16,10 +16,6 @@
   --shrink: scale(1.2, 1.2);
 }
 
-body {
-  --body-background-color: var(--grey-light);
-}
-
 h4,
 h5,
 h6 {
