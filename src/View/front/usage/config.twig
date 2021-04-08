@@ -1,0 +1,41 @@
+<section id="usage-config">
+    <h3>
+        <i class="fas fa-cogs fa-lg"></i> 
+        Config
+    </h3>
+
+    <header class="head">
+        <p>You must create a configuration folder which will contain the parameters files</p>
+        <p>You can name them as you want, both the folder & the parameters files</p>
+        <p>But the index file will have to call these parameters files.</p>
+    </header>
+
+    <i class="fas fa-minus fa-lg mar-top-md" 
+        aria-hidden="true"></i>
+
+    <ul>
+        <li>
+            <p>
+                By default, I use a folder named 
+                <em>config</em> 
+                who contains 2 parameters files :
+                <strong>dev-params.php</strong>
+                & 
+                <strong>prod-params.php</strong>
+                ...
+            </p>
+            <p>Each parameters file must contain the Global Constants for Access, Database, Model, View, Controller, Mail & Recaptcha like this :</p>
+            <code>define("KEY", "value");</code>
+        </li>
+        <li>
+            <p class="color-secondary font-bold">
+                Now you can configure your Project Parameters !
+            </p>
+            <a class="button-secondary"
+                href="https://github.com/devsagency/pam.net/tree/master/config/demo-params.php"
+                title="See the Code">
+                Parameters File Example
+            </a>
+        </li>
+    </ul>
+</section>

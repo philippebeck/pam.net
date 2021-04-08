@@ -1,0 +1,77 @@
+<section id="usage-model">
+    <h3>
+        <i class="fas fa-database fa-lg"></i> 
+        Model
+    </h3>
+
+    <header class="head">
+        <p>
+            For the Model naming, 
+            you need to use the same name than each table...
+        </p>
+        <p>
+            You can choose, 
+            the Model path & the Model suffix, 
+            in the parameters.
+        </p>
+        <p>
+            For example (without any changes to the Model constants),
+            if you have a table named Pizza, 
+            you should have a Model named PizzaModel.php
+        </p>
+    </header>
+
+    <i class="fas fa-minus fa-lg mar-top-md" 
+        aria-hidden="true"></i>
+
+    <ul>
+        <li>
+            <p>
+                To use the Pam CRUD model, 
+                simply add this use to each of your models :
+            </p>
+            <code>use Pam\Model\MainModel;</code>
+        </li>
+        <li>
+            <p>Then you can extends the class to the MainModel :</p>
+            <code>extends MainModel</code>
+        </li>
+        <li>
+            <p class="color-secondary font-bold">
+                Now you can access to all CRUD methods of the MainModel !
+            </p>
+            <a class="button-secondary"
+                href="https://github.com/devsagency/pam.net/tree/master/src/Model/UserModel.php"
+                title="See the Code">
+                Simple Model Example
+            </a>
+        </li>
+    </ul>
+
+    <i class="fas fa-minus fa-lg mar-top-md" 
+        aria-hidden="true"></i>
+
+    <ul>
+        <li>
+            <p>
+                If you need a specific query, 
+                just create a method to add it :
+            </p>
+            <code>$query = "SELECT * FROM Table..."</code>
+        </li>
+        <li>
+            <p>Then you should return the query with one of the methods to the PdoDb.php file like this :</p>
+            <code>return $this->database->getAllData($query);</code>
+        </li>
+        <li>
+            <p class="color-secondary font-bold">
+                Now you can use both Pam Model methods & personalized Model methods !
+            </p>
+            <a class="button-secondary"
+                href="https://github.com/devsagency/pam.net/tree/master/src/Model/PropertyModel.php"
+                title="See the Code">
+                Model Example with Personalized Query
+            </a>
+        </li>
+    </ul>
+</section>

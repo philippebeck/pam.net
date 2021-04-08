@@ -1,0 +1,73 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Common Usage{% endblock %}
+
+{% block description %}Common Usage of Pam, the Php Adaptive Microframework{% endblock %}
+
+{% block main %}
+<main id="usage-home"
+    class="menu-target2">
+
+    <h2 class="anima-shrink-this">
+        <i class="fas fa-keyboard fa-lg"></i> 
+        Implementation
+    </h2>
+
+    <header class="head">
+        Pam is very easy to use & very light to implement !
+    </header>
+
+    <nav class="sidebar">
+        <a href="#usage-home" 
+            title="Usage Home">
+            <i class="fas fa-chevron-circle-up fa-lg fa-fw"></i>
+        </a>
+        <a href="#usage-config" 
+            title="Usage Config">
+            <i class="fas fa-cogs fa-lg fa-fw"></i>
+        </a>
+        <a href="#usage-index" 
+            title="Usage Index">
+            <i class="fab fa-firefox-browser fa-lg fa-fw"></i>
+        </a>
+        <a href="#usage-model" 
+            title="Usage Model">
+            <i class="fas fa-database fa-lg fa-fw"></i>
+        </a>
+        <a href="#usage-view" 
+            title="Usage View">
+            <i class="fas fa-desktop fa-lg fa-fw"></i>
+        </a>
+        <a href="#usage-controller" 
+            title="Usage Controller">
+            <i class="fas fa-server fa-lg fa-fw"></i>
+        </a>
+    </nav>
+
+    <i class="fas fa-chevron-down fa-2x mar-top-lg" 
+        aria-hidden="true"></i>
+
+    {{ include("front/usage/config.twig") }}
+
+    <i class="fas fa-sort fa-2x mar-top-lg" 
+        aria-hidden="true"></i>
+
+    {{ include("front/usage/index.twig") }}
+
+    <i class="fas fa-sort fa-2x mar-top-lg" 
+        aria-hidden="true"></i>
+
+    {{ include("front/usage/model.twig") }}
+
+    <i class="fas fa-sort fa-2x mar-top-lg" 
+        aria-hidden="true"></i>
+
+    {{ include("front/usage/view.twig") }}
+
+    <i class="fas fa-sort fa-2x mar-top-lg" 
+        aria-hidden="true"></i>
+
+    {{ include("front/usage/controller.twig") }}
+
+</main>
+{% endblock %}

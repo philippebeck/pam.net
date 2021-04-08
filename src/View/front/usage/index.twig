@@ -1,0 +1,56 @@
+<section id="usage-index">
+    <h3>
+        <i class="fab fa-firefox-browser fa-lg"></i> 
+        Index
+    </h3>
+
+    <header class="head">
+        <p>Don't forget to add autoload & sessions (if you need) to the file beginning...</p>
+    </header>
+
+    <i class="fas fa-minus fa-lg mar-top-md" 
+        aria-hidden="true"></i>
+
+    <ul>
+        <li>
+            <p>In the index file, you have to add the parameters with a require_once</p>
+        </li>
+        <li>
+            <p>For Development :</p>
+            <code>require_once '../config/dev-params.php';</code>
+        </li>
+        <li>
+            <p>For Production :</p>
+            <code>require_once '../config/prod-params.php';</code>
+        </li>
+        <li>
+            <p class="color-secondary font-bold">
+                Now you can change the filename to switch between dev & prod...
+            </p>
+        </li>
+    </ul>
+
+    <i class="fas fa-minus fa-lg mar-top-md" 
+        aria-hidden="true"></i>
+
+    <ul>
+        <li>
+            <p>Then, create the FrontController object :</p>
+            <code>$frontController = new Pam\Controller\FrontController();</code>
+        </li>
+        <li>
+            <p>And call the run method on it :</p>
+            <code>$frontController->run();</code>
+        </li>
+        <li>
+            <p class="color-secondary font-bold">
+                Now you can reach any controller from an URL of the Project !
+            </p>
+            <a class="button-secondary"
+                href="https://github.com/devsagency/pam.net/tree/master/public/index.php"
+                title="See the Code">
+                Index Example
+            </a>
+        </li>
+    </ul>
+</section>
