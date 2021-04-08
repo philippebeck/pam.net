@@ -18,7 +18,6 @@
                 <hr>
                 Return
             </th>
-            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -26,41 +25,34 @@
         {% for method in methods %}
             <tr>
                 <td>
-
                     {% if method.static %}
                         static {{ method.method }}()
                     {% else %}
                         {{ method.method }}()
                     {% endif %}
-
+                    <br>
+                    <a class="btn-blue" 
+                        href="{{ url('method!update', {'id': method.id}) }}">
+                        <i class="fas fa-pen-square fa-fw fa-lg"></i>
+                    </a>
+                    <a class="btn-red" 
+                        href="{{ url('method!delete', {'id': method.id}) }}">
+                        <i class="fas fa-times-circle fa-fw fa-lg"></i>
+                    </a>
                 </td>
                 <td>
-
                     {% if method.parameters %}
                         {{ method.parameters }}
                     {% else %}
                         <i class="fas fa-ban fa-lg"></i>
                     {% endif %}
-
                 <hr>
-
                     {% if method.return %}
                         {{ method.return }}
                     {% else %}
                         <i class="fas fa-ban fa-lg"></i>
                     {% endif %}
 
-                </td>
-                <td>
-                    <a class="btn-blue" 
-                        href="{{ url('method!update', {'id': method.id}) }}">
-                        <i class="fas fa-pen-square fa-fw fa-lg"></i>
-                    </a>
-                    <br>
-                    <a class="btn-red" 
-                        href="{{ url('method!delete', {'id': method.id}) }}">
-                        <i class="fas fa-times-circle fa-fw fa-lg"></i>
-                    </a>
                 </td>
             </tr>
         {% endfor %}

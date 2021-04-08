@@ -13,8 +13,11 @@
         <thead>
         <tr>
             <th>Class</th>
-            <th>Extends | Implements</th>
-            <th>Actions</th>
+            <th>
+                Extends | Implements
+                <hr>
+                Parameters
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -22,7 +25,6 @@
         {% for class in classes %}
             <tr>
                 <td>
-
                     {% if class.interface %}
                         interface {{ class.class }}
                     {% elseif class.abstract %}
@@ -30,15 +32,17 @@
                     {% else %}
                         class {{ class.class }}
                     {% endif %}
-
-                    {% if class.parameters %}
-                        <hr>
-                        {{ class.parameters }}
-                    {% endif %}
-
+                    <br>
+                    <a class="btn-blue" 
+                        href="{{ url('class!update', {'id': class.id}) }}">
+                        <i class="fas fa-pen-square fa-fw fa-lg"></i>
+                    </a>
+                    <a class="btn-red" 
+                        href="{{ url('class!delete', {'id': class.id}) }}">
+                        <i class="fas fa-times-circle fa-fw fa-lg"></i>
+                    </a>
                 </td>
                 <td>
-
                     {% if class.extends %}
                         extends {{ class.extends }}
                     {% elseif class.implements %}
@@ -47,17 +51,10 @@
                         <i class="fas fa-ban fa-lg"></i>
                     {% endif %}
 
-                </td>
-                <td>
-                    <a class="btn-blue" 
-                        href="{{ url('class!update', {'id': class.id}) }}">
-                        <i class="fas fa-pen-square fa-fw fa-lg"></i>
-                    </a>
-                    <br>
-                    <a class="btn-red" 
-                        href="{{ url('class!delete', {'id': class.id}) }}">
-                        <i class="fas fa-times-circle fa-fw fa-lg"></i>
-                    </a>
+                    {% if class.parameters %}
+                        <hr>
+                        {{ class.parameters }}
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}

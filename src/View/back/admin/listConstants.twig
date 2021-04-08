@@ -12,13 +12,12 @@
     <table class="table">
         <thead>
         <tr>
+            <th>Constant</th>
             <th>
-                Constant
+                Value
                 <hr>
                 Category
             </th>
-            <th>Value</th>
-            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -38,21 +37,21 @@
                         </p>
                     {% endif %}
 
-                    <hr>
-                    {{ constant.category }}
-
-                </td>
-                <td>{{ constant.valor }}</td>
-                <td>
+                    <br>
                     <a class="btn-blue" 
                         href="{{ url('constant!update', {'id': constant.id}) }}">
                         <i class="fas fa-pen-square fa-fw fa-lg"></i>
                     </a>
-                    <br>
                     <a class="btn-red" 
                         href="{{ url('constant!delete', {'id': constant.id}) }}">
                         <i class="fas fa-times-circle fa-fw fa-lg"></i>
                     </a>
+
+                </td>
+                <td>
+                    {{ constant.valor }}
+                    <hr>
+                    {{ constant.category }}
                 </td>
             </tr>
         {% endfor %}

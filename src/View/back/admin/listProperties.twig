@@ -14,7 +14,6 @@
         <tr>
             <th>Property</th>
             <th>Value Type</th>
-            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -22,7 +21,6 @@
         {% for property in properties %}
             <tr>
                 <td>
-
                     {% if property.constant %}
                         const {{ property.property }}
                     {% elseif property.static %}
@@ -30,15 +28,14 @@
                     {% else %}
                         {{ property.visibility }} {{ property.property }}
                     {% endif %}
-
                 </td>
-                <td>{{ property.value_type }}</td>
                 <td>
+                    {{ property.value_type }}
+                    <br>
                     <a class="btn-blue" 
                         href="{{ url('property!update', {'id': property.id}) }}">
                         <i class="fas fa-pen-square fa-fw fa-lg"></i>
                     </a>
-                    <br>
                     <a class="btn-red" 
                         href="{{ url('property!delete', {'id': property.id}) }}">
                         <i class="fas fa-times-circle fa-fw fa-lg"></i>
