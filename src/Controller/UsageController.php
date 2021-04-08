@@ -8,10 +8,10 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
 /**
- * Class StartController
+ * Class UsageController
  * @package App\Controller
  */
-class StartController extends MainController
+class UsageController extends MainController
 {
     /**
      * @return string
@@ -21,6 +21,6 @@ class StartController extends MainController
      */
     public function defaultMethod()
     {
-        return $this->render("front/start.twig");
+        return $this->render("front/usage/usage.twig");
     }
 }

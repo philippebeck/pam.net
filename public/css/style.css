@@ -37,3 +37,7 @@ h6 {
   --menu-checked-child-color: var(--secondary);
   --menu-child-hover-color: var(--secondary);
 }
+
+.table {
+  --table-cell-word-break: break-all;
+}

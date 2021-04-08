@@ -1,5 +1,12 @@
-<article id="installation-home"
-    class="menu-target1">
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Getting Start{% endblock %}
+
+{% block description %}Installation of Pam, the Php Adaptive Microframework{% endblock %}
+
+{% block main %}
+<main  id="start-home"
+    class="container-90tn">
 
     <h2 class="anima-shrink-this">
         <i class="fas fa-download fa-lg"></i> 
@@ -11,23 +18,23 @@
     </header>
 
     <nav class="sidebar">
-        <a href="#installation-home" 
+        <a href="#start-home" 
             title="Installation Home">
             <i class="fas fa-chevron-circle-up fa-lg fa-fw"></i>
         </a>
-        <a href="#installation-composer" 
+        <a href="#start-composer" 
             title="Installation Composer">
             <i class="fab fa-php fa-lg fa-fw"></i>
         </a>
-        <a href="#installation-clone" 
+        <a href="#start-clone" 
             title="Installation Git Clone">
             <i class="fab fa-git-alt fa-lg fa-fw"></i>
         </a>
-        <a href="#installation-release" 
+        <a href="#start-release" 
             title="Installation GitHub Release">
             <i class="fab fa-github fa-lg fa-fw"></i>
         </a>
-        <a href="#installation-archive" 
+        <a href="#start-archive" 
             title="Installation GitHub Archive">
             <i class="fab fa-github-alt fa-lg fa-fw"></i>
         </a>
@@ -36,7 +43,7 @@
     <i class="fas fa-chevron-down fa-2x mar-top-lg" 
         aria-hidden="true"></i>
 
-    <section id="installation-composer">
+    <section id="start-composer">
         <h3 class="color-blue">
             <i class="fab fa-php fa-lg"></i> 
             Composer
@@ -49,7 +56,7 @@
     <i class="fas fa-sort fa-2x mar-top-lg" 
         aria-hidden="true"></i>
 
-    <section id="installation-clone">
+    <section id="start-clone">
         <h3 class="color-red">
             <i class="fab fa-git-alt fa-lg"></i> 
             Git Clone
@@ -62,7 +69,7 @@
     <i class="fas fa-sort fa-2x mar-top-lg" 
         aria-hidden="true"></i>
 
-    <section id="installation-release">
+    <section id="start-release">
         <h3 class="color-gh">
             <i class="fab fa-github fa-lg"></i> 
             GitHub Release
@@ -80,7 +87,7 @@
     <i class="fas fa-sort fa-2x mar-top-lg" 
         aria-hidden="true"></i>
 
-    <section id="installation-archive">
+    <section id="start-archive">
         <h3 class="color-gh">
             <i class="fab fa-github-alt fa-lg"></i> 
             GitHub Archive
@@ -94,4 +101,5 @@
             Master Zip
         </a>
     </section>
-</article>
+</main>
+{% endblock %}
