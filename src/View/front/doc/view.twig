@@ -6,21 +6,32 @@
     </h2>
 
     <nav class="sidebar">
-        <a href="#view-home" 
-            title="view Home">
-            <i class="fas fa-chevron-circle-up"></i>
-        </a>
+        <input id="sidebar-view"
+            class="sidebar-check" 
+            type="checkbox">
+        <label for="sidebar-view"
+            class="sidebar-open" 
+            title="Show Sidebar">
+            <i class="far fa-eye fa-lg fa-fw"></i>
+        </label>
+        <label for="sidebar-view"
+            title="Hide Sidebar">
+            <i class="far fa-eye-slash fa-lg fa-fw"></i>
+        </label>
 
         {% for class in classes %}
             {% if 'View' in class.path %}
-
             <a href="#{{ class.class|lower }}"
                 title="{{ class.class }}">
                 {{ loop.index }}
             </a>
-
             {% endif %}
         {% endfor %}
+
+        <a href="#view-home" 
+            title="view Home">
+            <i class="fas fa-chevron-circle-up"></i>
+        </a>
     </nav>
 
     <ul class="flex">

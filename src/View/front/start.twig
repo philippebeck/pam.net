@@ -18,10 +18,19 @@
     </header>
 
     <nav class="sidebar">
-        <a href="#start-home" 
-            title="Installation Home">
-            <i class="fas fa-chevron-circle-up fa-lg fa-fw"></i>
-        </a>
+        <input id="sidebar-start"
+            class="sidebar-check" 
+            type="checkbox">
+        <label for="sidebar-start"
+            class="sidebar-open" 
+            title="Show Sidebar">
+            <i class="far fa-eye fa-lg fa-fw"></i>
+        </label>
+        <label for="sidebar-start"
+            title="Hide Sidebar">
+            <i class="far fa-eye-slash fa-lg fa-fw"></i>
+        </label>
+
         <a href="#start-composer" 
             title="Installation Composer">
             <i class="fab fa-php fa-lg fa-fw"></i>
@@ -37,6 +46,11 @@
         <a href="#start-archive" 
             title="Installation GitHub Archive">
             <i class="fab fa-github-alt fa-lg fa-fw"></i>
+        </a>
+
+        <a href="#start-home" 
+            title="Installation Home">
+            <i class="fas fa-chevron-circle-up fa-lg fa-fw"></i>
         </a>
     </nav>
 
