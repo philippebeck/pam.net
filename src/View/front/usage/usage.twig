@@ -18,10 +18,19 @@
     </header>
 
     <nav class="sidebar">
-        <a href="#usage-home" 
-            title="Usage Home">
-            <i class="fas fa-chevron-circle-up fa-lg fa-fw"></i>
-        </a>
+        <input id="sidebar-usage"
+            class="sidebar-check" 
+            type="checkbox">
+        <label for="sidebar-usage"
+            class="sidebar-open" 
+            title="Show Sidebar">
+            <i class="far fa-eye fa-lg fa-fw"></i>
+        </label>
+        <label for="sidebar-usage"
+            title="Hide Sidebar">
+            <i class="far fa-eye-slash fa-lg fa-fw"></i>
+        </label>
+
         <a href="#usage-config" 
             title="Usage Config">
             <i class="fas fa-cogs fa-lg fa-fw"></i>
@@ -41,6 +50,10 @@
         <a href="#usage-controller" 
             title="Usage Controller">
             <i class="fas fa-server fa-lg fa-fw"></i>
+        </a>
+        <a href="#usage-home" 
+            title="Usage Home">
+            <i class="fas fa-chevron-circle-up fa-lg fa-fw"></i>
         </a>
     </nav>
 

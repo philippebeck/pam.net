@@ -6,10 +6,19 @@
     </h2>
 
     <nav class="sidebar">
-        <a href="#config-home" 
-            title="Configuration Home">
-            <i class="fas fa-chevron-circle-up fa-lg fa-fw"></i>
-        </a>
+        <input id="sidebar-config"
+            class="sidebar-check" 
+            type="checkbox">
+        <label for="sidebar-config"
+            class="sidebar-open" 
+            title="Show Sidebar">
+            <i class="far fa-eye fa-lg fa-fw"></i>
+        </label>
+        <label for="sidebar-config"
+            title="Hide Sidebar">
+            <i class="far fa-eye-slash fa-lg fa-fw"></i>
+        </label>
+
         <a href="#config-replace" 
             title="Parameters to Replace">
             <i class="fas fa-sync-alt fa-lg fa-fw"></i>
@@ -17,6 +26,11 @@
         <a href="#config-replaceable" 
             title="Replaceable Parameters">
             <i class="fas fa-recycle fa-lg fa-fw"></i>
+        </a>
+
+        <a href="#config-home" 
+            title="Configuration Home">
+            <i class="fas fa-chevron-circle-up fa-lg fa-fw"></i>
         </a>
     </nav>
 
