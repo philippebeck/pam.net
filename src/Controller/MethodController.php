@@ -39,24 +39,44 @@ class MethodController extends MainController
         if (!empty($this->getPost()->getPostArray())) {
             $this->setMethodData();
 
-            ModelFactory::getModel("Method")->createData($this->method);
-            $this->getSession()->createAlert("New Method successfully created !", "green");
+            ModelFactory::getModel("Method")->createData(
+                $this->method
+            );
+
+            $this->getSession()->createAlert(
+                "New Method successfully created !", 
+                "green"
+            );
 
             $this->redirect("admin");
         }
 
         $classes = ModelFactory::getModel("Class")->listData();
 
-        return $this->render("back/method/createMethod.twig", ["classes" => $classes]);
+        return $this->render("back/method/createMethod.twig", [
+            "classes" => $classes
+        ]);
     }
 
     private function setMethodData()
     {
         $this->method = $this->getPost()->getPostArray();
 
-        $this->method["method"]     = (string) trim($this->method["method"]);
-        $this->method["parameters"] = (string) trim($this->method["parameters"]);
-        $this->method["return"]     = (string) trim($this->method["return"]);
+        $this->method["method"] = (string) trim(
+            $this->method["method"]
+        );
+
+        $this->method["visibility"] = (string) trim(
+            $this->method["visibility"]
+        );
+
+        $this->method["parameters"] = (string) trim(
+            $this->method["parameters"]
+        );
+
+        $this->method["return"] = (string) trim(
+            $this->method["return"]
+        );
 
         $this->method["static"]     = (int) $this->method["static"];
         $this->method["class_id"]   = (int) $this->method["class_id"];
@@ -77,15 +97,24 @@ class MethodController extends MainController
         if (!empty($this->getPost()->getPostArray())) {
             $this->setMethodData();
 
-            ModelFactory::getModel("Method")->updateData($this->getGet()->getGetVar("id"), $this->method);
-            $this->getSession()->createAlert("Successful modification of the selected Method !", "blue");
+            ModelFactory::getModel("Method")->updateData(
+                $this->getGet()->getGetVar("id"), 
+                $this->method
+            );
+
+            $this->getSession()->createAlert(
+                "Successful modification of the selected Method !", 
+                "blue"
+            );
 
             $this->redirect("admin");
         }
 
-        $method     = ModelFactory::getModel("Method")->readData($this->getGet()->getGetVar("id"));
-        $classes    = ModelFactory::getModel("Class")->listData();
+        $method = ModelFactory::getModel("Method")->readData(
+            $this->getGet()->getGetVar("id")
+        );
 
+        $classes = ModelFactory::getModel("Class")->listData();
 
         return $this->render("back/method/updateMethod.twig", [
             "method"    => $method,
@@ -99,8 +128,14 @@ class MethodController extends MainController
             $this->redirect("home");
         }
 
-        ModelFactory::getModel("Method")->deleteData($this->getGet()->getGetVar("id"));
-        $this->getSession()->createAlert("Method permanently deleted !", "red");
+        ModelFactory::getModel("Method")->deleteData(
+            $this->getGet()->getGetVar("id")
+        );
+
+        $this->getSession()->createAlert(
+            "Method permanently deleted !", 
+            "red"
+        );
 
         $this->redirect("admin");
 

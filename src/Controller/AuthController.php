@@ -28,6 +28,7 @@ class AuthController extends MainController
     public function defaultMethod()
     {
         if (!empty($this->getPost()->getPostArray())) {
+
             $this->user = $this->getPost()->getPostArray();
             $this->CheckSecurity();
         }
@@ -37,30 +38,50 @@ class AuthController extends MainController
 
     private function CheckSecurity()
     {
-        if (isset($this->user["g-recaptcha-response"]) && !empty($this->user["g-recaptcha-response"])) {
+        if (
+            isset($this->user["g-recaptcha-response"]) 
+            && !empty($this->user["g-recaptcha-response"])
+        ) {
 
-            if ($this->getSecurity()->checkRecaptcha($this->user["g-recaptcha-response"])) {
+            if (
+                $this->getSecurity()->checkRecaptcha(
+                    $this->user["g-recaptcha-response"]
+                )
+            ) {
                 $this->checkLogin();
             }
         }
 
-        $this->getSession()->createAlert("Check the reCAPTCHA !", "red");
+        $this->getSession()->createAlert(
+            "Check the reCAPTCHA !", 
+            "red"
+        );
 
         $this->redirect("user");
     }
 
     private function checkLogin()
     {
-        $user = ModelFactory::getModel("User")->readData($this->user["email"], "email");
+        $user = ModelFactory::getModel("User")->readData(
+            $this->user["email"], 
+            "email"
+        );
 
         if (!password_verify($this->user["pass"], $user["pass"])) {
-            $this->getSession()->createAlert("Failed authentication !", "black");
+            $this->getSession()->createAlert(
+                "Failed authentication !", 
+                "black"
+            );
 
             $this->redirect("user");
         }
 
         $this->getSession()->createSession($user);
-        $this->getSession()->createAlert("Successful authentication, welcome " . $user["name"] . " !", "violet");
+        
+        $this->getSession()->createAlert(
+            "Successful authentication, welcome " . $user["name"] . " !", 
+            "violet"
+        );
 
         $this->redirect("admin");
     }
