@@ -83,9 +83,9 @@ INSERT INTO `Class`
 ('MainExtension',       'View',                 '',                         0,  0,  'AbstractExtension',    '',                 'The MainExtension class defines the common functions accessible with Twig, like url() or redirect()'),
 ('GlobalsExtension',    'View',                 '',                         0,  0,  'AbstractExtension',    '',                 'The GlobalsExtension class defines the functions to manage the SuperGlobals accessible with Twig, like hasAlert() or getAlertMessage()'),
 ('ServiceExtension',    'View',                 '',                         0,  0,  'AbstractExtension',    '',                 'The ServicesExtension class defines the functions to manage the Services accessible with Twig, like cleanString() or checkIsAdmin()'),
-('FrontController',     'Controller',           '',                         0,  0,  '',                     '',                 'The FrontController class defines the public methods to handle all requests for the projects'),
+('FrontController',     'Controller',           '',                         0,  0,  '',                     '',                 'The FrontController class defines the private methods to handle all requests for the projects'),
 ('GlobalsController',   'Controller',           '',                         1,  0,  '',                     '',                 'The GlobalsController class defines the getters to access PHP SuperGlobals : $ _COOKIE, $ _ENV, $ _FILES, $ _GET, $ _POST, $ _REQUEST, $ _SERVER & $ _SESSION'),
-('MainController',      'Controller',           '',                         1,  0,  'ServiceController',    '',                 'The MainController abstract class defines configuration of Twig template engine with its extensions & public methods to manage redirection & rendering'),
+('MainController',      'Controller',           '',                         1,  0,  'ServiceController',    '',                 'The MainController abstract class defines configuration of Twig template engine with its extensions & protected methods to manage redirection & rendering'),
 ('ServiceController',   'Controller',           '',                         1,  0,  'GlobalsController',    '',                 'The ServiceController class defines the getters to access services : Array, Curl, Image, Mail, Security & String'),
 ('CookieManager',       'Controller\\Globals',  '',                         0,  0,  '',                     '',                 'The CookieManager class filter $_COOKIE SuperGlobal & defines the public methods to manage Cookies'),
 ('EnvManager',          'Controller\\Globals',  '',                         0,  0,  '',                     '',                 'The EnvManager class filter $_ENV SuperGlobal & defines the public methods to manage Environment'),
@@ -95,12 +95,12 @@ INSERT INTO `Class`
 ('RequestManager',      'Controller\\Globals',  '',                         0,  0,  '',                     '',                 'The RequestManager class filter $_REQUEST SuperGlobal & defines the public methods to manage the Requests'),
 ('ServerManager',       'Controller\\Globals',  '',                         0,  0,  '',                     '',                 'The ServerManager class filter $_SERVER SuperGlobal & defines the public methods to manage the Server data'),
 ('SessionManager',      'Controller\\Globals',  '',                         0,  0,  '',                     '',                 'The SessionManager class filter $_SESSION SuperGlobal & defines the public methods to manage the Sessions for Alerts & Users'),
-('ArrayManager',        'Controller\\Service',  '',                         0,  0,  '',                     '',                 'The ArrayManager class defines the public methods to manage Array'),
-('CurlManager',         'Controller\\Service',  '',                         0,  0,  '',                     '',                 'The CurlManager class defines the public methods to manage Curl calls'),
+('ArrayManager',        'Controller\\Service',  '',                         0,  0,  '',                     '',                 'The ArrayManager class defines a public method to manage Array'),
+('CurlManager',         'Controller\\Service',  '',                         0,  0,  '',                     '',                 'The CurlManager class defines a public method to manage Curl calls'),
 ('ImageManager',        'Controller\\Service',  '',                         0,  0,  '',                     '',                 'The ImageManager class defines the public methods to manage Images manipulations'),
-('MailManager',         'Controller\\Service',  '',                         0,  0,  '',                     '',                 'The MailManager class defines the public methods to manage Mails sent'),
+('MailManager',         'Controller\\Service',  '',                         0,  0,  '',                     '',                 'The MailManager class defines a public method to manage Mails sent'),
 ('SecurityManager',     'Controller\\Service',  '',                         0,  0,  'GlobalsController',    '',                 'The SecurityManager defines the public methods to manage Security'),
-('StringManager',       'Controller\\Service',  '',                         0,  0,  '',                     '',                 'The StringManager defines the public methods to manage Strings');
+('StringManager',       'Controller\\Service',  '',                         0,  0,  '',                     '',                 'The StringManager defines a public method to manage Strings & private methods to set them');
 
 INSERT INTO `Property`
 (`property`, `visibility`, `value_type`, `constant`, `static`, `class_id`) VALUES
