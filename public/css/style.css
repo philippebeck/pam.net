@@ -38,6 +38,8 @@ h6 {
   --menu-child-hover-color: var(--secondary);
 }
 
-.table {
+.menu-target1 .table,
+.menu-target2 .table,
+.menu-target4 .table {
   --table-cell-word-break: break-all;
 }

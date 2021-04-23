@@ -32,11 +32,22 @@
                     <input name="visibility"
                         type="hidden"
                         value="public">
-                    <input id="visibility" 
-                        name="visibility" 
-                        maxlength="10" 
-                        type="text" 
-                        placeholder="Type the Visibility">
+                    <select id="visibility"
+                        name="visibility"
+                        required>
+                        <option value="">
+                            Choose the Visibility
+                        </option>
+                        <option value="public">
+                            public
+                        </option>
+                        <option value="public">
+                            protected
+                        </option>
+                        <option value="public">
+                            private
+                        </option>
+                    </select>
                 </li>
                 <li>
                     <label for="value_type">

@@ -29,14 +29,25 @@
                     <label for="visibility">
                         Visibility
                     </label>
-                    <input name="visibility"
-                        type="hidden"
-                        value="public">
-                    <input id="visibility" 
-                        name="visibility" 
-                        maxlength="10" 
-                        type="text" 
-                        value="{{ property.visibility }}">
+                    <select id="visibility"
+                        name="visibility"
+                        required>
+                        
+                        <option value="{{ property.visibility }}" 
+                            selected>
+                            {{ property.visibility }} (Registred)
+                        </option>
+                        
+                        <option value="public">
+                            public
+                        </option>
+                        <option value="public">
+                            protected
+                        </option>
+                        <option value="public">
+                            private
+                        </option>
+                    </select>
                 </li>
                 <li>
                     <label for="value_type">

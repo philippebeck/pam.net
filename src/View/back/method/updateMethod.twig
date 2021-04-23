@@ -26,6 +26,33 @@
                         required>
                 </li>
                 <li>
+                    <label for="visibility">
+                        Visibility
+                    </label>
+                    <input name="visibility"
+                        type="hidden"
+                        value="public">
+                    <select id="visibility"
+                        name="visibility"
+                        required>
+                        
+                        <option value="{{ method.visibility }}" 
+                            selected>
+                            {{ method.visibility }} (Registred)
+                        </option>
+                        
+                        <option value="public">
+                            public
+                        </option>
+                        <option value="public">
+                            protected
+                        </option>
+                        <option value="public">
+                            private
+                        </option>
+                    </select>
+                </li>
+                <li>
                     <label for="parameters">
                         Parameters
                     </label>

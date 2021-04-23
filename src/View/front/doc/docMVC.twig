@@ -118,7 +118,7 @@
                         <li class="color-secondary">
 
                             {% if method.static %}
-                                public static function 
+                                {{ method.visibility }} static function 
                                 <span class="font-bold deco-double">
                                     {{ method.method }}
                                 </span> 
@@ -127,7 +127,7 @@
                                 </span>)
 
                             {% else %}
-                                public function 
+                                {{ method.visibility }} function 
                                 <span class="font-bold deco-double">
                                     {{ method.method }}
                                 </span> 
