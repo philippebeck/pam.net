@@ -26,8 +26,12 @@
             <tr>
                 <td>
                     {% if method.static %}
-                        static {{ method.method }}()
+                        {{ method.visibility }}
+                        static function 
+                        {{ method.method }}()
                     {% else %}
+                        {{ method.visibility }}
+                        function 
                         {{ method.method }}()
                     {% endif %}
                     <br>
