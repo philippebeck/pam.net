@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Pam\Controller\MainController;
-use Pam\Model\Factory\ModelFactory;
+use Pam\Model\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -27,9 +27,9 @@ class AuthController extends MainController
      */
     public function defaultMethod()
     {
-        if (!empty($this->getPost()->getPostArray())) {
+        if ($this->checkGlobal($this->getPost())) {
 
-            $this->user = $this->getPost()->getPostArray();
+            $this->user = $this->getPost();
             $this->CheckSecurity();
         }
 
@@ -38,24 +38,17 @@ class AuthController extends MainController
 
     private function CheckSecurity()
     {
-        if (
-            isset($this->user["g-recaptcha-response"]) 
-            && !empty($this->user["g-recaptcha-response"])
-        ) {
+        if (isset($this->user["g-recaptcha-response"]) && !empty($this->user["g-recaptcha-response"])) {
 
-            if (
-                $this->getSecurity()->checkRecaptcha(
-                    $this->user["g-recaptcha-response"]
-                )
-            ) {
+            if ($this->checkRecaptcha($this->user["g-recaptcha-response"])) {
                 $this->checkLogin();
             }
         }
 
-        $this->getSession()->createAlert(
+        $this->setSession([
             "Check the reCAPTCHA !", 
             "red"
-        );
+        ]);
 
         $this->redirect("user");
     }
@@ -68,20 +61,20 @@ class AuthController extends MainController
         );
 
         if (!password_verify($this->user["pass"], $user["pass"])) {
-            $this->getSession()->createAlert(
+            $this->setSession([
                 "Failed authentication !", 
                 "black"
-            );
+            ]);
 
             $this->redirect("user");
         }
 
-        $this->getSession()->createSession($user);
+        $this->setSession($user, true);
         
-        $this->getSession()->createAlert(
+        $this->setSession([
             "Successful authentication, welcome " . $user["name"] . " !", 
             "violet"
-        );
+        ]);
 
         $this->redirect("admin");
     }

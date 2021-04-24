@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Pam\Controller\MainController;
-use Pam\Model\Factory\ModelFactory;
+use Pam\Model\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -24,6 +24,17 @@ class MethodController extends MainController
         $this->redirect("home");
     }
 
+    private function setMethodData()
+    {
+        $this->method["method"]     = (string) trim($this->getPost("method"));
+        $this->method["visibility"] = (string) trim($this->getPost("visibility"));
+        $this->method["parameters"] = (string) trim($this->getPost("parameters"));
+        $this->method["return"]     = (string) trim($this->getPost("return"));
+
+        $this->method["static"]     = (int) $this->getPost("static");
+        $this->method["class_id"]   = (int) $this->getPost("class_id");
+    }
+
     /**
      * @return string
      * @throws LoaderError
@@ -32,54 +43,26 @@ class MethodController extends MainController
      */
     public function createMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        if (!empty($this->getPost()->getPostArray())) {
+        if ($this->checkGlobal($this->getPost())) {
             $this->setMethodData();
 
-            ModelFactory::getModel("Method")->createData(
-                $this->method
-            );
+            ModelFactory::getModel("Method")->createData($this->method);
 
-            $this->getSession()->createAlert(
+            $this->setSession([
                 "New Method successfully created !", 
                 "green"
-            );
+            ]);
 
             $this->redirect("admin");
         }
 
         $classes = ModelFactory::getModel("Class")->listData();
 
-        return $this->render("back/method/createMethod.twig", [
-            "classes" => $classes
-        ]);
-    }
-
-    private function setMethodData()
-    {
-        $this->method = $this->getPost()->getPostArray();
-
-        $this->method["method"] = (string) trim(
-            $this->method["method"]
-        );
-
-        $this->method["visibility"] = (string) trim(
-            $this->method["visibility"]
-        );
-
-        $this->method["parameters"] = (string) trim(
-            $this->method["parameters"]
-        );
-
-        $this->method["return"] = (string) trim(
-            $this->method["return"]
-        );
-
-        $this->method["static"]     = (int) $this->method["static"];
-        $this->method["class_id"]   = (int) $this->method["class_id"];
+        return $this->render("back/createMethod.twig", ["classes" => $classes]);
     }
 
     /**
@@ -90,11 +73,11 @@ class MethodController extends MainController
      */
     public function updateMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        if (!empty($this->getPost()->getPostArray())) {
+        if ($this->checkGlobal($this->getPost())) {
             $this->setMethodData();
 
             ModelFactory::getModel("Method")->updateData(
@@ -102,21 +85,18 @@ class MethodController extends MainController
                 $this->method
             );
 
-            $this->getSession()->createAlert(
+            $this->setSession([
                 "Successful modification of the selected Method !", 
                 "blue"
-            );
+            ]);
 
             $this->redirect("admin");
         }
 
-        $method = ModelFactory::getModel("Method")->readData(
-            $this->getGet()->getGetVar("id")
-        );
+        $method     = ModelFactory::getModel("Method")->readData($this->getGet("id"));
+        $classes    = ModelFactory::getModel("Class")->listData();
 
-        $classes = ModelFactory::getModel("Class")->listData();
-
-        return $this->render("back/method/updateMethod.twig", [
+        return $this->render("back/updateMethod.twig", [
             "method"    => $method,
             "classes"   => $classes
         ]);
@@ -124,18 +104,16 @@ class MethodController extends MainController
 
     public function deleteMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        ModelFactory::getModel("Method")->deleteData(
-            $this->getGet()->getGetVar("id")
-        );
+        ModelFactory::getModel("Method")->deleteData($this->getGet()->getGetVar("id"));
 
-        $this->getSession()->createAlert(
+        $this->setSession([
             "Method permanently deleted !", 
             "red"
-        );
+        ]);
 
         $this->redirect("admin");
 
