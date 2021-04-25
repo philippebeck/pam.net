@@ -27,11 +27,6 @@ h6 {
   --sidebar-child-hover-background-color: var(--secondary-dark);
 }
 
-.menu-target4 .sidebar {
-  --sidebar-child-margin: 2px;
-  --sidebar-child-padding: 3px;
-}
-
 .menu {
   --menu-child-background-color: var(--secondary-dark);
   --menu-checked-child-color: var(--secondary);
