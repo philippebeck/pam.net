@@ -27,7 +27,7 @@ class AuthController extends MainController
      */
     public function defaultMethod()
     {
-        if ($this->checkGlobal($this->getPost())) {
+        if ($this->checkArray($this->getPost())) {
 
             $this->user = $this->getPost();
             $this->CheckSecurity();
@@ -81,7 +81,7 @@ class AuthController extends MainController
 
     public function logoutMethod()
     {
-        $this->getSession()->destroySession();
+        $this->destroyGlobal();
 
         $this->redirect("home");
     }

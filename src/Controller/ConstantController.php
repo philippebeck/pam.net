@@ -45,7 +45,7 @@ class ConstantController extends MainController
             $this->redirect("home");
         }
 
-        if ($this->checkGlobal($this->getPost())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setConstantData();
 
             ModelFactory::getModel("Constant")->createData($this->constant);
@@ -73,7 +73,7 @@ class ConstantController extends MainController
             $this->redirect("home");
         }
 
-        if ($this->checkGlobal($this->getPost())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setConstantData();
 
             ModelFactory::getModel("Constant")->updateData(

@@ -30,7 +30,6 @@ class PropertyController extends MainController
         $this->property["visibility"]   = (string) trim($this->getPost("visibility"));
         $this->property["value_type"]   = (string) trim($this->getPost("value_type"));
 
-        $this->property["constant"] = (int) $this->getPost("constant");
         $this->property["static"]   = (int) $this->getPost("static");
         $this->property["class_id"] = (int) $this->getPost("class_id");
     }
@@ -47,7 +46,7 @@ class PropertyController extends MainController
             $this->redirect("home");
         }
 
-        if ($this->checkGlobal($this->getPost())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setPropertyData();
 
             ModelFactory::getModel("Property")->createData($this->property);
@@ -77,11 +76,11 @@ class PropertyController extends MainController
             $this->redirect("home");
         }
 
-        if ($this->checkGlobal($this->getPost())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setPropertyData();
 
             ModelFactory::getModel("Property")->updateData(
-                $this->getGet()->getGetVar("id"), 
+                $this->getGet("id"), 
                 $this->property
             );
 

@@ -26,7 +26,7 @@ class ContactController extends MainController
      */
     public function defaultMethod()
     {
-        if ($this->checkGlobal($this->getPost())) {
+        if ($this->checkArray($this->getPost())) {
 
             $this->mail = $this->getPost();
             $this->checkSecurity();

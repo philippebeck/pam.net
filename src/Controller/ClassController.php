@@ -30,11 +30,9 @@ class ClassController extends MainController
         $this->class["path"]        = (string) trim($this->getPost("path"));
         $this->class["parameters"]  = (string) trim($this->getPost("parameters"));
         $this->class["extends"]     = (string) trim($this->getPost("extends"));
-        $this->class["implements"]  = (string) trim($this->getPost("implements"));
         $this->class["definition"]  = (string) trim($this->getPost("definition"));
 
-        $this->class["abstract"]    = (int) $this->getPost("abstract");
-        $this->class["interface"]   = (int) $this->getPost("interface");
+        $this->class["abstract"] = (int) $this->getPost("abstract");
     }
 
     /**
@@ -49,7 +47,7 @@ class ClassController extends MainController
             $this->redirect("home");
         }
 
-        if ($this->checkGlobal($this->getPost())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setClassData();
 
             ModelFactory::getModel("Class")->createData($this->class);
@@ -77,7 +75,7 @@ class ClassController extends MainController
             $this->redirect("home");
         }
 
-        if ($this->checkGlobal($this->getPost())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setClassData();
 
             ModelFactory::getModel("Class")->updateData(

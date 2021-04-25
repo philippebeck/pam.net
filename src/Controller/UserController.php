@@ -36,11 +36,11 @@ class UserController extends MainController
     {
         $this->setUserData();
 
-        if ($this->checkGlobal($this->getFiles(), "name")) {
+        if ($this->checkArray($this->getFiles(), "name")) {
             $this->setUserImage();
         }
 
-        if ($this->checkGlobal($this->getPost(), "old-pass")) {
+        if ($this->checkArray($this->getPost(), "old-pass")) {
             $this->setUpdatePassword();
         }
 
@@ -92,9 +92,9 @@ class UserController extends MainController
 
     private function setUserImage()
     {
-        $this->user["image"] = $this->getString($this->user["name"]) . $this->getFiles()->setFileExtension();
+        $this->user["image"] = $this->getString($this->user["name"]) . $this->getExtension();
 
-        $this->setFile("img/user/", $this->getString($this->user["name"]));
+        $this->getUploadedFile("img/user/", $this->getString($this->user["name"]));
         $this->getThumbnail("img/user/" . $this->user["image"], 150);
     }
 
@@ -112,7 +112,7 @@ class UserController extends MainController
             $this->redirect("home");
         }
 
-        if ($this->checkGlobal($this->getPost())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setUserData();
             $this->setUserImage();
 
@@ -153,7 +153,7 @@ class UserController extends MainController
             $this->redirect("home");
         }
 
-        if ($this->checkGlobal($this->getPost())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setUpdateData();
         }
 

@@ -47,7 +47,7 @@ class MethodController extends MainController
             $this->redirect("home");
         }
 
-        if ($this->checkGlobal($this->getPost())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setMethodData();
 
             ModelFactory::getModel("Method")->createData($this->method);
@@ -77,11 +77,11 @@ class MethodController extends MainController
             $this->redirect("home");
         }
 
-        if ($this->checkGlobal($this->getPost())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setMethodData();
 
             ModelFactory::getModel("Method")->updateData(
-                $this->getGet()->getGetVar("id"), 
+                $this->getGet("id"), 
                 $this->method
             );
 
@@ -108,7 +108,7 @@ class MethodController extends MainController
             $this->redirect("home");
         }
 
-        ModelFactory::getModel("Method")->deleteData($this->getGet()->getGetVar("id"));
+        ModelFactory::getModel("Method")->deleteData($this->getGet("id"));
 
         $this->setSession([
             "Method permanently deleted !", 
