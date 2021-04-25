@@ -30,7 +30,7 @@
 
         <a href="#controller-home" 
             title="Controller Home">
-            <i class="fas fa-chevron-circle-up"></i>
+            <i class="fas fa-chevron-circle-up fa-lg fa-fw"></i>
         </a>
     </nav>
 
@@ -52,7 +52,7 @@
 
     {% for class in classes %}
         {% if 'Controller' in class.path %}
-            {{ include('front/doc/docMVC.twig') }}
+            {{ include('front/docMVC.twig') }}
         {% endif %}
     {% endfor %}
 

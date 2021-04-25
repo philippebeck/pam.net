@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Pam\Controller\MainController;
-use Pam\Model\Factory\ModelFactory;
+use Pam\Model\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -24,6 +24,17 @@ class ClassController extends MainController
         $this->redirect("home");
     }
 
+    private function setClassData()
+    {
+        $this->class["class"]       = (string) trim($this->getPost("class"));
+        $this->class["path"]        = (string) trim($this->getPost("path"));
+        $this->class["parameters"]  = (string) trim($this->getPost("parameters"));
+        $this->class["extends"]     = (string) trim($this->getPost("extends"));
+        $this->class["definition"]  = (string) trim($this->getPost("definition"));
+
+        $this->class["abstract"] = (int) $this->getPost("abstract");
+    }
+
     /**
      * @return string
      * @throws LoaderError
@@ -32,58 +43,24 @@ class ClassController extends MainController
      */
     public function createMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        if (!empty($this->getPost()->getPostArray())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setClassData();
 
-            ModelFactory::getModel("Class")->createData(
-                $this->class
-            );
+            ModelFactory::getModel("Class")->createData($this->class);
 
-            $this->getSession()->createAlert(
+            $this->setSession([
                 "New Class successfully created !", 
                 "green"
-            );
+            ]);
 
             $this->redirect("admin");
         }
 
-        return $this->render("back/class/createClass.twig");
-    }
-
-    private function setClassData()
-    {
-        $this->class = $this->getPost()->getPostArray();
-
-        $this->class["class"] = (string) trim(
-            $this->class["class"]
-        );
-
-        $this->class["path"] = (string) trim(
-            $this->class["path"]
-        );
-
-        $this->class["parameters"] = (string) trim(
-            $this->class["parameters"]
-        );
-
-        $this->class["extends"] = (string) trim(
-            $this->class["extends"]
-        );
-
-        $this->class["implements"] = (string) trim(
-            $this->class["implements"]
-        );
-
-        $this->class["definition"] = (string) trim(
-            $this->class["definition"]
-        );
-
-        $this->class["abstract"]    = (int) $this->class["abstract"];
-        $this->class["interface"]   = (int) $this->class["interface"];
+        return $this->render("back/createClass.twig");
     }
 
     /**
@@ -94,71 +71,61 @@ class ClassController extends MainController
      */
     public function updateMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        if (!empty($this->getPost()->getPostArray())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setClassData();
 
             ModelFactory::getModel("Class")->updateData(
-                $this->getGet()->getGetVar("id"), 
+                $this->getGet("id"), 
                 $this->class
             );
 
-            $this->getSession()->createAlert(
+            $this->setSession([
                 "Successful modification of the selected Class !", 
                 "blue"
-            );
+            ]);
 
             $this->redirect("admin");
         }
 
-        $class = ModelFactory::getModel("Class")->readData(
-            $this->getGet()->getGetVar("id")
-        );
+        $class = ModelFactory::getModel("Class")->readData($this->getGet("id"));
 
-        return $this->render("back/class/updateClass.twig", [
-            "class" => $class
-        ]);
+        return $this->render("back/updateClass.twig", ["class" => $class]);
     }
 
     public function deleteMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
         $properties = ModelFactory::getModel("Property")->listData(
-            $this->getGet()->getGetVar("id"), 
-            "class_id"
-        );
-
-        $methods = ModelFactory::getModel("Method")->listData(
-            $this->getGet()->getGetVar("id"), 
+            $this->getGet("id"), 
             "class_id"
         );
 
         foreach ($properties as $property) {
-            ModelFactory::getModel("Property")->deleteData(
-                $property["id"]
-            );
+            ModelFactory::getModel("Property")->deleteData($property["id"]);
         }
+
+        $methods = ModelFactory::getModel("Method")->listData(
+            $this->getGet("id"), 
+            "class_id"
+        );
 
         foreach ($methods as $method) {
-            ModelFactory::getModel("Method")->deleteData(
-                $method["id"]
-            );
+            ModelFactory::getModel("Method")->deleteData($method["id"]);
         }
 
-        ModelFactory::getModel("Class")->deleteData(
-            $this->getGet()->getGetVar("id")
-        );
+        ModelFactory::getModel("Class")->deleteData($this->getGet("id"));
 
-        $this->getSession()->createAlert(
+        $this->setSession([
             "Class permanently deleted !", 
             "red"
-        );
+        ]);
 
         $this->redirect("admin");
 

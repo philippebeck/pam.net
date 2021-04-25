@@ -21,6 +21,6 @@ class UsageController extends MainController
      */
     public function defaultMethod()
     {
-        return $this->render("front/usage/usage.twig");
+        return $this->render("front/usage.twig");
     }
 }

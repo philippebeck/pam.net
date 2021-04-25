@@ -14,7 +14,7 @@
         <tr>
             <th>Class</th>
             <th>
-                Extends | Implements
+                Extends
                 <hr>
                 Parameters
             </th>
@@ -25,9 +25,7 @@
         {% for class in classes %}
             <tr>
                 <td>
-                    {% if class.interface %}
-                        interface {{ class.class }}
-                    {% elseif class.abstract %}
+                    {% if class.abstract %}
                         abstract class {{ class.class }}
                     {% else %}
                         class {{ class.class }}
@@ -45,8 +43,6 @@
                 <td>
                     {% if class.extends %}
                         extends {{ class.extends }}
-                    {% elseif class.implements %}
-                        implements {{ class.implements }}
                     {% else %}
                         <i class="fas fa-ban fa-lg"></i>
                     {% endif %}
