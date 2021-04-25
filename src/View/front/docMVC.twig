@@ -3,9 +3,7 @@
     <h3 class="deco">
         {{ loop.index }} -
 
-        {% if class.interface %}
-            interface {{ class.class }}
-        {% elseif class.abstract %}
+        {% if class.abstract %}
             abstract class {{ class.class }}
         {% else %}
             class {{ class.class }}
@@ -28,12 +26,6 @@
             </li>
         {% endif %}
 
-        {% if class.implements %}
-            <li class="font-sans-serif">
-                Implements {{ class.implements }}
-            </li>
-        {% endif %}
-
         {% if class.parameters %}
             <li class="font-sans-serif">
                 Constructor Parameters : {{ class.parameters }}
@@ -53,11 +45,7 @@
         <p>
             {% if property.class_id is same as(class.id) %}
 
-                {% if property.constant %}
-                    const {{ property.property }} 
-                    (@var {{ property.value_type }})
-
-                {% elseif property.static %}
+                {% if property.static %}
                     {{ property.visibility }} static {{ property.property }} 
                     (@var {{ property.value_type }})
 
