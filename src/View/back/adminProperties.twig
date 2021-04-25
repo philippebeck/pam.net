@@ -21,9 +21,7 @@
         {% for property in properties %}
             <tr>
                 <td>
-                    {% if property.constant %}
-                        const {{ property.property }}
-                    {% elseif property.static %}
+                    {% if property.static %}
                         {{ property.visibility }} static {{ property.property }}
                     {% else %}
                         {{ property.visibility }} {{ property.property }}

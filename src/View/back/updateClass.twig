@@ -60,19 +60,6 @@
                         {% if class.abstract %}checked{% endif %}>
                 </li>
                 <li>
-                    <label for="interface">
-                        Interface
-                    </label>
-                    <input name="interface"
-                        type="hidden"
-                        value="0">
-                    <input id="interface" 
-                        name="interface" 
-                        type="checkbox" 
-                        value="1"
-                        {% if class.interface %}checked{% endif %}>
-                </li>
-                <li>
                     <label for="extends">
                         Extends
                     </label>
@@ -81,16 +68,6 @@
                         type="text" 
                         maxlength="20" 
                         value="{{ class.extends }}">
-                </li>
-                <li>
-                    <label for="implements">
-                        Implements
-                    </label>
-                    <input id="implements" 
-                        name="implements" 
-                        type="text" 
-                        maxlength="20" 
-                        value="{{ class.implements }}">
                 </li>
                 <li>
                     <label for="definition">
