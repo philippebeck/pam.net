@@ -51,8 +51,8 @@ class ConstantController extends MainController
             ModelFactory::getModel("Constant")->createData($this->constant);
 
             $this->setSession([
-                "New Constant successfully created !", 
-                "green"
+                "message"   => "New Constant successfully created !", 
+                "type"      => "green"
             ]);
 
             $this->redirect("admin");
@@ -82,8 +82,8 @@ class ConstantController extends MainController
             );
 
             $this->setSession([
-                "Successful modification of the selected Constant !", 
-                "blue"
+                "message"   => "Successful modification of the selected Constant !", 
+                "type"      => "blue"
             ]);
 
             $this->redirect("admin");
@@ -103,8 +103,8 @@ class ConstantController extends MainController
         ModelFactory::getModel("Constant")->deleteData($this->getGet("id"));
 
         $this->setSession([
-            "Constant permanently deleted !", 
-            "red"
+            "message"   => "Constant permanently deleted !", 
+            "type"      => "red"
         ]);
 
         $this->redirect("admin");

@@ -53,8 +53,8 @@ class MethodController extends MainController
             ModelFactory::getModel("Method")->createData($this->method);
 
             $this->setSession([
-                "New Method successfully created !", 
-                "green"
+                "message"   => "New Method successfully created !", 
+                "type"      => "green"
             ]);
 
             $this->redirect("admin");
@@ -86,8 +86,8 @@ class MethodController extends MainController
             );
 
             $this->setSession([
-                "Successful modification of the selected Method !", 
-                "blue"
+                "message"   => "Successful modification of the selected Method !", 
+                "type"      => "blue"
             ]);
 
             $this->redirect("admin");
@@ -111,8 +111,8 @@ class MethodController extends MainController
         ModelFactory::getModel("Method")->deleteData($this->getGet("id"));
 
         $this->setSession([
-            "Method permanently deleted !", 
-            "red"
+            "message"   => "Method permanently deleted !", 
+            "type"      => "red"
         ]);
 
         $this->redirect("admin");

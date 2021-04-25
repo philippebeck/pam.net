@@ -52,8 +52,8 @@ class PropertyController extends MainController
             ModelFactory::getModel("Property")->createData($this->property);
 
             $this->setSession([
-                "New Property successfully created !", 
-                "green"
+                "message"   => "New Property successfully created !", 
+                "type"      => "green"
             ]);
 
             $this->redirect("admin");
@@ -85,8 +85,8 @@ class PropertyController extends MainController
             );
 
             $this->setSession([
-                "Successful modification of the selected Property !", 
-                "blue"
+                "message"   => "Successful modification of the selected Property !", 
+                "type"      => "blue"
             ]);
 
             $this->redirect("admin");
@@ -110,8 +110,8 @@ class PropertyController extends MainController
         ModelFactory::getModel("Property")->deleteData($this->getGet("id"));
 
         $this->setSession([
-            "Property permanently deleted !", 
-            "red"
+            "message"   => "Property permanently deleted !", 
+            "type"      => "red"
         ]);
 
         $this->redirect("admin");
