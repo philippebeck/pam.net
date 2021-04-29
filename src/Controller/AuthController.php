@@ -46,8 +46,8 @@ class AuthController extends MainController
         }
 
         $this->setSession([
-            "Check the reCAPTCHA !", 
-            "red"
+            "message"   => "Check the reCAPTCHA !", 
+            "type"      => "red"
         ]);
 
         $this->redirect("user");
@@ -62,8 +62,8 @@ class AuthController extends MainController
 
         if (!password_verify($this->user["pass"], $user["pass"])) {
             $this->setSession([
-                "Failed authentication !", 
-                "black"
+                "message"   => "Failed authentication !", 
+                "type"      => "black"
             ]);
 
             $this->redirect("user");
@@ -72,8 +72,8 @@ class AuthController extends MainController
         $this->setSession($user, true);
         
         $this->setSession([
-            "Successful authentication, welcome " . $user["name"] . " !", 
-            "violet"
+            "message"   => "Successful authentication, welcome " . $user["name"] . " !", 
+            "type"      => "violet"
         ]);
 
         $this->redirect("admin");

@@ -53,8 +53,8 @@ class ClassController extends MainController
             ModelFactory::getModel("Class")->createData($this->class);
 
             $this->setSession([
-                "New Class successfully created !", 
-                "green"
+                "message"   => "New Class successfully created !", 
+                "type"      => "green"
             ]);
 
             $this->redirect("admin");
@@ -84,8 +84,8 @@ class ClassController extends MainController
             );
 
             $this->setSession([
-                "Successful modification of the selected Class !", 
-                "blue"
+                "message"   => "Successful modification of the selected Class !", 
+                "type"      => "blue"
             ]);
 
             $this->redirect("admin");
@@ -123,8 +123,8 @@ class ClassController extends MainController
         ModelFactory::getModel("Class")->deleteData($this->getGet("id"));
 
         $this->setSession([
-            "Class permanently deleted !", 
-            "red"
+            "message"   => "Class permanently deleted !", 
+            "type"      => "red"
         ]);
 
         $this->redirect("admin");

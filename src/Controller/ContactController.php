@@ -44,8 +44,8 @@ class ContactController extends MainController
                 $this->sendMail($this->mail);
 
                 $this->setSession([
-                    "Message successfully sent to " . MAIL_USERNAME . " !", 
-                    "green"
+                    "message"   => "Message successfully sent to " . MAIL_USERNAME . " !", 
+                    "type"      => "green"
                 ]);
 
                 $this->redirect("home");
@@ -53,8 +53,8 @@ class ContactController extends MainController
         }
 
         $this->setSession([
-            "Check the reCAPTCHA !", 
-            "red"
+            "message"   => "Check the reCAPTCHA !", 
+            "type"      => "red"
         ]);
 
         $this->redirect("contact");

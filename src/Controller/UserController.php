@@ -32,11 +32,25 @@ class UserController extends MainController
 
     // ******************** SETTERS ******************** \\
 
+    private function setUserData()
+    {
+        $this->user["name"]     = (string) trim($this->getPost("name"));
+        $this->user["email"]    = (string) trim($this->getPost("email"));
+    }
+
+    private function setUserImage()
+    {
+        $this->user["image"] = $this->getString($this->user["name"]) . $this->getExtension();
+
+        $this->getUploadedFile("img/user/", $this->getString($this->user["name"]));
+        $this->getThumbnail("img/user/" . $this->user["image"], 150);
+    }
+
     private function setUpdateData()
     {
         $this->setUserData();
 
-        if ($this->checkArray($this->getFiles(), "name")) {
+        if ($this->checkArray($this->getFiles("file"), "name")) {
             $this->setUserImage();
         }
 
@@ -50,8 +64,8 @@ class UserController extends MainController
         );
 
         $this->setSession([
-            "Successful modification of the user !", 
-            "blue"
+            "message"   => "Successful modification of the user !", 
+            "type"      => "blue"
         ]);
 
         $this->redirect("admin");
@@ -64,8 +78,8 @@ class UserController extends MainController
         if (!password_verify($this->getPost("old-pass"), $user["pass"])) {
 
             $this->setSession([
-                "Old Password does not match !", 
-                "red"
+                "message"   => "Old Password does not match !", 
+                "type"      => "red"
             ]);
 
             $this->redirect("admin");
@@ -74,28 +88,14 @@ class UserController extends MainController
         if ($this->getPost("new-pass") !== $this->getPost("conf-pass")) {
 
             $this->setSession([
-                "New Passwords do not match !", 
-                "red"
+                "message"   => "New Passwords do not match !", 
+                "type"      => "red"
             ]);
 
             $this->redirect("admin");
         }
 
         $this->user["pass"] = password_hash($this->getPost("new-pass"), PASSWORD_DEFAULT);
-    }
-
-    private function setUserData()
-    {
-        $this->user["name"]     = (string) trim($this->getPost("name"));
-        $this->user["email"]    = (string) trim($this->getPost("email"));
-    }
-
-    private function setUserImage()
-    {
-        $this->user["image"] = $this->getString($this->user["name"]) . $this->getExtension();
-
-        $this->getUploadedFile("img/user/", $this->getString($this->user["name"]));
-        $this->getThumbnail("img/user/" . $this->user["image"], 150);
     }
 
     // ******************** CRUD ******************** \\
@@ -119,8 +119,8 @@ class UserController extends MainController
             if ($this->getPost("pass") !== $this->getPost("conf-pass")) {
 
                 $this->setSession([
-                    "Passwords do not match !", 
-                    "red"
+                    "message"   => "Passwords do not match !", 
+                    "type"      => "red"
                 ]);
 
                 $this->redirect("user!create");
@@ -131,14 +131,14 @@ class UserController extends MainController
             ModelFactory::getModel("User")->createData($this->user);
 
             $this->setSession([
-                "New user successfully created !", 
-                "green"
+                "message"   => "New user successfully created !", 
+                "type"      => "green"
             ]);
 
             $this->redirect("admin");
         }
 
-        return $this->render("back/user/createUser.twig");
+        return $this->render("back/createUser.twig");
     }
 
     /**
@@ -159,7 +159,7 @@ class UserController extends MainController
 
         $user = ModelFactory::getModel("User")->readData($this->getGet("id"));
 
-        return $this->render("back/user/updateUser.twig", ["user" => $user]);
+        return $this->render("back/updateUser.twig", ["user" => $user]);
     }
 
     public function deleteMethod()
@@ -171,8 +171,8 @@ class UserController extends MainController
         ModelFactory::getModel("User")->deleteData($this->getGet("id"));
 
         $this->setSession([
-            "User actually deleted !", 
-            "red"
+            "message"   => "User actually deleted !", 
+            "type"      => "red"
         ]);
 
         $this->redirect("admin");
