@@ -30,6 +30,7 @@ class MethodController extends MainController
         $this->method["visibility"] = (string) trim($this->getPost("visibility"));
         $this->method["parameters"] = (string) trim($this->getPost("parameters"));
         $this->method["return"]     = (string) trim($this->getPost("return"));
+        $this->method["detail"]     = (string) trim($this->getPost("detail"));
 
         $this->method["static"]     = (int) $this->getPost("static");
         $this->method["class_id"]   = (int) $this->getPost("class_id");

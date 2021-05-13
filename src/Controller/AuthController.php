@@ -69,7 +69,10 @@ class AuthController extends MainController
             $this->redirect("user");
         }
 
-        $this->setSession($user, true);
+        $this->setSession(
+            $user, 
+            true
+        );
         
         $this->setSession([
             "message"   => "Successful authentication, welcome " . $user["name"] . " !", 

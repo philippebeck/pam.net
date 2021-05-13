@@ -30,7 +30,7 @@ class ClassController extends MainController
         $this->class["path"]        = (string) trim($this->getPost("path"));
         $this->class["parameters"]  = (string) trim($this->getPost("parameters"));
         $this->class["extends"]     = (string) trim($this->getPost("extends"));
-        $this->class["definition"]  = (string) trim($this->getPost("definition"));
+        $this->class["detail"]      = (string) trim($this->getPost("detail"));
 
         $this->class["abstract"] = (int) $this->getPost("abstract");
     }

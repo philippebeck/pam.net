@@ -13,11 +13,7 @@
         <thead>
         <tr>
             <th>Class</th>
-            <th>
-                Extends
-                <hr>
-                Parameters
-            </th>
+            <th>Infos</th>
         </tr>
         </thead>
         <tbody>
@@ -41,15 +37,16 @@
                     </a>
                 </td>
                 <td>
+                    {{ class.detail }}
+                    
                     {% if class.extends %}
+                        <hr>
                         extends {{ class.extends }}
-                    {% else %}
-                        <i class="fas fa-ban fa-lg"></i>
                     {% endif %}
 
                     {% if class.parameters %}
                         <hr>
-                        {{ class.parameters }}
+                        @param {{ class.parameters }}
                     {% endif %}
                 </td>
             </tr>
