@@ -18,7 +18,7 @@ CREATE TABLE `Class` (
     `parameters`    VARCHAR(30),
     `abstract`      TINYINT(1)      UNSIGNED    NOT NULL,
     `extends`       VARCHAR(20),
-    `definition`    VARCHAR(255)    NOT NULL UNIQUE
+    `detail`        VARCHAR(255)    NOT NULL UNIQUE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Property` (
@@ -39,7 +39,7 @@ CREATE TABLE `Method` (
     `return`        VARCHAR(30),
     `static`        TINYINT(1)      UNSIGNED    NOT NULL,
     `class_id`      TINYINT         UNSIGNED    NOT NULL,
-    `function`      VARCHAR(255)    NOT NULL,
+    `detail`        VARCHAR(255)    NOT NULL,
     CONSTRAINT      `method_fk_class_id`    FOREIGN KEY (`class_id`)    REFERENCES  `Class`(`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -71,7 +71,7 @@ VALUES
 ('VIEW_CACHE',          'view',         1,  'false');
 
 INSERT INTO `Class`
-(`class`, `path`, `parameters`, `abstract`, `extends`, `definition`)
+(`class`, `path`, `parameters`, `abstract`, `extends`, `detail`)
 VALUES
 ('PdoFactory',          'Model',        '',                 0,  '',                     'The PdoFactory class defines access to the database for SQL with PDO using the factory design pattern which creates objects without having to specify the exact class of the object which will be created'),
 ('PdoDb',               'Model',        'PDO $pdo',         0,  '',                     'The PdoDb class defines the public methods for handling database query procedures ; if you want to customize a request : call the PdoDb method you need by providing the request, and arguments if necessary'),
@@ -111,7 +111,7 @@ VALUES
 ('$twig',       'protected',    'Environment',  0,  9);
 
 INSERT INTO `Method`
-(`method`, `visibility`, `parameters`, `return`, `static`, `class_id`, `function`)
+(`method`, `visibility`, `parameters`, `return`, `static`, `class_id`, `detail`)
 VALUES
 ('getPDO',              'public',       '',                                                                     'PDO',                      1,  1,  'getPdo() is a static method who get PDO to access to an SQL database'),
 ('getData',             'public',       'string $query, array $params = []',                                    'mixed',                    0,  2,  'getData() uses PDO to get one result from a database table with a query by prepare it, then execute it & return the result'),
