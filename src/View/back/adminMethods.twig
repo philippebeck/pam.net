@@ -13,11 +13,7 @@
         <thead>
         <tr>
             <th>Method</th>
-            <th>
-                Parameters
-                <hr>
-                Return
-            </th>
+            <th>Infos</th>
         </tr>
         </thead>
         <tbody>
@@ -45,16 +41,16 @@
                     </a>
                 </td>
                 <td>
+                    {{ method.detail }}
+                    
                     {% if method.parameters %}
-                        {{ method.parameters }}
-                    {% else %}
-                        <i class="fas fa-ban fa-lg"></i>
+                        <hr>
+                        @param {{ method.parameters }}
                     {% endif %}
-                <hr>
+                
                     {% if method.return %}
-                        {{ method.return }}
-                    {% else %}
-                        <i class="fas fa-ban fa-lg"></i>
+                        <hr>
+                        @return {{ method.return }}
                     {% endif %}
 
                 </td>
