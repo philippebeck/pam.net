@@ -2,9 +2,6 @@
 
 Pam, Php Approachable Microframework, Official Website & Documentation
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/63dfee72718748f982fd515eb56b9ecc)](https://www.codacy.com/gh/devsagency/pam.net/dashboard)
-[![Maintainability](https://api.codeclimate.com/v1/badges/6559a883b2fd7c3fc9a5/maintainability)](https://codeclimate.com/github/devsagency/pam.net/maintainability)
-
 ---
 
 ## Download
@@ -17,7 +14,7 @@ Pam, Php Approachable Microframework, Official Website & Documentation
 
 ## Support
 
-Pam.net has continuous support !
+Pam.net has NO continuous support !
 
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/philippebeck/pam.net.svg?label=Last+Commit)](https://github.com/philippebeck/pam.net/commits/master)
 
