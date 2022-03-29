@@ -1,6 +1,6 @@
 {
   "name": "devsagency/pam.net",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "type": "project",
   "description": "Pam, Php Adaptive Microframework, Official Website & Documentation",
   "keywords": [
@@ -19,7 +19,6 @@
     "twig",
     "profiler"
   ],
-  "homepage": "https://pam.philippebeck.net",
   "license": "MIT",
   "authors": [
     {
