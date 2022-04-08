@@ -1,6 +1,6 @@
 {
-  "name": "devsagency/pam.net",
-  "version": "0.9.4",
+  "name": "philippebeck/pam.net",
+  "version": "0.10.0",
   "type": "project",
   "description": "Pam, Php Adaptive Microframework, Official Website & Documentation",
   "keywords": [
@@ -35,7 +35,7 @@
   },
   "require": {
     "php": "7.3",
-    "devsagency/pam": "^5.0.2",
+    "philippebeck/pam": "^5.0.2",
     "ext-gd": "*",
     "ext-exif": "*",
     "ext-curl": "*",
