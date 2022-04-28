@@ -194,12 +194,12 @@
             "version": "5.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/devsagency/pam.git",
+                "url": "https://github.com/philippebeck/pam.git",
                 "reference": "1c3de94ddcbd821ee1a119b884f2d08b2ca0edf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/devsagency/pam/zipball/1c3de94ddcbd821ee1a119b884f2d08b2ca0edf5",
+                "url": "https://api.github.com/repos/philippebeck/pam/zipball/1c3de94ddcbd821ee1a119b884f2d08b2ca0edf5",
                 "reference": "1c3de94ddcbd821ee1a119b884f2d08b2ca0edf5",
                 "shasum": ""
             },
@@ -252,7 +252,6 @@
                 "superglobals",
                 "twig"
             ],
-            "abandoned": "devsagency/pam",
             "time": "2021-04-25T15:54:01+00:00"
         },
         {
@@ -880,16 +879,16 @@
     "packages-dev": [
         {
             "name": "tracy/tracy",
-            "version": "v2.9.1",
+            "version": "v2.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "4180b3221ff852fe10d5eab30d80be6f6ab7221e"
+                "reference": "03965a7cb94d284dbf7e3b788b3691715c13d401"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/4180b3221ff852fe10d5eab30d80be6f6ab7221e",
-                "reference": "4180b3221ff852fe10d5eab30d80be6f6ab7221e",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/03965a7cb94d284dbf7e3b788b3691715c13d401",
+                "reference": "03965a7cb94d284dbf7e3b788b3691715c13d401",
                 "shasum": ""
             },
             "require": {
@@ -946,7 +945,7 @@
                 "nette",
                 "profiler"
             ],
-            "time": "2022-02-15T16:38:30+00:00"
+            "time": "2022-04-28T04:03:34+00:00"
         }
     ],
     "aliases": [],
