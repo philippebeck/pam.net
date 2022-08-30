@@ -24,7 +24,7 @@
   "bugs": "https://github.com/philippebeck/pam.net/issues",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
-    "animadio": "^4.3.0"
+    "animadio": "^5.0.5"
   },
   "author": {
     "name": "Philippe Beck",
