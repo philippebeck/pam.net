@@ -23,7 +23,7 @@
   "repository": "github:philippebeck/pam.net",
   "bugs": "https://github.com/philippebeck/pam.net/issues",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.2.1",
+    "@fortawesome/fontawesome-free": "^6.3.0",
     "animadio": "^5.5.0"
   },
   "author": {
